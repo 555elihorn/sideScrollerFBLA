@@ -54,7 +54,6 @@ public class PlayerMovement : MonoBehaviour
         
         if (CrossPlatformInputManager.GetButtonDown("Jump"))
         {
-            print("rekt");
             Vector2 jumpVelocityToAdd = new Vector2(0f, jumpSpeed);
             myRigidBody.velocity += jumpVelocityToAdd;
         }
