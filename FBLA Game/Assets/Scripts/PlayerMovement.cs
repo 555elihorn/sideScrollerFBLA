@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     Animator myAnimator;
     CapsuleCollider2D myBodyCollider;
     BoxCollider2D myFeet;
+    PlayerState myState;
 
     void Start()
     {
@@ -24,12 +25,18 @@ public class PlayerMovement : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         myBodyCollider = GetComponent<CapsuleCollider2D>();
         myFeet = GetComponent<BoxCollider2D>();
+        myState = GetComponent<PlayerState>();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+        if(!myState.isAlive())
+        {
+            return;
+        }
+
         Run();
         FlipSprite();
         Jump();
