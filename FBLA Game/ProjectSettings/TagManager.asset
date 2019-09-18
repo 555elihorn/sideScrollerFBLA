@@ -18,7 +18,7 @@ TagManager:
   - Player
   - Enemy
   - Obstacles
-  - 
+  - Interactables
   - 
   - 
   - 
@@ -49,6 +49,9 @@ TagManager:
     locked: 0
   - name: Obstacles
     uniqueID: 823934127
+    locked: 0
+  - name: Interactables
+    uniqueID: 3014073993
     locked: 0
   - name: Player
     uniqueID: 2625008127

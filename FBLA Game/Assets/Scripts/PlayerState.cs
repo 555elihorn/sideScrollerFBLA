@@ -37,13 +37,14 @@ public class PlayerState : MonoBehaviour
     }
 
     private void DeathCheck() {
-        if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemy", "Obstacles")) || myFeet.IsTouchingLayers(LayerMask.GetMask("Enemy", "Obstacles")))
+        if(isAlive())
         {
-            Kill();
-            myAnimator.SetTrigger("Dying");
-            GetComponent<Rigidbody2D>().velocity = deathKick;
-            /*GameSession temp = FindObjectOfType<GameSession>();
-            temp.ProcessPlayerDeath(); */
+            if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemy", "Obstacles")) || myFeet.IsTouchingLayers(LayerMask.GetMask("Enemy", "Obstacles")))
+            {
+                Kill();
+                myAnimator.SetTrigger("Dying");
+                GetComponent<Rigidbody2D>().velocity = deathKick;
+            }
         }
     }
 
