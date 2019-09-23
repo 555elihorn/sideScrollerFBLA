@@ -15,6 +15,7 @@ public class DialgoueSystem : MonoBehaviour
 
     [SerializeField] float typingSpeed = 0.02f;
     public GameObject continueButton;
+    public GameObject DialogueText;
 
 
 
@@ -60,13 +61,15 @@ public class DialgoueSystem : MonoBehaviour
         }
     }
 
- 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-        if (collision.gameObject.name == "Player")
+        print(collision.ToString());
+        if (collision.gameObject.name == "Player" && collision.ToString().Contains("Capsule"))
         {
+            print("ENTER");
+            textDisplay.text = "";
             continueButton.SetActive(true);
+            DialogueText.SetActive(true);
             StartCoroutine(Type());
         }
 
@@ -74,11 +77,13 @@ public class DialgoueSystem : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Player")
+        
+        if (collision.gameObject.name == "Player" && collision.ToString().Contains("Capsule"))
         {
-            print("FOUND");
-            continueButton.SetActive(false);
+            print("EXIT");
             textDisplay.text = "";
+            continueButton.SetActive(false);
+            DialogueText.SetActive(false);
             index = 0;
             StopCoroutine(Type());
         }
