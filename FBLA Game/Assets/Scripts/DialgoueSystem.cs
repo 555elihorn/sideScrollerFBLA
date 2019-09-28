@@ -20,7 +20,7 @@ public class DialgoueSystem : MonoBehaviour
 
     //configs
     [SerializeField] float typingSpeed = 0.02f;
-    [SerializeField] GameObject keyIndicator;
+    //[SerializeField] GameObject keyIndicator;
     [SerializeField] GameObject continueButton;
     [SerializeField] GameObject DialogueText;
 
@@ -37,7 +37,7 @@ public class DialgoueSystem : MonoBehaviour
         
         if(playerWithinDistance)
         {
-            dialogueButtonListener();
+            DialogueButtonListener();
         }
         //continueButton.SetActive(true);
     }
@@ -55,6 +55,59 @@ public class DialgoueSystem : MonoBehaviour
 
     }
 
+    
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "Player" && collision.ToString().Contains("Capsule"))
+        {
+            print("yes");
+            playerWithinDistance = true;
+        }
+        
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        playerWithinDistance = false;
+
+        if (collision.gameObject.name == "Player" && collision.ToString().Contains("Capsule"))
+        {
+            EndConversation();
+        }
+    }
+
+    private void EndConversation()
+    {
+        conversationHasStarted = false;
+        textDisplay.text = "";
+        continueButton.SetActive(false);
+        DialogueText.SetActive(false);
+        index = 0;
+        StopCoroutine(Type());
+    }
+
+    private void StartConversation()
+    {
+        textDisplay.text = "";
+        continueButton.SetActive(true);
+        DialogueText.SetActive(true);
+        StartCoroutine(Type());
+    }
+
+    private void DialogueButtonListener()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && !conversationHasStarted)
+        {
+            conversationHasStarted = true;
+            StartConversation();
+        }
+        else if (Input.GetKeyDown(KeyCode.E))
+        {
+            NextSentence();
+        }
+    }
+
     public void NextSentence()
     {
         continueButton.SetActive(true);
@@ -69,55 +122,6 @@ public class DialgoueSystem : MonoBehaviour
         {
             textDisplay.text = "";
             continueButton.SetActive(false);
-        }
-    }
-
-    private void dialogueButtonListener()
-    {
-        if (Input.GetKeyDown(KeyCode.E) && !conversationHasStarted)
-        {
-            conversationHasStarted = true;
-
-            print("ENTER");
-            textDisplay.text = "";
-            continueButton.SetActive(true);
-            DialogueText.SetActive(true);
-            StartCoroutine(Type());
-        }
-        else if(Input.GetKeyDown(KeyCode.E))
-        {
-            NextSentence();
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.name == "Player" && collision.ToString().Contains("Capsule"))
-        {
-            playerWithinDistance = true;
-        }
-        /*
-        print(collision.ToString());
-        
-            
-        }
-        */
-
-    }
-
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        playerWithinDistance = false;
-
-        if (collision.gameObject.name == "Player" && collision.ToString().Contains("Capsule"))
-        {
-            print("EXIT");
-            textDisplay.text = "";
-            continueButton.SetActive(false);
-            DialogueText.SetActive(false);
-            index = 0;
-            StopCoroutine(Type());
         }
     }
 }
