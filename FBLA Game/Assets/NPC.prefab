@@ -14,13 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textDisplay: {fileID: 0}
   sentences:
-  - newwfsdfasfwsfwasf
-  - "naked\U0001F1FA\U0001F1F8pictures\U0001F1FA\U0001F1F8of\U0001F1FA\U0001F1F8Donald\U0001F1FA\U0001F1F8Trump\"\U0001F1FA\U0001F1F8don't\U0001F1FA\U0001F1F8open"
-  - "\U0001F1FA\U0001F1F8it\U0001F1FA\U0001F1F8it\U0001F1FA\U0001F1F8is\U0001F1FA\U0001F1F8a\U0001F1FA\U0001F1F8virus\U0001F1FA\U0001F1F8that\U0001F1FA\U0001F1F8puts\U0001F1FA\U0001F1F8"
-  - "USA\U0001F1FA\U0001F1F8flags\U0001F1FA\U0001F1F8between\U0001F1FA\U0001F1F8everything"
-  - "\U0001F1FA\U0001F1F8you\U0001F1FA\U0001F1F8type\U0001F1FA\U0001F1F8"
-  - asdfasd
-  typingSpeed: 0.02
+  - I love You
+  - SAMPLE FSDFSDFESDF
+  - SDFDSFSDF
+  - FSDFSDFFESDF
+  - SDFSDFESDF
+  - SDFSDFESSDFSDFE
+  typingSpeed: 0.1
+  keyIndicator: {fileID: 0}
+  continueButton: {fileID: 0}
+  DialogueText: {fileID: 0}
 --- !u!1001 &6277794563112187426
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -100,18 +103,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1938337461003895939, guid: 389963c79183a8048a3db017714adc9a,
         type: 3}
-      propertyPath: m_Size.x
-      value: 0.6021204
-      objectReference: {fileID: 0}
-    - target: {fileID: 1938337461003895939, guid: 389963c79183a8048a3db017714adc9a,
-        type: 3}
       propertyPath: m_Offset.y
       value: 0.00901711
       objectReference: {fileID: 0}
     - target: {fileID: 1938337461003895939, guid: 389963c79183a8048a3db017714adc9a,
         type: 3}
+      propertyPath: m_Size.x
+      value: 0.6021204
+      objectReference: {fileID: 0}
+    - target: {fileID: 1938337461003895939, guid: 389963c79183a8048a3db017714adc9a,
+        type: 3}
       propertyPath: m_Size.y
       value: 0.64967275
+      objectReference: {fileID: 0}
+    - target: {fileID: 1938337461003895948, guid: 389963c79183a8048a3db017714adc9a,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -2070953223
+      objectReference: {fileID: 0}
+    - target: {fileID: 1938337461003895948, guid: 389963c79183a8048a3db017714adc9a,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1938337461003895937, guid: 389963c79183a8048a3db017714adc9a,
         type: 3}
@@ -120,13 +133,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1938337461003895937, guid: 389963c79183a8048a3db017714adc9a,
         type: 3}
-      propertyPath: m_Size.x
-      value: 4.3133726
+      propertyPath: m_Offset.y
+      value: 0.7033024
       objectReference: {fileID: 0}
     - target: {fileID: 1938337461003895937, guid: 389963c79183a8048a3db017714adc9a,
         type: 3}
-      propertyPath: m_Offset.y
-      value: 0.7033024
+      propertyPath: m_Size.x
+      value: 4.3133726
       objectReference: {fileID: 0}
     - target: {fileID: 1938337461003895937, guid: 389963c79183a8048a3db017714adc9a,
         type: 3}
@@ -135,7 +148,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1938337461003895936, guid: 389963c79183a8048a3db017714adc9a, type: 3}
-    - {fileID: 1938337461003895943, guid: 389963c79183a8048a3db017714adc9a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 389963c79183a8048a3db017714adc9a, type: 3}
 --- !u!1 &5618644341306585772 stripped
 GameObject:

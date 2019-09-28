@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using System.Threading;
 
-public class DialgoueSystem : MonoBehaviour
+public class DialogueSystem : MonoBehaviour
 {
 
     //variables
@@ -12,34 +12,38 @@ public class DialgoueSystem : MonoBehaviour
     private int index;
     bool playerWithinDistance = false;
     bool conversationHasStarted = false;
+    bool firstCollision = true;
 
     //cache
     public TextMeshProUGUI textDisplay;
     public string[] sentences;
-    
+    ObjectFader fader;
 
     //configs
     [SerializeField] float typingSpeed = 0.02f;
-    //[SerializeField] GameObject keyIndicator;
+    [SerializeField] GameObject keyIndicator;
     [SerializeField] GameObject continueButton;
     [SerializeField] GameObject DialogueText;
 
-
-
     void Start()
     {
+
+        fader = keyIndicator.GetComponent<ObjectFader>();
         continueButton.SetActive(false);
+        //keyIndicator.SetActive(false);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         
-        if(playerWithinDistance)
+        if(playerWithinDistance && firstCollision)
         {
             DialogueButtonListener();
+
         }
-        //continueButton.SetActive(true);
+        
     }
 
     IEnumerator Type()
@@ -61,7 +65,9 @@ public class DialgoueSystem : MonoBehaviour
     {
         if (collision.gameObject.name == "Player" && collision.ToString().Contains("Capsule"))
         {
-            print("yes");
+            keyIndicator.SetActive(true);
+            fader.FadeIn();
+
             playerWithinDistance = true;
         }
         
@@ -70,7 +76,7 @@ public class DialgoueSystem : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         playerWithinDistance = false;
-
+        
         if (collision.gameObject.name == "Player" && collision.ToString().Contains("Capsule"))
         {
             EndConversation();
@@ -79,6 +85,9 @@ public class DialgoueSystem : MonoBehaviour
 
     private void EndConversation()
     {
+        fader.FadeOut();
+        
+        //keyIndicator.SetActive(false);
         conversationHasStarted = false;
         textDisplay.text = "";
         continueButton.SetActive(false);
@@ -97,6 +106,8 @@ public class DialgoueSystem : MonoBehaviour
 
     private void DialogueButtonListener()
     {
+        
+
         if (Input.GetKeyDown(KeyCode.E) && !conversationHasStarted)
         {
             conversationHasStarted = true;
