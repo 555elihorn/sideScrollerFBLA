@@ -7,15 +7,22 @@ using System.Threading;
 public class DialgoueSystem : MonoBehaviour
 {
 
+    //variables
     bool playerIsTouching = false;
+    private int index;
+    bool playerWithinDistance = false;
+    bool conversationHasStarted = false;
 
+    //cache
     public TextMeshProUGUI textDisplay;
     public string[] sentences;
-    private int index;
+    
 
+    //configs
     [SerializeField] float typingSpeed = 0.02f;
-    public GameObject continueButton;
-    public GameObject DialogueText;
+    [SerializeField] GameObject keyIndicator;
+    [SerializeField] GameObject continueButton;
+    [SerializeField] GameObject DialogueText;
 
 
 
@@ -27,13 +34,17 @@ public class DialgoueSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        if(playerWithinDistance)
+        {
+            dialogueButtonListener();
+        }
         //continueButton.SetActive(true);
     }
 
     IEnumerator Type()
     {
         string currentString = sentences[index];
-        print(currentString);
 
         foreach (char letter in currentString)
         {
@@ -61,23 +72,44 @@ public class DialgoueSystem : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void dialogueButtonListener()
     {
-        print(collision.ToString());
-        if (collision.gameObject.name == "Player" && collision.ToString().Contains("Capsule"))
+        if (Input.GetKeyDown(KeyCode.E) && !conversationHasStarted)
         {
+            conversationHasStarted = true;
+
             print("ENTER");
             textDisplay.text = "";
             continueButton.SetActive(true);
             DialogueText.SetActive(true);
             StartCoroutine(Type());
         }
+        else if(Input.GetKeyDown(KeyCode.E))
+        {
+            NextSentence();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "Player" && collision.ToString().Contains("Capsule"))
+        {
+            playerWithinDistance = true;
+        }
+        /*
+        print(collision.ToString());
+        
+            
+        }
+        */
 
     }
 
+
     private void OnTriggerExit2D(Collider2D collision)
     {
-        
+        playerWithinDistance = false;
+
         if (collision.gameObject.name == "Player" && collision.ToString().Contains("Capsule"))
         {
             print("EXIT");
