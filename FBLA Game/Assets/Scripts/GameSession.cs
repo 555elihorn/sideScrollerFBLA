@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameSession : MonoBehaviour
 {
     [SerializeField] int playerLives = 3;
     [SerializeField] int score = 0;
 
-    [SerializeField] Text livesText = null;
-    [SerializeField] Text scoreText = null;
+    [SerializeField] TextMeshProUGUI livesText = null;
+    [SerializeField] TextMeshProUGUI scoreText = null;
 
     private void Awake()
     {
@@ -28,6 +29,7 @@ public class GameSession : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        print("check");
         livesText.text = playerLives.ToString();
         scoreText.text = score.ToString();
     }
