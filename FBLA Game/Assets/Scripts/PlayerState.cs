@@ -13,6 +13,7 @@ public class PlayerState : MonoBehaviour
     CapsuleCollider2D myBodyCollider;
     Animator myAnimator;
     BoxCollider2D myFeet;
+    GameSession GS;
 
 
     //Config
@@ -23,6 +24,7 @@ public class PlayerState : MonoBehaviour
         myBodyCollider = GetComponent<CapsuleCollider2D>();
         myAnimator = GetComponent<Animator>();
         myFeet = GetComponent<BoxCollider2D>();
+        GS = FindObjectOfType<GameSession>();
     }
 
     // Update is called once per frame
@@ -41,6 +43,8 @@ public class PlayerState : MonoBehaviour
                 Kill();
                 myAnimator.SetTrigger("Dying");
                 GetComponent<Rigidbody2D>().velocity = deathKick;
+                GS.ProcessPlayerDeath();
+
             }
         }
     }
