@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
@@ -18,6 +19,7 @@ public class PlayerState : MonoBehaviour
 
     //Config
     [SerializeField] Vector2 deathKick = new Vector2(25f, 25f);
+    [SerializeField] float respawnDelayTime = 1;
 
     void Start()
     {
@@ -33,6 +35,14 @@ public class PlayerState : MonoBehaviour
         DeathCheck();
     }
 
+    //Corutine that waits X amount of time before respawn
+    IEnumerator Respawn()
+    {
+
+       yield return new WaitForSeconds(respawnDelayTime);
+       GS.ProcessPlayerDeath();
+    }
+
 
 
     private void DeathCheck() {
@@ -43,8 +53,7 @@ public class PlayerState : MonoBehaviour
                 Kill();
                 myAnimator.SetTrigger("Dying");
                 GetComponent<Rigidbody2D>().velocity = deathKick;
-                GS.ProcessPlayerDeath();
-
+                StartCoroutine(Respawn());
             }
         }
     }
