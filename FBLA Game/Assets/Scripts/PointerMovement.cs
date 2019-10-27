@@ -19,14 +19,18 @@ public class PointerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         myRigidBody.velocity = new Vector2(moveSpeed, 0f);
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print("CHECK");
-        moveSpeed *= -1;
+        if (!(collision.gameObject.tag.Equals("GREEN")))
+        {
+            moveSpeed *= -1;
+        }
+        else
+        {
+            print("CHECK");
+        }
     }
 }
