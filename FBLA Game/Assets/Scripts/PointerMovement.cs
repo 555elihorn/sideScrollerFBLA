@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class PointerMovement : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PointerMovement : MonoBehaviour
     Rigidbody2D myRigidBody;
 
     bool isTouchingEnd = false;
+    bool isInWinArea = false;
 
     // Start is called before the first frame update
     void Start()
@@ -19,18 +21,34 @@ public class PointerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (CrossPlatformInputManager.GetButtonDown("Jump"))
+        {
+            print(isInWinArea); 
+            if(isInWinArea)
+            {
+                print("WIN!");
+            }
+            else
+            {
+                print("YOU SHOULD HAVE LOST!");
+            }
+        }
+
         myRigidBody.velocity = new Vector2(moveSpeed, 0f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!(collision.gameObject.tag.Equals("GREEN")))
+        //If the player is not specifically detecting the green area, do not change direction
+        if ((collision.gameObject.tag.Equals("GREEN")))
         {
-            moveSpeed *= -1;
+            //print("CHECK!");
+            bool isInWinArea = true;
         }
         else
         {
-            print("CHECK");
+            moveSpeed *= -1;
         }
     }
+
 }
