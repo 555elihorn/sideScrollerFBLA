@@ -9,7 +9,7 @@ public class GameSession : MonoBehaviour
 {
     
     //variables
-    int previousScene = 0;
+    int previousScene = 1;
 
 
     //config
@@ -33,7 +33,6 @@ public class GameSession : MonoBehaviour
 
     void Start()
     {
-        print("check");
         livesText.text = playerLives.ToString();
         scoreText.text = score.ToString();
     }

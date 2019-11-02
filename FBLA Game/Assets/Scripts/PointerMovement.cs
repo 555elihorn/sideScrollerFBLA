@@ -17,6 +17,8 @@ public class PointerMovement : MonoBehaviour
 
     //Configs
     [SerializeField] float moveSpeed = 1f;
+    [SerializeField] AudioClip successSound = null;
+    [SerializeField] AudioClip failSound = null;
 
 
     // Start is called before the first frame update
@@ -35,11 +37,13 @@ public class PointerMovement : MonoBehaviour
             isPressingButton = true; //prevents button mashing
             if (isInWinArea)
             {
+                AudioSource.PlayClipAtPoint(successSound, Camera.main.transform.position, 0.5f);
                 scoreSystem.AddToScore();
             }
             else
             {
-                scoreSystem.Failure();
+                AudioSource.PlayClipAtPoint(failSound, Camera.main.transform.position, 0.5f);
+                //scoreSystem.Failure();
             }
         }
 
