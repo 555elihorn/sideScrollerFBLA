@@ -8,16 +8,17 @@ public class PointerMovement : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 1f;
     Rigidbody2D myRigidBody;
+    PersuasionScoreSession scoreSystem;
 
-    private bool isTouchingEnd;
     private bool isInWinArea;
     private bool isPressingButton;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
-        isTouchingEnd = false;
+        scoreSystem = FindObjectOfType<PersuasionScoreSession>();
         isInWinArea = false;
     }
 
@@ -30,6 +31,7 @@ public class PointerMovement : MonoBehaviour
             isPressingButton = true; 
             if(isInWinArea)
             {
+                scoreSystem.AddToScore();
                 print("WIN!");
             }
             else
@@ -46,7 +48,7 @@ public class PointerMovement : MonoBehaviour
         //If the player is not specifically detecting the green area, do not change direction
         if(collision.gameObject.tag.Equals("GREEN"))
         {
-            print("CHECK!");
+            isPressingButton = false;
             isInWinArea = true;
         }
         else
