@@ -665,9 +665,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1796656880}
   - component: {fileID: 1796656879}
-  - component: {fileID: 1796656882}
   - component: {fileID: 1796656881}
   - component: {fileID: 1796656883}
+  - component: {fileID: 1796656882}
   m_Layer: 0
   m_Name: Pointer
   m_TagString: Untagged
@@ -772,6 +772,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  successSound: {fileID: 8300000, guid: f2d95a4791dd57445acd820d08014318, type: 3}
+  failSound: {fileID: 8300000, guid: c7136bfce6ea9e0489dd511f5cb9218c, type: 3}
 --- !u!60 &1796656883
 PolygonCollider2D:
   m_ObjectHideFlags: 0
