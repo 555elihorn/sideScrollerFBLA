@@ -12,19 +12,6 @@ public class PersuasionScoreSession : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI scoreText = null;
 
-    private void Awake()
-    {
-        int numGameSessions = FindObjectsOfType<GameSession>().Length;
-        if (numGameSessions > 1)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            DontDestroyOnLoad(gameObject);
-        }
-    }
-
     void Start()
     {
         print("check");
@@ -36,7 +23,7 @@ public class PersuasionScoreSession : MonoBehaviour
         score += 1;
         if (score == winCondition)
         {
-            ReturnToLevel();
+            SceneManager.LoadScene(FindObjectOfType<GameSession>().GetPreviousScene());
         }
         else
         {
@@ -50,8 +37,4 @@ public class PersuasionScoreSession : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void ReturnToLevel()
-    {
-        SceneManager.LoadScene(0);
-    }
 }

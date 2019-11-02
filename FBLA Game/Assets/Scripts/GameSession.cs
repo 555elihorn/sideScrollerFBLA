@@ -9,6 +9,7 @@ public class GameSession : MonoBehaviour
 {
     [SerializeField] int playerLives = 3;
     [SerializeField] int score = 0;
+    int previousScene = 0;
 
     [SerializeField] TextMeshProUGUI livesText = null;
     [SerializeField] TextMeshProUGUI scoreText = null;
@@ -68,5 +69,15 @@ public class GameSession : MonoBehaviour
     {
         SceneManager.LoadScene(0);
         Destroy(gameObject);
+    }
+
+    public void SetPreviousScene(int sceneIndex)
+    {
+        previousScene = sceneIndex;
+    }
+
+    public int GetPreviousScene()
+    {
+        return previousScene;
     }
 }
