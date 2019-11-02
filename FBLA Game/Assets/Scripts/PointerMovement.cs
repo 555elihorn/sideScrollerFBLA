@@ -9,8 +9,9 @@ public class PointerMovement : MonoBehaviour
     [SerializeField] float moveSpeed = 1f;
     Rigidbody2D myRigidBody;
 
-    bool isTouchingEnd;
-    public bool isInWinArea;
+    private bool isTouchingEnd;
+    private bool isInWinArea;
+    private bool isPressingButton;
 
     // Start is called before the first frame update
     void Start()
@@ -23,9 +24,10 @@ public class PointerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (CrossPlatformInputManager.GetButtonDown("Jump"))
+        if (CrossPlatformInputManager.GetButtonDown("Jump") && !isPressingButton)
         {
-            print(isInWinArea); 
+            //prevents button mashing
+            isPressingButton = true; 
             if(isInWinArea)
             {
                 print("WIN!");
@@ -57,8 +59,10 @@ public class PointerMovement : MonoBehaviour
     {
         if(collision.gameObject.tag.Equals("GREEN"))
         {
+            isPressingButton = false;
             isInWinArea = false;
         }
+
     }
 
 }
