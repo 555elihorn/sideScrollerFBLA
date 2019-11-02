@@ -7,10 +7,14 @@ using TMPro;
 
 public class GameSession : MonoBehaviour
 {
-    [SerializeField] int playerLives = 3;
-    [SerializeField] int score = 0;
+    
+    //variables
     int previousScene = 0;
 
+
+    //config
+    [SerializeField] int playerLives = 3;
+    [SerializeField] int score = 0;
     [SerializeField] TextMeshProUGUI livesText = null;
     [SerializeField] TextMeshProUGUI scoreText = null;
 
@@ -27,7 +31,6 @@ public class GameSession : MonoBehaviour
         }
     }
 
-    // Use this for initialization
     void Start()
     {
         print("check");

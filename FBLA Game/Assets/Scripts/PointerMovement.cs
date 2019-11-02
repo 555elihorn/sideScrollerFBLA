@@ -6,13 +6,18 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class PointerMovement : MonoBehaviour
 {
-    [SerializeField] float moveSpeed = 1f;
+
+    //Variables
+    private bool isInWinArea;
+    private bool isPressingButton; //created to stop button spam
+
+    //Cache
     Rigidbody2D myRigidBody;
     PersuasionScoreSession scoreSystem;
 
-    private bool isInWinArea;
-    private bool isPressingButton;
-    
+    //Configs
+    [SerializeField] float moveSpeed = 1f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -27,24 +32,23 @@ public class PointerMovement : MonoBehaviour
     {
         if (CrossPlatformInputManager.GetButtonDown("Jump") && !isPressingButton)
         {
-            //prevents button mashing
-            isPressingButton = true; 
-            if(isInWinArea)
+            isPressingButton = true; //prevents button mashing
+            if (isInWinArea)
             {
                 scoreSystem.AddToScore();
             }
             else
             {
-                scoreSystem.ResetGameSession();
+                scoreSystem.Failure();
             }
         }
 
-        myRigidBody.velocity = new Vector2(moveSpeed, 0f);
+        myRigidBody.velocity = new Vector2(moveSpeed, 0f); //moves the arrow
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //If the player is not specifically detecting the green area, do not change direction
+        //If the player is not specifically detecting the green area, change direction
         if(collision.gameObject.tag.Equals("GREEN"))
         {
             isPressingButton = false;
@@ -58,6 +62,7 @@ public class PointerMovement : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        //if the pointer leaves the green area, the player is no longer in the win area and can press the button again
         if(collision.gameObject.tag.Equals("GREEN"))
         {
             isPressingButton = false;

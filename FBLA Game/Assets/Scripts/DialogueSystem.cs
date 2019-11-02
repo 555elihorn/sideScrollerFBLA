@@ -18,6 +18,7 @@ public class DialogueSystem : MonoBehaviour
     public TextMeshProUGUI textDisplay;
     public string[] sentences;
     ObjectFader fader;
+    GameSession myGameSession;
 
     //configs
     [SerializeField] float typingSpeed = 0.02f;
@@ -27,11 +28,9 @@ public class DialogueSystem : MonoBehaviour
 
     void Start()
     {
-
         fader = keyIndicator.GetComponent<ObjectFader>();
-        continueButton.SetActive(false);
-        //keyIndicator.SetActive(false);
-        
+        myGameSession = FindObjectOfType<GameSession>();
+        continueButton.SetActive(false);        
     }
 
     // Update is called once per frame
@@ -59,8 +58,6 @@ public class DialogueSystem : MonoBehaviour
 
     }
 
-    
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name == "Player" && collision.ToString().Contains("Capsule"))
@@ -87,7 +84,6 @@ public class DialogueSystem : MonoBehaviour
     {
         fader.FadeOut();
         
-        //keyIndicator.SetActive(false);
         conversationHasStarted = false;
         textDisplay.text = "";
         continueButton.SetActive(false);
@@ -131,8 +127,8 @@ public class DialogueSystem : MonoBehaviour
         }
         else
         {
-            //IF at the end of the conversation, start the mini game
-            FindObjectOfType<GameSession>().SetPreviousScene(SceneManager.GetActiveScene().buildIndex);
+            //if at the end of the conversation, start the mini game
+            myGameSession.SetPreviousScene(SceneManager.GetActiveScene().buildIndex);
             SceneManager.LoadScene(2);
             textDisplay.text = "";
             continueButton.SetActive(false);

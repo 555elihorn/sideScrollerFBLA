@@ -7,15 +7,18 @@ using UnityEngine.SceneManagement;
 public class PersuasionScoreSession : MonoBehaviour
 {
 
+    //Cache
+    GameSession myGameSession;
+
+    //Config
     [SerializeField] int winCondition = 10;
     [SerializeField] int score = 0;
-
     [SerializeField] TextMeshProUGUI scoreText = null;
 
     void Start()
     {
-        print("check");
-        scoreText.text = score.ToString() + " / " + winCondition.ToString();
+        myGameSession = FindObjectOfType<GameSession>();
+        scoreText.text = score.ToString() + " / " + winCondition.ToString(); //creates the default score parameters (ex: 0 / 10)
     }
 
     public void AddToScore()
@@ -23,15 +26,16 @@ public class PersuasionScoreSession : MonoBehaviour
         score += 1;
         if (score == winCondition)
         {
-            SceneManager.LoadScene(FindObjectOfType<GameSession>().GetPreviousScene());
+            SceneManager.LoadScene(myGameSession.GetPreviousScene()); //If the player completes the win condition go back to the main level
+            myGameSession.AddToScore(1000);
         }
         else
         {
-            scoreText.text = score.ToString() + " / " + winCondition.ToString();
+            scoreText.text = score.ToString() + " / " + winCondition.ToString(); //else add +1 to the score
         }
     }
 
-    public void ResetGameSession()
+    public void Failure() //Exit play mode
     {
         UnityEditor.EditorApplication.isPlaying = false;
         Destroy(gameObject);
