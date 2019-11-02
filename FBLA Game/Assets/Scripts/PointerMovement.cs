@@ -9,13 +9,15 @@ public class PointerMovement : MonoBehaviour
     [SerializeField] float moveSpeed = 1f;
     Rigidbody2D myRigidBody;
 
-    bool isTouchingEnd = false;
-    bool isInWinArea = false;
+    bool isTouchingEnd;
+    public bool isInWinArea;
 
     // Start is called before the first frame update
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
+        isTouchingEnd = false;
+        isInWinArea = false;
     }
 
     // Update is called once per frame
@@ -40,14 +42,22 @@ public class PointerMovement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //If the player is not specifically detecting the green area, do not change direction
-        if ((collision.gameObject.tag.Equals("GREEN")))
+        if(collision.gameObject.tag.Equals("GREEN"))
         {
-            //print("CHECK!");
-            bool isInWinArea = true;
+            print("CHECK!");
+            isInWinArea = true;
         }
         else
         {
             moveSpeed *= -1;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag.Equals("GREEN"))
+        {
+            isInWinArea = false;
         }
     }
 
