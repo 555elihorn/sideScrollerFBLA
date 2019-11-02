@@ -32,11 +32,10 @@ public class PointerMovement : MonoBehaviour
             if(isInWinArea)
             {
                 scoreSystem.AddToScore();
-                print("WIN!");
             }
             else
             {
-                print("YOU SHOULD HAVE LOST!");
+                scoreSystem.ResetGameSession();
             }
         }
 

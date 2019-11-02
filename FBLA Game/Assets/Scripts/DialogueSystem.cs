@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Threading;
+using UnityEngine.SceneManagement;
 
 public class DialogueSystem : MonoBehaviour
 {
 
     //variables
-    bool playerIsTouching = false;
     private int index;
     bool playerWithinDistance = false;
     bool conversationHasStarted = false;
@@ -131,6 +131,8 @@ public class DialogueSystem : MonoBehaviour
         }
         else
         {
+            //IF at the end of the conversation, start the mini game
+            SceneManager.LoadScene(2);
             textDisplay.text = "";
             continueButton.SetActive(false);
         }

@@ -34,12 +34,24 @@ public class PersuasionScoreSession : MonoBehaviour
     public void AddToScore()
     {
         score += 1;
-        scoreText.text = score.ToString() + " / " + winCondition.ToString();
+        if (score == winCondition)
+        {
+            ReturnToLevel();
+        }
+        else
+        {
+            scoreText.text = score.ToString() + " / " + winCondition.ToString();
+        }
     }
 
     public void ResetGameSession()
     {
-        SceneManager.LoadScene(0);
+        UnityEditor.EditorApplication.isPlaying = false;
         Destroy(gameObject);
+    }
+
+    public void ReturnToLevel()
+    {
+        SceneManager.LoadScene(0);
     }
 }
