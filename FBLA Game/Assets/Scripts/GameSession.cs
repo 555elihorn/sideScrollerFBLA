@@ -7,9 +7,14 @@ using TMPro;
 
 public class GameSession : MonoBehaviour
 {
+    
+    //variables
+    int previousScene = 1;
+
+
+    //config
     [SerializeField] int playerLives = 3;
     [SerializeField] int score = 0;
-
     [SerializeField] TextMeshProUGUI livesText = null;
     [SerializeField] TextMeshProUGUI scoreText = null;
 
@@ -26,10 +31,8 @@ public class GameSession : MonoBehaviour
         }
     }
 
-    // Use this for initialization
     void Start()
     {
-        print("check");
         livesText.text = playerLives.ToString();
         scoreText.text = score.ToString();
     }
@@ -68,5 +71,15 @@ public class GameSession : MonoBehaviour
     {
         SceneManager.LoadScene(0);
         Destroy(gameObject);
+    }
+
+    public void SetPreviousScene(int sceneIndex)
+    {
+        previousScene = sceneIndex;
+    }
+
+    public int GetPreviousScene()
+    {
+        return previousScene;
     }
 }
