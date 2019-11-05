@@ -19,15 +19,18 @@ public class DialogueSystem : MonoBehaviour
     public string[] sentences;
     ObjectFader fader;
     GameSession myGameSession;
+    Rigidbody2D myRigidBody;
 
     //configs
     [SerializeField] float typingSpeed = 0.02f;
     [SerializeField] GameObject keyIndicator;
     [SerializeField] GameObject continueButton;
-    [SerializeField] GameObject DialogueText;
+    [SerializeField] GameObject dialogueText;
+    [SerializeField] GameObject dialogueBox;
 
     void Start()
     {
+        myRigidBody = GetComponent<Rigidbody2D>();
         fader = keyIndicator.GetComponent<ObjectFader>();
         myGameSession = FindObjectOfType<GameSession>();
         continueButton.SetActive(false);        
@@ -87,16 +90,17 @@ public class DialogueSystem : MonoBehaviour
         conversationHasStarted = false;
         textDisplay.text = "";
         continueButton.SetActive(false);
-        DialogueText.SetActive(false);
+        dialogueText.SetActive(false);
         index = 0;
         StopCoroutine(Type());
     }
 
     private void StartConversation()
     {
+        dialogueBox.transform.position = new Vector2(myRigidBody.transform.position.y, myRigidBody.transform.position.y);
         textDisplay.text = "";
         continueButton.SetActive(true);
-        DialogueText.SetActive(true);
+        dialogueText.SetActive(true);
         StartCoroutine(Type());
     }
 
