@@ -12475,6 +12475,14 @@ PrefabInstance:
       propertyPath: keyIndicator
       value: 
       objectReference: {fileID: 561994504}
+    - target: {fileID: 1746417112, guid: 71ce96b1186ed0542a4a86fd5728e88a, type: 3}
+      propertyPath: dialogueBox
+      value: 
+      objectReference: {fileID: 1848292326}
+    - target: {fileID: 1746417112, guid: 71ce96b1186ed0542a4a86fd5728e88a, type: 3}
+      propertyPath: dialogueText
+      value: 
+      objectReference: {fileID: 2073886039}
     - target: {fileID: 2129627011, guid: 71ce96b1186ed0542a4a86fd5728e88a, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.25

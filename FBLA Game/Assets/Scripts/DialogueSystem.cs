@@ -97,7 +97,11 @@ public class DialogueSystem : MonoBehaviour
 
     private void StartConversation()
     {
-        dialogueBox.transform.position = new Vector2(myRigidBody.transform.position.y, myRigidBody.transform.position.y);
+
+        Vector3 Pos = Camera.main.WorldToScreenPoint(myRigidBody.position);
+        Pos.y += 150;
+        Pos.x += 75;
+        dialogueBox.transform.position = Pos; 
         textDisplay.text = "";
         continueButton.SetActive(true);
         dialogueText.SetActive(true);
