@@ -7,12 +7,12 @@ public class MenuButton : MonoBehaviour
 {
     public void StartFirstLevel()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     public void loadInstruction()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1);
     }
 
     public void loadMain()
