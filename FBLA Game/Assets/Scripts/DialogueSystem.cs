@@ -36,7 +36,7 @@ public class DialogueSystem : MonoBehaviour
         myRigidBody = GetComponent<Rigidbody2D>();
         fader = keyIndicator.GetComponent<ObjectFader>();
         myGameSession = FindObjectOfType<GameSession>();
-        continueButton.SetActive(false);        
+        SetDialogueBox(false);
     }
 
     // Update is called once per frame
@@ -92,8 +92,7 @@ public class DialogueSystem : MonoBehaviour
         
         conversationHasStarted = false;
         textDisplay.text = "";
-        continueButton.SetActive(false);
-        dialogueText.SetActive(false);
+        SetDialogueBox(false);
         index = 0;
         StopCoroutine(Type());
     }
@@ -105,10 +104,9 @@ public class DialogueSystem : MonoBehaviour
         Pos.y += dialgoueBoxOffsetY;
         Pos.x += dialogueBoxOffsetX;
 
+        SetDialogueBox(true);
         dialogueBox.transform.position = Pos; 
         textDisplay.text = "";
-        continueButton.SetActive(true);
-        dialogueText.SetActive(true);
         StartCoroutine(Type());
     }
 
@@ -145,5 +143,12 @@ public class DialogueSystem : MonoBehaviour
             textDisplay.text = "";
             continueButton.SetActive(false);
         }
+    }
+
+    private void SetDialogueBox(bool value)
+    {
+        dialogueBox.SetActive(value);
+        continueButton.SetActive(value);
+        dialogueText.SetActive(value);
     }
 }
