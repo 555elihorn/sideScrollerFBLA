@@ -27,6 +27,9 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] GameObject continueButton;
     [SerializeField] GameObject dialogueText;
     [SerializeField] GameObject dialogueBox;
+    [SerializeField] int dialgoueBoxOffsetY;
+    [SerializeField] int dialogueBoxOffsetX;
+
 
     void Start()
     {
@@ -97,10 +100,11 @@ public class DialogueSystem : MonoBehaviour
 
     private void StartConversation()
     {
-
+        //creates a vector of the npc position for the dialogue box
         Vector3 Pos = Camera.main.WorldToScreenPoint(myRigidBody.position);
-        Pos.y += 150;
-        Pos.x += 75;
+        Pos.y += dialgoueBoxOffsetY;
+        Pos.x += dialogueBoxOffsetX;
+
         dialogueBox.transform.position = Pos; 
         textDisplay.text = "";
         continueButton.SetActive(true);

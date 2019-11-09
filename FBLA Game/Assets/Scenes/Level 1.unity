@@ -12483,6 +12483,14 @@ PrefabInstance:
       propertyPath: dialogueText
       value: 
       objectReference: {fileID: 2073886039}
+    - target: {fileID: 1746417112, guid: 71ce96b1186ed0542a4a86fd5728e88a, type: 3}
+      propertyPath: dialogueBoxOffsetX
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1746417112, guid: 71ce96b1186ed0542a4a86fd5728e88a, type: 3}
+      propertyPath: dialgoueBoxOffsetY
+      value: 175
+      objectReference: {fileID: 0}
     - target: {fileID: 2129627011, guid: 71ce96b1186ed0542a4a86fd5728e88a, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.25
