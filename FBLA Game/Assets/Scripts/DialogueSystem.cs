@@ -13,6 +13,8 @@ public class DialogueSystem : MonoBehaviour
     bool playerWithinDistance = false;
     bool conversationHasStarted = false;
     bool firstCollision = true;
+    Vector2 Pos;
+
 
     //cache
     public TextMeshProUGUI textDisplay;
@@ -36,6 +38,7 @@ public class DialogueSystem : MonoBehaviour
         myRigidBody = GetComponent<Rigidbody2D>();
         fader = keyIndicator.GetComponent<ObjectFader>();
         myGameSession = FindObjectOfType<GameSession>();
+        //Pos = Camera.main.WorldToScreenPoint(myRigidBody.position);
         SetDialogueBox(false);
     }
 
@@ -99,8 +102,7 @@ public class DialogueSystem : MonoBehaviour
 
     private void StartConversation()
     {
-        //creates a vector of the npc position for the dialogue box
-        Vector3 Pos = Camera.main.WorldToScreenPoint(myRigidBody.position);
+        Pos = Camera.main.WorldToScreenPoint(myRigidBody.position);
         Pos.y += dialgoueBoxOffsetY;
         Pos.x += dialogueBoxOffsetX;
 
