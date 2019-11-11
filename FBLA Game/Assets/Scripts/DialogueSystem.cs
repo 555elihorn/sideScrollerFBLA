@@ -19,18 +19,22 @@ public class DialogueSystem : MonoBehaviour
     //cache
     public TextMeshProUGUI textDisplay;
     public string[] sentences;
+    public string[] sample;
+
     ObjectFader fader;
     GameSession myGameSession;
     Rigidbody2D myRigidBody;
 
     //configs
+    [SerializeField] int dialgoueBoxOffsetY;
+    [SerializeField] int dialogueBoxOffsetX;
     [SerializeField] float typingSpeed = 0.02f;
+    [SerializeField] bool hasMiniGame;
     [SerializeField] GameObject keyIndicator;
     [SerializeField] GameObject continueButton;
     [SerializeField] GameObject dialogueText;
     [SerializeField] GameObject dialogueBox;
-    [SerializeField] int dialgoueBoxOffsetY;
-    [SerializeField] int dialogueBoxOffsetX;
+    [SerializeField] Hashtable my_hashtable = new Hashtable();
 
 
     void Start()
@@ -57,6 +61,26 @@ public class DialogueSystem : MonoBehaviour
     IEnumerator Type()
     {
         string currentString = sentences[index];
+
+        if(currentString.Contains("Player"))
+        {
+            print("CHECK");
+
+            //dialogue box
+            dialogueBox.transform.localScale = new Vector3((dialogueBox.transform.localScale.x * -1), dialogueBox.transform.localScale.y, dialogueBox.transform.localScale.z);
+
+            //dialoguetext
+            dialogueText.transform.localScale = new Vector3((dialogueText.transform.localScale.x * -1), dialogueText.transform.localScale.y, dialogueText.transform.localScale.z);
+            print(dialogueText.transform.position.x);
+            dialogueText.transform.position = new Vector3(dialogueText.transform.position.x * -1, dialogueText.transform.position.y, dialogueText.transform.position.z);
+            //Continue button
+
+
+        }
+        else if(dialogueBox.transform.localScale.x < 0)
+        {
+            dialogueBox.transform.localScale = new Vector3((dialogueBox.transform.localScale.x * -1), dialogueBox.transform.localScale.y, dialogueBox.transform.localScale.z);
+        }
 
         foreach (char letter in currentString)
         {
@@ -109,6 +133,9 @@ public class DialogueSystem : MonoBehaviour
         SetDialogueBox(true);
         dialogueBox.transform.position = Pos; 
         textDisplay.text = "";
+
+        fader.FadeOut();
+
         StartCoroutine(Type());
     }
 
@@ -137,13 +164,17 @@ public class DialogueSystem : MonoBehaviour
             textDisplay.text = "";
             StartCoroutine(Type());
         }
-        else
+        else if(hasMiniGame)
         {
             //if at the end of the conversation, start the mini game
             myGameSession.SetPreviousScene(SceneManager.GetActiveScene().buildIndex);
             SceneManager.LoadScene(2);
             textDisplay.text = "";
             continueButton.SetActive(false);
+        }
+        else
+        {
+            SetDialogueBox(false);
         }
     }
 
