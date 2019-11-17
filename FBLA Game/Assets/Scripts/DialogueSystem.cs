@@ -15,12 +15,10 @@ public class DialogueSystem : MonoBehaviour
     bool firstCollision = true;
     Vector2 Pos;
 
-
     //cache
     public TextMeshProUGUI textDisplay;
     public string[] sentences;
     public string[] sample;
-
     ObjectFader fader;
     GameSession myGameSession;
     Rigidbody2D myRigidBody;
@@ -34,7 +32,7 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] GameObject continueButton;
     [SerializeField] GameObject dialogueText;
     [SerializeField] GameObject dialogueBox;
-    [SerializeField] Hashtable my_hashtable = new Hashtable();
+    [SerializeField] GameObject player;
 
 
     void Start()
@@ -42,8 +40,12 @@ public class DialogueSystem : MonoBehaviour
         myRigidBody = GetComponent<Rigidbody2D>();
         fader = keyIndicator.GetComponent<ObjectFader>();
         myGameSession = FindObjectOfType<GameSession>();
-        //Pos = Camera.main.WorldToScreenPoint(myRigidBody.position);
         SetDialogueBox(false);
+
+        float temp = dialogueText.GetComponent<RectTransform>().anchoredPosition.x;
+
+
+        print(temp);
     }
 
     // Update is called once per frame
@@ -64,22 +66,35 @@ public class DialogueSystem : MonoBehaviour
 
         if(currentString.Contains("Player"))
         {
-            print("CHECK");
+            float temp = dialogueText.GetComponent<RectTransform>().anchoredPosition.x;
+
+
+            print("first check: " + temp);
 
             //dialogue box
             dialogueBox.transform.localScale = new Vector3((dialogueBox.transform.localScale.x * -1), dialogueBox.transform.localScale.y, dialogueBox.transform.localScale.z);
 
             //dialoguetext
             dialogueText.transform.localScale = new Vector3((dialogueText.transform.localScale.x * -1), dialogueText.transform.localScale.y, dialogueText.transform.localScale.z);
-            print(dialogueText.transform.position.x);
-            dialogueText.transform.position = new Vector3(dialogueText.transform.position.x * -1, dialogueText.transform.position.y, dialogueText.transform.position.z);
-            //Continue button
+            var tempTransform = dialogueText.GetComponent<RectTransform>();
+            dialogueText.GetComponent<RectTransform>().localPosition = 
+                new Vector3((temp * -1),
+                dialogueText.GetComponent<RectTransform>().anchoredPosition.y);
+
 
 
         }
         else if(dialogueBox.transform.localScale.x < 0)
         {
+            float temp = dialogueText.GetComponent<RectTransform>().anchoredPosition.x;
+
             dialogueBox.transform.localScale = new Vector3((dialogueBox.transform.localScale.x * -1), dialogueBox.transform.localScale.y, dialogueBox.transform.localScale.z);
+            dialogueText.transform.localScale = new Vector3((dialogueText.transform.localScale.x * -1), dialogueText.transform.localScale.y, dialogueText.transform.localScale.z);
+
+            dialogueText.GetComponent<RectTransform>().localPosition =
+                new Vector3((temp * -1),
+                dialogueText.GetComponent<RectTransform>().anchoredPosition.y);
+
         }
 
         foreach (char letter in currentString)
@@ -126,6 +141,7 @@ public class DialogueSystem : MonoBehaviour
 
     private void StartConversation()
     {
+        //sets dialogue box above NPC
         Pos = Camera.main.WorldToScreenPoint(myRigidBody.position);
         Pos.y += dialgoueBoxOffsetY;
         Pos.x += dialogueBoxOffsetX;
