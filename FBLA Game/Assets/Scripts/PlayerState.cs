@@ -40,7 +40,7 @@ public class PlayerState : MonoBehaviour
     {
 
        yield return new WaitForSeconds(respawnDelayTime);
-       GS.ProcessPlayerDeath();
+       FindObjectOfType<GameSession>().ProcessPlayerDeath();
     }
 
 
