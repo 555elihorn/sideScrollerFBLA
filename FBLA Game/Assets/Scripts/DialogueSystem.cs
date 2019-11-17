@@ -81,6 +81,12 @@ public class DialogueSystem : MonoBehaviour
                 new Vector3((temp * -1),
                 dialogueText.GetComponent<RectTransform>().anchoredPosition.y);
 
+            //dialogue button
+            continueButton.transform.localScale = new Vector3((continueButton.transform.localScale.x * -1), continueButton.transform.localScale.y, continueButton.transform.localScale.z);
+            continueButton.GetComponent<RectTransform>().localPosition =
+                new Vector3((continueButton.GetComponent<RectTransform>().anchoredPosition.x * -1),
+                continueButton.GetComponent<RectTransform>().anchoredPosition.y);
+
 
 
         }
@@ -89,11 +95,16 @@ public class DialogueSystem : MonoBehaviour
             float temp = dialogueText.GetComponent<RectTransform>().anchoredPosition.x;
 
             dialogueBox.transform.localScale = new Vector3((dialogueBox.transform.localScale.x * -1), dialogueBox.transform.localScale.y, dialogueBox.transform.localScale.z);
+            
             dialogueText.transform.localScale = new Vector3((dialogueText.transform.localScale.x * -1), dialogueText.transform.localScale.y, dialogueText.transform.localScale.z);
-
             dialogueText.GetComponent<RectTransform>().localPosition =
                 new Vector3((temp * -1),
                 dialogueText.GetComponent<RectTransform>().anchoredPosition.y);
+
+            continueButton.transform.localScale = new Vector3((continueButton.transform.localScale.x * -1), continueButton.transform.localScale.y, continueButton.transform.localScale.z);
+            continueButton.GetComponent<RectTransform>().localPosition =
+                new Vector3((continueButton.GetComponent<RectTransform>().anchoredPosition.x * -1),
+                continueButton.GetComponent<RectTransform>().anchoredPosition.y);
 
         }
 

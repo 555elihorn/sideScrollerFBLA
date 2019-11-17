@@ -179,6 +179,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6277794563247030308}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &413816392 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6883039690471815607, guid: b6a4935b457ede14baeb9e00e23919a8,
+    type: 3}
+  m_PrefabInstance: {fileID: 6883039690113830120}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &561994504
 GameObject:
   m_ObjectHideFlags: 0
@@ -11998,7 +12004,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -23.928635, y: 23.162933}
+  m_AnchoredPosition: {x: -23.92863, y: 23.162933}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2073886041
@@ -12019,7 +12025,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: XEE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d4ef7893824f5e94dae590ddabf3deef, type: 2}
   m_sharedMaterial: {fileID: -6457051074193057241, guid: d4ef7893824f5e94dae590ddabf3deef,
@@ -12089,7 +12095,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: -270.45374, w: -87.701096}
   m_textInfo:
     textComponent: {fileID: 2073886041}
-    characterCount: 1
+    characterCount: 3
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
@@ -12493,7 +12499,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1746417112, guid: 71ce96b1186ed0542a4a86fd5728e88a, type: 3}
       propertyPath: sentences.Array.data[1]
-      value: 'Player: SAMPLE FSDFSDFESDF'
+      value: 'Player: SAMPLE FSDFSDFESDF SAMPLE FSDFSDFESDF'
       objectReference: {fileID: 0}
     - target: {fileID: 1746417112, guid: 71ce96b1186ed0542a4a86fd5728e88a, type: 3}
       propertyPath: sentences.Array.data[2]
@@ -12515,6 +12521,10 @@ PrefabInstance:
       propertyPath: typingSpeed
       value: 0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 1746417112, guid: 71ce96b1186ed0542a4a86fd5728e88a, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 413816392}
     - target: {fileID: 2129627011, guid: 71ce96b1186ed0542a4a86fd5728e88a, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.25
