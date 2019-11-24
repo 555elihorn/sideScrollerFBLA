@@ -1416,6 +1416,11 @@ PrefabInstance:
       propertyPath: textDisplay
       value: 
       objectReference: {fileID: 2073886041}
+    - target: {fileID: 2829490263501670137, guid: 00d4aafa56c09644799c9778cbd3d30f,
+        type: 3}
+      propertyPath: sentences.Array.data[1]
+      value: 'Player: I love you too'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00d4aafa56c09644799c9778cbd3d30f, type: 3}
 --- !u!1001 &1436281013
@@ -1530,6 +1535,31 @@ PrefabInstance:
       propertyPath: textDisplay
       value: 
       objectReference: {fileID: 2073886041}
+    - target: {fileID: 2829490263501670137, guid: 00d4aafa56c09644799c9778cbd3d30f,
+        type: 3}
+      propertyPath: sentences.Array.data[1]
+      value: 'NPC: I love you too'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2829490263501670137, guid: 00d4aafa56c09644799c9778cbd3d30f,
+        type: 3}
+      propertyPath: sentences.Array.data[0]
+      value: 'Player: I love You'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2829490263501670137, guid: 00d4aafa56c09644799c9778cbd3d30f,
+        type: 3}
+      propertyPath: sentences.Array.data[2]
+      value: 'Player: SDFDSFSDF'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2829490263501670137, guid: 00d4aafa56c09644799c9778cbd3d30f,
+        type: 3}
+      propertyPath: sentences.Array.data[4]
+      value: 'Player: SDFSDFESDF'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2829490263501670137, guid: 00d4aafa56c09644799c9778cbd3d30f,
+        type: 3}
+      propertyPath: sentences.Array.data[5]
+      value: 'NPC: SDFSDFESSDFSDFE'
+      objectReference: {fileID: 0}
     - target: {fileID: 8968607881673115524, guid: 00d4aafa56c09644799c9778cbd3d30f,
         type: 3}
       propertyPath: m_Color.a

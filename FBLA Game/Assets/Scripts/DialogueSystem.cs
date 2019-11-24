@@ -64,49 +64,138 @@ public class DialogueSystem : MonoBehaviour
     {
         string currentString = sentences[index];
 
-        if(currentString.Contains("Player"))
+        if(transform.localScale.x == 1f)
         {
-            float temp = dialogueText.GetComponent<RectTransform>().anchoredPosition.x;
+            print("Facing Right");
+            if (currentString.Contains("Player"))
+            {
+                print("Player line");
+                var dialogueBoxLocalScale = dialogueBox.transform.localScale;
+                var dialogueTextLocalScale = dialogueText.transform.localScale;
+                var continueButtonLocalScale = continueButton.transform.localScale;
 
+                var dialogueTextRectTransform = dialogueText.GetComponent<RectTransform>();
+                var continueButtonRectTransform = continueButton.GetComponent<RectTransform>();
 
-            print("first check: " + temp);
+                //dialogue box
+                dialogueBox.transform.localScale = new Vector3((dialogueBoxLocalScale.x * -1), dialogueBoxLocalScale.y, dialogueBoxLocalScale.z);
 
-            //dialogue box
-            dialogueBox.transform.localScale = new Vector3((dialogueBox.transform.localScale.x * -1), dialogueBox.transform.localScale.y, dialogueBox.transform.localScale.z);
+                //dialoguetext
+                dialogueText.transform.localScale = new Vector3((dialogueTextLocalScale.x * -1), dialogueTextLocalScale.y, dialogueTextLocalScale.z);
+                dialogueText.GetComponent<RectTransform>().localPosition =
+                    new Vector3((dialogueTextRectTransform.anchoredPosition.x * -1),
+                    dialogueTextRectTransform.anchoredPosition.y);
 
-            //dialoguetext
-            dialogueText.transform.localScale = new Vector3((dialogueText.transform.localScale.x * -1), dialogueText.transform.localScale.y, dialogueText.transform.localScale.z);
-            var tempTransform = dialogueText.GetComponent<RectTransform>();
-            dialogueText.GetComponent<RectTransform>().localPosition = 
-                new Vector3((temp * -1),
-                dialogueText.GetComponent<RectTransform>().anchoredPosition.y);
+                //dialogue button
+                continueButton.transform.localScale = new Vector3((continueButtonLocalScale.x * -1), continueButtonLocalScale.y, continueButtonLocalScale.z);
+                continueButton.GetComponent<RectTransform>().localPosition =
+                    new Vector3((continueButtonRectTransform.anchoredPosition.x * -1),
+                    continueButtonRectTransform.anchoredPosition.y);
 
-            //dialogue button
-            continueButton.transform.localScale = new Vector3((continueButton.transform.localScale.x * -1), continueButton.transform.localScale.y, continueButton.transform.localScale.z);
-            continueButton.GetComponent<RectTransform>().localPosition =
-                new Vector3((continueButton.GetComponent<RectTransform>().anchoredPosition.x * -1),
-                continueButton.GetComponent<RectTransform>().anchoredPosition.y);
+            }
+            else if (dialogueBox.transform.localScale.x < 0)
+            {
+                var dialogueBoxLocalScale = dialogueBox.transform.localScale;
+                var dialogueTextLocalScale = dialogueText.transform.localScale;
+                var continueButtonLocalScale = continueButton.transform.localScale;
 
+                var dialogueTextRectTransform = dialogueText.GetComponent<RectTransform>();
+                var continueButtonRectTransform = continueButton.GetComponent<RectTransform>();
 
+                dialogueBox.transform.localScale = new Vector3((dialogueBoxLocalScale.x * -1), dialogueBoxLocalScale.y, dialogueBoxLocalScale.z);
 
+                dialogueText.transform.localScale = new Vector3((dialogueTextLocalScale.x * -1), dialogueTextLocalScale.y, dialogueTextLocalScale.z);
+                dialogueText.GetComponent<RectTransform>().localPosition =
+                    new Vector3((dialogueTextRectTransform.anchoredPosition.x * -1),
+                    dialogueTextRectTransform.anchoredPosition.y);
+
+                continueButton.transform.localScale = new Vector3((continueButtonLocalScale.x * -1), continueButtonLocalScale.y, continueButtonLocalScale.z);
+                continueButton.GetComponent<RectTransform>().localPosition =
+                    new Vector3((continueButtonRectTransform.anchoredPosition.x * -1),
+                    continueButtonRectTransform.anchoredPosition.y);
+            }
         }
-        else if(dialogueBox.transform.localScale.x < 0)
+        else if(transform.localScale.x != 1f)
         {
-            float temp = dialogueText.GetComponent<RectTransform>().anchoredPosition.x;
+            print("Facing Left");
+            if (currentString.Contains("Player") && index != 0)
+            {
+                print("PlayerLine");
+                var dialogueBoxLocalScale = dialogueBox.transform.localScale;
+                var dialogueTextLocalScale = dialogueText.transform.localScale;
+                var continueButtonLocalScale = continueButton.transform.localScale;
 
-            dialogueBox.transform.localScale = new Vector3((dialogueBox.transform.localScale.x * -1), dialogueBox.transform.localScale.y, dialogueBox.transform.localScale.z);
-            
-            dialogueText.transform.localScale = new Vector3((dialogueText.transform.localScale.x * -1), dialogueText.transform.localScale.y, dialogueText.transform.localScale.z);
-            dialogueText.GetComponent<RectTransform>().localPosition =
-                new Vector3((temp * -1),
-                dialogueText.GetComponent<RectTransform>().anchoredPosition.y);
+                var dialogueTextRectTransform = dialogueText.GetComponent<RectTransform>();
+                var continueButtonRectTransform = continueButton.GetComponent<RectTransform>();
 
-            continueButton.transform.localScale = new Vector3((continueButton.transform.localScale.x * -1), continueButton.transform.localScale.y, continueButton.transform.localScale.z);
-            continueButton.GetComponent<RectTransform>().localPosition =
-                new Vector3((continueButton.GetComponent<RectTransform>().anchoredPosition.x * -1),
-                continueButton.GetComponent<RectTransform>().anchoredPosition.y);
+                //dialogue box
+                dialogueBox.transform.localScale = new Vector3(Mathf.Abs(dialogueBoxLocalScale.x), dialogueBoxLocalScale.y, dialogueBoxLocalScale.z);
 
+                //dialoguetext
+                dialogueText.transform.localScale = new Vector3((dialogueTextLocalScale.x * -1), dialogueTextLocalScale.y, dialogueTextLocalScale.z);
+                dialogueText.GetComponent<RectTransform>().localPosition =
+                    new Vector3((dialogueTextRectTransform.anchoredPosition.x * -1),
+                    dialogueTextRectTransform.anchoredPosition.y);
+
+                //dialogue button
+                continueButton.transform.localScale = new Vector3((continueButtonLocalScale.x * -1), continueButtonLocalScale.y, continueButtonLocalScale.z);
+                continueButton.GetComponent<RectTransform>().localPosition =
+                    new Vector3((continueButtonRectTransform.anchoredPosition.x * -1),
+                    continueButtonRectTransform.anchoredPosition.y);
+            }
+            else if (currentString.Contains("Player") && index == 0)
+            {
+                print("PlayerLine");
+                var dialogueBoxLocalScale = dialogueBox.transform.localScale;
+                var dialogueTextLocalScale = dialogueText.transform.localScale;
+                var continueButtonLocalScale = continueButton.transform.localScale;
+
+                var dialogueTextRectTransform = dialogueText.GetComponent<RectTransform>();
+                var continueButtonRectTransform = continueButton.GetComponent<RectTransform>();
+
+                //dialogue box
+                dialogueBox.transform.localScale = new Vector3(Mathf.Abs(dialogueBoxLocalScale.x), dialogueBoxLocalScale.y, dialogueBoxLocalScale.z);
+
+                //dialoguetext
+                dialogueText.transform.localScale = new Vector3((dialogueTextLocalScale.x), dialogueTextLocalScale.y, dialogueTextLocalScale.z);
+                dialogueText.GetComponent<RectTransform>().localPosition =
+                    new Vector3((dialogueTextRectTransform.anchoredPosition.x),
+                    dialogueTextRectTransform.anchoredPosition.y);
+
+                //dialogue button
+                continueButton.transform.localScale = new Vector3((continueButtonLocalScale.x), continueButtonLocalScale.y, continueButtonLocalScale.z);
+                continueButton.GetComponent<RectTransform>().localPosition =
+                    new Vector3((continueButtonRectTransform.anchoredPosition.x),
+                    continueButtonRectTransform.anchoredPosition.y);
+
+            }
+            else if (dialogueBox.transform.localScale.x > 0)
+            {
+                print("NPC line");
+                var dialogueBoxLocalScale = dialogueBox.transform.localScale;
+                var dialogueTextLocalScale = dialogueText.transform.localScale;
+                var continueButtonLocalScale = continueButton.transform.localScale;
+
+                var dialogueTextRectTransform = dialogueText.GetComponent<RectTransform>();
+                var continueButtonRectTransform = continueButton.GetComponent<RectTransform>();
+
+                //dialogue box
+                dialogueBox.transform.localScale = new Vector3((dialogueBoxLocalScale.x * -1), dialogueBoxLocalScale.y, dialogueBoxLocalScale.z);
+
+                //dialoguetext
+                dialogueText.transform.localScale = new Vector3((dialogueTextLocalScale.x * -1), dialogueTextLocalScale.y, dialogueTextLocalScale.z);
+                dialogueText.GetComponent<RectTransform>().localPosition =
+                    new Vector3((dialogueTextRectTransform.anchoredPosition.x * -1),
+                    dialogueTextRectTransform.anchoredPosition.y);
+
+                //dialogue button
+                continueButton.transform.localScale = new Vector3((continueButtonLocalScale.x * -1), continueButtonLocalScale.y, continueButtonLocalScale.z);
+                continueButton.GetComponent<RectTransform>().localPosition =
+                    new Vector3((continueButtonRectTransform.anchoredPosition.x * -1),
+                    continueButtonRectTransform.anchoredPosition.y);
+            }
         }
+        
 
         foreach (char letter in currentString)
         {
@@ -123,7 +212,6 @@ public class DialogueSystem : MonoBehaviour
 
         if (collision.gameObject.name == "Player" && collision.ToString().Contains("Capsule"))
         {
-
             print("EXIT");
             FlipSprite(true);
             EndConversation();
