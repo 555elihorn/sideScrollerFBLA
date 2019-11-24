@@ -119,14 +119,15 @@ public class DialogueSystem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         if (collision.gameObject.name == "Player" && collision.ToString().Contains("Capsule"))
         {
+            FlipSprite(false);
             keyIndicator.SetActive(true);
             fader.FadeIn();
 
             playerWithinDistance = true;
         }
-        
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -135,12 +136,16 @@ public class DialogueSystem : MonoBehaviour
         
         if (collision.gameObject.name == "Player" && collision.ToString().Contains("Capsule"))
         {
+            
+            print("maybe");
+            FlipSprite(true);
             EndConversation();
         }
     }
 
     private void EndConversation()
     {
+        print("maybe");
         fader.FadeOut();
         
         conversationHasStarted = false;
@@ -210,5 +215,29 @@ public class DialogueSystem : MonoBehaviour
         dialogueBox.SetActive(value);
         continueButton.SetActive(value);
         dialogueText.SetActive(value);
+    }
+
+    private void FlipSprite(bool reset)
+    {
+        
+        if(reset)
+        {
+            print("YES");
+            transform.localScale = new Vector2(1f, 1f);
+            keyIndicator.transform.localScale = new Vector2(1f, 1f);
+            return;
+        }
+        
+
+        //bool playerHasHorizontalSpeed = Mathf.Abs(myRigidBody.velocity.x) > Mathf.Epsilon;
+        if (player.transform.localScale.x == transform.localScale.x)
+        {
+            print("check");
+            transform.localScale = new Vector2(transform.localScale.x * -1, 1f);
+            keyIndicator.transform.localScale = new Vector2(transform.localScale.x, 1f);
+            return;
+        }
+
+        //keyIndicator.transform.localScale = new Vector2(1f, 1f);
     }
 }
