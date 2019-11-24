@@ -45,7 +45,7 @@ public class DialogueSystem : MonoBehaviour
         float temp = dialogueText.GetComponent<RectTransform>().anchoredPosition.x;
 
 
-        print(temp);
+
     }
 
     // Update is called once per frame
@@ -117,11 +117,25 @@ public class DialogueSystem : MonoBehaviour
 
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        playerWithinDistance = false;
+
+        if (collision.gameObject.name == "Player" && collision.ToString().Contains("Capsule"))
+        {
+
+            print("EXIT");
+            FlipSprite(true);
+            EndConversation();
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         
         if (collision.gameObject.name == "Player" && collision.ToString().Contains("Capsule"))
         {
+            print("ENTER");
             FlipSprite(false);
             keyIndicator.SetActive(true);
             fader.FadeIn();
@@ -130,29 +144,16 @@ public class DialogueSystem : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        playerWithinDistance = false;
-        
-        if (collision.gameObject.name == "Player" && collision.ToString().Contains("Capsule"))
-        {
-            
-            print("maybe");
-            FlipSprite(true);
-            EndConversation();
-        }
-    }
-
     private void EndConversation()
     {
         print("maybe");
-        fader.FadeOut();
         
         conversationHasStarted = false;
         textDisplay.text = "";
         SetDialogueBox(false);
         index = 0;
         StopCoroutine(Type());
+        fader.FadeOut();
     }
 
     private void StartConversation()
@@ -222,7 +223,6 @@ public class DialogueSystem : MonoBehaviour
         
         if(reset)
         {
-            print("YES");
             transform.localScale = new Vector2(1f, 1f);
             keyIndicator.transform.localScale = new Vector2(1f, 1f);
             return;
@@ -232,7 +232,6 @@ public class DialogueSystem : MonoBehaviour
         //bool playerHasHorizontalSpeed = Mathf.Abs(myRigidBody.velocity.x) > Mathf.Epsilon;
         if (player.transform.localScale.x == transform.localScale.x)
         {
-            print("check");
             transform.localScale = new Vector2(transform.localScale.x * -1, 1f);
             keyIndicator.transform.localScale = new Vector2(transform.localScale.x, 1f);
             return;

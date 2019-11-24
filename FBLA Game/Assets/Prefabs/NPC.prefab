@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6282541753175063895}
   - component: {fileID: 2829490263501670137}
   m_Layer: 0
-  m_Name: BOI
+  m_Name: NPC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -136,7 +136,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.07971811, y: 0.7033024}
+  m_Offset: {x: 0.01594901, y: 1.0500956}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -147,7 +147,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.3133726, y: 2.118846}
+  m_Size: {x: 5.270043, y: 2.8124323}
   m_EdgeRadius: 0
 --- !u!114 &2829490263501670137
 MonoBehaviour:
