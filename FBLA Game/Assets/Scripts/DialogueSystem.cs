@@ -351,7 +351,7 @@ public class DialogueSystem : MonoBehaviour
         {
             //if at the end of the conversation, start the mini game
             myGameSession.SetPreviousScene(SceneManager.GetActiveScene().buildIndex);
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene("Persuasion_Mini_Game");
             textDisplay.text = "";
             continueButton.SetActive(false);
         }
