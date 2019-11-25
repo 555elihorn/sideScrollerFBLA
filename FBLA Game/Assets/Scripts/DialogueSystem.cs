@@ -104,9 +104,10 @@ public class DialogueSystem : MonoBehaviour
                     new Vector3((continueButtonRectTransform.anchoredPosition.x * -1),
                     continueButtonRectTransform.anchoredPosition.y);
 
+                print("check");
                 Pos = Camera.main.WorldToScreenPoint(player.GetComponent<Rigidbody2D>().position);
                 Pos.y += dialgoueBoxOffsetY;
-                Pos.x += dialogueBoxOffsetX;
+                Pos.x -= 50;
 
                 dialogueBox.transform.position = Pos;
 
@@ -231,7 +232,7 @@ public class DialogueSystem : MonoBehaviour
 
                 Pos = Camera.main.WorldToScreenPoint(myRigidBody.position);
                 Pos.y += dialgoueBoxOffsetY;
-                Pos.x += dialogueBoxOffsetX;
+                Pos.x -= 50;
 
                 dialogueBox.transform.position = Pos;
             }
@@ -263,7 +264,7 @@ public class DialogueSystem : MonoBehaviour
         
         continueButton.transform.localScale = new Vector3(textScale, textScale);
         continueButton.GetComponent<RectTransform>().localPosition =
-                    new Vector3(( Mathf.Abs(continueButtonRectTransform.anchoredPosition.x) ),
+                    new Vector3(( Mathf.Abs(continueButtonRectTransform.anchoredPosition.x)),
                     continueButtonRectTransform.anchoredPosition.y);
         
 
