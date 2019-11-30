@@ -26,6 +26,7 @@ public class PersuasionScoreSession : MonoBehaviour
         score += 1;
         if (score == winCondition)
         {
+            myGameSession = FindObjectOfType<GameSession>();
             SceneManager.LoadScene(myGameSession.GetPreviousScene()); //If the player completes the win condition go back to the main level
             myGameSession.AddToScore(1000);
         }

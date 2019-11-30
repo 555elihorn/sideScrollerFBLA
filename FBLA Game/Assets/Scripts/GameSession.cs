@@ -9,7 +9,7 @@ public class GameSession : MonoBehaviour
 {
     
     //variables
-    int previousScene = 1;
+    int previousScene;
 
 
     //config
@@ -27,6 +27,8 @@ public class GameSession : MonoBehaviour
         }
         else
         {
+            var currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+            SetPreviousScene(currentSceneIndex);
             DontDestroyOnLoad(gameObject);
         }
     }
@@ -75,11 +77,14 @@ public class GameSession : MonoBehaviour
 
     public void SetPreviousScene(int sceneIndex)
     {
+        print("SET PREVIOUS SCENE IS RUNNING");
         previousScene = sceneIndex;
+        print(previousScene);
     }
 
     public int GetPreviousScene()
     {
+        print("again" + previousScene);
         return previousScene;
     }
 }
