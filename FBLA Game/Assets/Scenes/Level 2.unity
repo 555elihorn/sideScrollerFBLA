@@ -39161,11 +39161,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 176970494, guid: b6a4935b457ede14baeb9e00e23919a8, type: 3}
       propertyPath: deathKick.x
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 176970494, guid: b6a4935b457ede14baeb9e00e23919a8, type: 3}
       propertyPath: deathKick.y
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6883039690471815564, guid: b6a4935b457ede14baeb9e00e23919a8,
         type: 3}
@@ -39210,7 +39210,7 @@ PrefabInstance:
     - target: {fileID: 7113231218504352091, guid: f7f85794da261f742ae458691597f313,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.19
+      value: 12.36
       objectReference: {fileID: 0}
     - target: {fileID: 7113231218504352091, guid: f7f85794da261f742ae458691597f313,
         type: 3}
