@@ -54,8 +54,6 @@ public class DialogueSystem : MonoBehaviour
         dialogueTextLocalScaleOriginal = dialogueText.transform.localScale;
         continueButtonLocalScaleOriginal = continueButton.transform.localScale;
         dialogueTextRectTransformOriginal = dialogueText.GetComponent<RectTransform>().localPosition;
-        print(dialogueText.GetComponent<RectTransform>().localPosition);
-        print(dialogueText.GetComponent<RectTransform>().localPosition.x);
         continueButtonRectTransformOriginal = continueButton.GetComponent<RectTransform>().localPosition;
         
     }
@@ -78,11 +76,9 @@ public class DialogueSystem : MonoBehaviour
 
         if(transform.localScale.x == 1f)
         {
-            print("Facing Right");
             if (currentString.Contains("Player"))
             {
-                print("Player line");
-                var dialogueBoxLocalScale = dialogueBox.transform.localScale;
+               var dialogueBoxLocalScale = dialogueBox.transform.localScale;
                 var dialogueTextLocalScale = dialogueText.transform.localScale;
                 var continueButtonLocalScale = continueButton.transform.localScale;
 
@@ -104,7 +100,6 @@ public class DialogueSystem : MonoBehaviour
                     new Vector3((continueButtonRectTransform.anchoredPosition.x * -1),
                     continueButtonRectTransform.anchoredPosition.y);
 
-                print("check");
                 Pos = Camera.main.WorldToScreenPoint(player.GetComponent<Rigidbody2D>().position);
                 Pos.y += dialgoueBoxOffsetY;
                 Pos.x -= 50;
@@ -142,10 +137,8 @@ public class DialogueSystem : MonoBehaviour
         }
         else if(transform.localScale.x != 1f)
         {
-            print("Facing Left");
             if (currentString.Contains("Player") && index != 0) //if player start of conversation
             {
-                print("PlayerLine");
                 var dialogueBoxLocalScale = dialogueBox.transform.localScale;
                 var dialogueTextLocalScale = dialogueText.transform.localScale;
                 var continueButtonLocalScale = continueButton.transform.localScale;
@@ -176,7 +169,6 @@ public class DialogueSystem : MonoBehaviour
             }
             else if (currentString.Contains("Player") && index == 0)
             {
-                print("PlayerLine");
                 var dialogueBoxLocalScale = dialogueBox.transform.localScale;
                 var dialogueTextLocalScale = dialogueText.transform.localScale;
                 var continueButtonLocalScale = continueButton.transform.localScale;
@@ -207,7 +199,6 @@ public class DialogueSystem : MonoBehaviour
             }
             else if (dialogueBox.transform.localScale.x > 0)
             {
-                print("NPC line");
                 var dialogueBoxLocalScale = dialogueBox.transform.localScale;
                 var dialogueTextLocalScale = dialogueText.transform.localScale;
                 var continueButtonLocalScale = continueButton.transform.localScale;
@@ -238,7 +229,6 @@ public class DialogueSystem : MonoBehaviour
             }
         }
         
-
         foreach (char letter in currentString)
         {
             textDisplay.text += letter;
@@ -266,8 +256,6 @@ public class DialogueSystem : MonoBehaviour
         continueButton.GetComponent<RectTransform>().localPosition =
                     new Vector3(( Mathf.Abs(continueButtonRectTransform.anchoredPosition.x)),
                     continueButtonRectTransform.anchoredPosition.y);
-        
-
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -324,8 +312,6 @@ public class DialogueSystem : MonoBehaviour
 
     private void DialogueButtonListener()
     {
-        
-
         if (Input.GetKeyDown(KeyCode.E) && !conversationHasStarted)
         {
             conversationHasStarted = true;
@@ -378,8 +364,6 @@ public class DialogueSystem : MonoBehaviour
             return;
         }
         
-
-        //bool playerHasHorizontalSpeed = Mathf.Abs(myRigidBody.velocity.x) > Mathf.Epsilon;
         if (player.transform.localScale.x == transform.localScale.x)
         {
             transform.localScale = new Vector2(transform.localScale.x * -1, 1f);
@@ -387,6 +371,5 @@ public class DialogueSystem : MonoBehaviour
             return;
         }
 
-        //keyIndicator.transform.localScale = new Vector2(1f, 1f);
     }
 }
