@@ -38,13 +38,12 @@ public class GameSession : MonoBehaviour
     {
         scoreText.text = score.ToString() + " / " + winCondition.ToString();
         livesText.text = playerLives.ToString();
-        //scoreText.text = score.ToString();
     }
 
     public void AddToScore(int pointsToAdd)
     {
         score += pointsToAdd;
-        scoreText.text = score.ToString();
+        scoreText.text = score.ToString() + " / " + winCondition.ToString();
     }
 
     public void ProcessPlayerDeath()
@@ -84,7 +83,10 @@ public class GameSession : MonoBehaviour
 
     public int GetPreviousScene()
     {
-        print("again" + previousScene);
         return previousScene;
+    }
+    public bool ScoreIsEqualToWinCondition()
+    {
+        return score >= winCondition;
     }
 }
