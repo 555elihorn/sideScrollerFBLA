@@ -71,7 +71,7 @@ public class GameSession : MonoBehaviour
 
     public void ResetGameSession()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Menu");
         Destroy(gameObject);
     }
 
