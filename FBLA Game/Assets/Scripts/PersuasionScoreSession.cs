@@ -14,6 +14,7 @@ public class PersuasionScoreSession : MonoBehaviour
     [SerializeField] int winCondition = 10;
     [SerializeField] int score = 0;
     [SerializeField] TextMeshProUGUI scoreText = null;
+    [SerializeField] int rewardPoints = 500;
 
     void Start()
     {
@@ -26,8 +27,9 @@ public class PersuasionScoreSession : MonoBehaviour
         score += 1;
         if (score == winCondition)
         {
+            myGameSession = FindObjectOfType<GameSession>();
             SceneManager.LoadScene(myGameSession.GetPreviousScene()); //If the player completes the win condition go back to the main level
-            myGameSession.AddToScore(1000);
+            myGameSession.AddToScore(rewardPoints);
         }
         else
         {
@@ -40,5 +42,7 @@ public class PersuasionScoreSession : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
         Destroy(gameObject);
     }
+
+
 
 }
