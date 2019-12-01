@@ -77,9 +77,7 @@ public class GameSession : MonoBehaviour
 
     public void SetPreviousScene(int sceneIndex)
     {
-        print("SET PREVIOUS SCENE IS RUNNING");
         previousScene = sceneIndex;
-        print(previousScene);
     }
 
     public int GetPreviousScene()
