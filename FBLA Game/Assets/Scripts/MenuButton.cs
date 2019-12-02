@@ -10,27 +10,27 @@ public class MenuButton : MonoBehaviour
         SceneManager.LoadScene("Level 1");
     }
 
-    public void loadInstruction()
+    public void LoadInstructions()
     {
         SceneManager.LoadScene("Instructions");
     }
 
-    public void loadStory()
+    public void LoadStory()
     {
         SceneManager.LoadScene("Story");
     }
 
-    public void loadMechanics()
+    public void LoadMechanics()
     {
         SceneManager.LoadScene("Mechanics");
     }
 
-    public void loadControls()
+    public void LoadControls()
     {
         SceneManager.LoadScene("Controls");
     }
 
-    public void loadMainMenu()
+    public void LoadMainMenu()
     {
         SceneManager.LoadScene("Menu");
     }
