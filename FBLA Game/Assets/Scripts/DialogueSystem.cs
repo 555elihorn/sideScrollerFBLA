@@ -335,8 +335,6 @@ public class DialogueSystem : MonoBehaviour
         }
         else if(hasMiniGame)
         {
-            print("HAS MINI GAME RUNNING");
-
             //if at the end of the conversation, start the mini game
             myGameSession.SetPreviousScene(SceneManager.GetActiveScene().buildIndex);
             SceneManager.LoadScene("Persuasion_Mini_Game");

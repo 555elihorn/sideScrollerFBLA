@@ -10,7 +10,6 @@ public class LevelExit : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-
         if (FindObjectOfType<GameSession>().ScoreIsEqualToWinCondition())
         {
             StartCoroutine(LoadNextLevel());

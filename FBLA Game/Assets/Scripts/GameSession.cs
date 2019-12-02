@@ -34,7 +34,19 @@ public class GameSession : MonoBehaviour
         }
     }
 
-    void Start()
+    private void Update()
+    {
+        if(ScoreIsEqualToWinCondition())
+        {
+            scoreText.color = Color.green;
+        }
+        else
+        {
+            scoreText.color = Color.white;
+        }
+    }
+
+   private void Start()
     {
         scoreText.text = score.ToString() + " / " + winCondition.ToString();
         livesText.text = playerLives.ToString();
