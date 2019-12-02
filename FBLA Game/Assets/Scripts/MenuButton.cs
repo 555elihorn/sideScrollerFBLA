@@ -7,17 +7,32 @@ public class MenuButton : MonoBehaviour
 {
     public void StartFirstLevel()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("Level 1");
     }
 
-    public void loadInstruction()
+    public void LoadInstructions()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Instructions");
     }
 
-    public void loadMain()
+    public void LoadStory()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Story");
+    }
+
+    public void LoadMechanics()
+    {
+        SceneManager.LoadScene("Mechanics");
+    }
+
+    public void LoadControls()
+    {
+        SceneManager.LoadScene("Controls");
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
     public void ExitGame()
     {

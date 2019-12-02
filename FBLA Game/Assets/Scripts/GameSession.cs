@@ -17,6 +17,7 @@ public class GameSession : MonoBehaviour
     [SerializeField] int score = 0;
     [SerializeField] TextMeshProUGUI livesText = null;
     [SerializeField] TextMeshProUGUI scoreText = null;
+    [SerializeField] int winCondition = 5000;
 
     private void Awake()
     {
@@ -33,16 +34,28 @@ public class GameSession : MonoBehaviour
         }
     }
 
-    void Start()
+    private void Update()
     {
+        if(ScoreIsEqualToWinCondition())
+        {
+            scoreText.color = Color.green;
+        }
+        else
+        {
+            scoreText.color = Color.white;
+        }
+    }
+
+   private void Start()
+    {
+        scoreText.text = score.ToString() + " / " + winCondition.ToString();
         livesText.text = playerLives.ToString();
-        scoreText.text = score.ToString();
     }
 
     public void AddToScore(int pointsToAdd)
     {
         score += pointsToAdd;
-        scoreText.text = score.ToString();
+        scoreText.text = score.ToString() + " / " + winCondition.ToString();
     }
 
     public void ProcessPlayerDeath()
@@ -82,7 +95,10 @@ public class GameSession : MonoBehaviour
 
     public int GetPreviousScene()
     {
-        print("again" + previousScene);
         return previousScene;
+    }
+    public bool ScoreIsEqualToWinCondition()
+    {
+        return score >= winCondition;
     }
 }
