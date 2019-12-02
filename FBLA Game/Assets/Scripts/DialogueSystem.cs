@@ -55,7 +55,7 @@ public class DialogueSystem : MonoBehaviour
         continueButtonLocalScaleOriginal = continueButton.transform.localScale;
         dialogueTextRectTransformOriginal = dialogueText.GetComponent<RectTransform>().localPosition;
         continueButtonRectTransformOriginal = continueButton.GetComponent<RectTransform>().localPosition;
-        
+
     }
 
     // Update is called once per frame

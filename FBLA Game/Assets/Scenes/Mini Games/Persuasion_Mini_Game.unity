@@ -152,6 +152,7 @@ MonoBehaviour:
   winCondition: 3
   score: 0
   scoreText: {fileID: 1198454164}
+  rewardPoints: 500
 --- !u!4 &94646743
 Transform:
   m_ObjectHideFlags: 0
@@ -330,6 +331,16 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 442238897149029097, guid: d0a1613287c324347bc56b93a65eea41,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -395.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 442238897149029097, guid: d0a1613287c324347bc56b93a65eea41,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 791.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0a1613287c324347bc56b93a65eea41, type: 3}
 --- !u!1 &783246907
@@ -453,8 +464,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d4ef7893824f5e94dae590ddabf3deef, type: 2}
