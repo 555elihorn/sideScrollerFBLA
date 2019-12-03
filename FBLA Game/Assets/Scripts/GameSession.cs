@@ -11,6 +11,7 @@ public class GameSession : MonoBehaviour
     //variables
     int previousScene;
     Transform playerPosition;
+    GameObject player;
 
 
     //config
@@ -102,4 +103,19 @@ public class GameSession : MonoBehaviour
     {
         return score >= winCondition;
     }
+
+    public void TemporarilyHoldPlayerPosition(Transform newPosition)
+    {
+        playerPosition = newPosition;
+        print("SetTemporaryPlayerPosition:" + playerPosition.position.x);
+    }
+
+    public Transform GetTemporaryLocation()
+    {
+        print("GetTemporaryLocation " + playerPosition.position.x);
+        return playerPosition;
+    }
+
+
+
 }

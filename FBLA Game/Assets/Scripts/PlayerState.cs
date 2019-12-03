@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerState : MonoBehaviour
@@ -15,21 +17,51 @@ public class PlayerState : MonoBehaviour
     Animator myAnimator;
     BoxCollider2D myFeet;
     GameSession GS;
-    Transform playerTransform = null;
+    Transform temporaryPlayerPosition = null;
 
 
     //Config
     [SerializeField] Vector2 deathKick = new Vector2(25f, 25f);
     [SerializeField] float respawnDelayTime = 1;
 
+    void OnEnable()
+    {
+    //Tell our 'OnLevelFinishedLoading' function to start listening for a scene change as soon as this script is enabled.
+        SceneManager.sceneLoaded += OnLevelFinishedLoading;
+    }
+
+    void OnDisable()
+    {
+        //Tell our 'OnLevelFinishedLoading' function to stop listening for a scene change as soon as this script is disabled.
+        //Remember to always have an unsubscription for every delegate you subscribe to!
+        SceneManager.sceneLoaded -= OnLevelFinishedLoading;
+    }
+
+    void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
+    {
+        var temp = FindObjectOfType<GameSession>().GetTemporaryLocation();
+        print(temp == null);
+        print("ONLEVELFINISHINEDLOADING" + temp.position.x);
+        print("CHECK");
+        
+        if(temp != null)
+        {
+            transform.position = temp.position;
+            transform.rotation = temp.rotation;
+            transform.localScale = temp.localScale;
+        }
+    }
+
     void Start()
     {
         myBodyCollider = GetComponent<CapsuleCollider2D>();
         myAnimator = GetComponent<Animator>();
         myFeet = GetComponent<BoxCollider2D>();
-        playerTransform = GetComponent<Transform>();
+        temporaryPlayerPosition = GetComponent<Transform>();
 
         GS = FindObjectOfType<GameSession>();
+
+        //SetPlayerPosition();
         
     }
 
@@ -60,6 +92,7 @@ public class PlayerState : MonoBehaviour
         }
     }
 
+
     private void Kill()
     {
         Life = false;
@@ -72,8 +105,19 @@ public class PlayerState : MonoBehaviour
 
     public void RecordPlayerPosition()
     {
-        print("GETTING THE Player Position");
-        playerTransform = GetComponent<Transform>();
-        print(playerTransform.position.x);
+        temporaryPlayerPosition = GetComponent<Transform>();
+        print("RecordPlayerPosition: " + temporaryPlayerPosition.position.x);
+        FindObjectOfType<GameSession>().TemporarilyHoldPlayerPosition(temporaryPlayerPosition);
     }
+
+    /*
+    public void SetPlayerPosition()
+    {
+        transform.position = temporaryPlayerPosition.position;
+        transform.rotation = temporaryPlayerPosition.rotation;
+        transform.localScale = temporaryPlayerPosition.localScale;
+        //var temp = this.gameObject.transform.position;
+    }
+    */
+
 }
