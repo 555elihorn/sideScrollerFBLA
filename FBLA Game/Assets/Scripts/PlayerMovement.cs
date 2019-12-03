@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         
-        if(!myState.isAlive())
+        if(!myState.IsAlive())
         {
             return;
         }

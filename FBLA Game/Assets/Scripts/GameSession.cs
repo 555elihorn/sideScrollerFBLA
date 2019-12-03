@@ -10,6 +10,7 @@ public class GameSession : MonoBehaviour
     
     //variables
     int previousScene;
+    Transform playerPosition;
 
 
     //config

@@ -15,6 +15,7 @@ public class PlayerState : MonoBehaviour
     Animator myAnimator;
     BoxCollider2D myFeet;
     GameSession GS;
+    Transform playerTransform = null;
 
 
     //Config
@@ -26,7 +27,10 @@ public class PlayerState : MonoBehaviour
         myBodyCollider = GetComponent<CapsuleCollider2D>();
         myAnimator = GetComponent<Animator>();
         myFeet = GetComponent<BoxCollider2D>();
+        playerTransform = GetComponent<Transform>();
+
         GS = FindObjectOfType<GameSession>();
+        
     }
 
     // Update is called once per frame
@@ -43,10 +47,8 @@ public class PlayerState : MonoBehaviour
        FindObjectOfType<GameSession>().ProcessPlayerDeath();
     }
 
-
-
     private void DeathCheck() {
-        if(isAlive())
+        if(IsAlive())
         {
             if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemy", "Obstacles")) || myFeet.IsTouchingLayers(LayerMask.GetMask("Enemy", "Obstacles")))
             {
@@ -63,8 +65,15 @@ public class PlayerState : MonoBehaviour
         Life = false;
     }
 
-    public bool isAlive()
+    public bool IsAlive()
     {
         return Life;
+    }
+
+    public void RecordPlayerPosition()
+    {
+        print("GETTING THE Player Position");
+        playerTransform = GetComponent<Transform>();
+        print(playerTransform.position.x);
     }
 }
