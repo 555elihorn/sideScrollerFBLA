@@ -11,6 +11,8 @@ public class GameSession : MonoBehaviour
     //variables
     int previousScene;
     Transform playerPosition;
+    Vector3 playerVector;
+
     GameObject player;
 
 
@@ -23,15 +25,18 @@ public class GameSession : MonoBehaviour
 
     private void Awake()
     {
+        //print(gameObject.name + " : Awake Check");
         int numGameSessions = FindObjectsOfType<GameSession>().Length;
         if (numGameSessions > 1)
         {
+            print(gameObject.name + ": Im destroying myself!");
             Destroy(gameObject);
         }
         else
         {
             var currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
             SetPreviousScene(currentSceneIndex);
+            print(gameObject.name + ": Im not destroying myself!");
             DontDestroyOnLoad(gameObject);
         }
     }
@@ -58,6 +63,7 @@ public class GameSession : MonoBehaviour
     {
         score += pointsToAdd;
         scoreText.text = score.ToString() + " / " + winCondition.ToString();
+        print("AddToScore: " + (playerPosition == null));
     }
 
     public void ProcessPlayerDeath()
@@ -78,10 +84,12 @@ public class GameSession : MonoBehaviour
 
     private void TakeLife()
     {
+
         playerLives--;
         var currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex);
         livesText.text = playerLives.ToString();
+        
     }
 
     public void ResetGameSession()
@@ -106,14 +114,19 @@ public class GameSession : MonoBehaviour
 
     public void TemporarilyHoldPlayerPosition(Transform newPosition)
     {
+        print("TemporarilyHoldPlayerPosition: " + (newPosition == null));
         playerPosition = newPosition;
-        print("SetTemporaryPlayerPosition:" + playerPosition.position.x);
+        print("TemporarilyHoldPlayerPosition: " + (newPosition == null));
+
+        playerVector = new Vector3((float)newPosition.position.x, (float)newPosition.position.y, (float)newPosition.position.z);
+        print("Vector: " + playerVector.x);
+
     }
 
-    public Transform GetTemporaryLocation()
+    public Vector3 GetTemporaryLocation()
     {
-        print("GetTemporaryLocation " + playerPosition.position.x);
-        return playerPosition;
+        //print("GetTemporaryLocation: " + (playerPosition == null));
+        return playerVector;
     }
 
 
