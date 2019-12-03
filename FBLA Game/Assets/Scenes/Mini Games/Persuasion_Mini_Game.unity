@@ -234,7 +234,7 @@ PrefabInstance:
     - target: {fileID: 442238898899150666, guid: d0a1613287c324347bc56b93a65eea41,
         type: 3}
       propertyPath: m_Name
-      value: Game Session (1)
+      value: Mini Game Session
       objectReference: {fileID: 0}
     - target: {fileID: 442238898899150668, guid: d0a1613287c324347bc56b93a65eea41,
         type: 3}

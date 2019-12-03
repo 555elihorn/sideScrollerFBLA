@@ -40,15 +40,22 @@ public class PlayerState : MonoBehaviour
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
         var temp = FindObjectOfType<GameSession>().GetTemporaryLocation();
-        print(temp == null);
-        print("ONLEVELFINISHINEDLOADING" + temp.position.x);
-        print("CHECK");
-        
-        if(temp != null)
+        print("TEST: " + temp.x);
+        if(temp.x != 0)
         {
+            /*print("OnLevelFinishedLoading" + temp.position.x);
             transform.position = temp.position;
             transform.rotation = temp.rotation;
             transform.localScale = temp.localScale;
+            */
+
+            transform.position = new Vector3((float)temp.x, (float)temp.y, (float)temp.z);
+        }
+        else
+        {
+            /*
+            print("OnLevelFinishedLoading: Null!");
+            */
         }
     }
 
@@ -106,18 +113,7 @@ public class PlayerState : MonoBehaviour
     public void RecordPlayerPosition()
     {
         temporaryPlayerPosition = GetComponent<Transform>();
-        print("RecordPlayerPosition: " + temporaryPlayerPosition.position.x);
         FindObjectOfType<GameSession>().TemporarilyHoldPlayerPosition(temporaryPlayerPosition);
     }
-
-    /*
-    public void SetPlayerPosition()
-    {
-        transform.position = temporaryPlayerPosition.position;
-        transform.rotation = temporaryPlayerPosition.rotation;
-        transform.localScale = temporaryPlayerPosition.localScale;
-        //var temp = this.gameObject.transform.position;
-    }
-    */
 
 }
