@@ -16,7 +16,7 @@ public class PlayerState : MonoBehaviour
     CapsuleCollider2D myBodyCollider;
     Animator myAnimator;
     BoxCollider2D myFeet;
-    GameSession GS;
+    GameSession GameSes;
     Transform temporaryPlayerPosition = null;
 
 
@@ -39,23 +39,13 @@ public class PlayerState : MonoBehaviour
 
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
-        var temp = FindObjectOfType<GameSession>().GetTemporaryLocation();
-        print("TEST: " + temp.x);
-        if(temp.x != 0)
-        {
-            /*print("OnLevelFinishedLoading" + temp.position.x);
-            transform.position = temp.position;
-            transform.rotation = temp.rotation;
-            transform.localScale = temp.localScale;
-            */
+        Vector3 originalPlayerLocation = FindObjectOfType<GameSession>().GetTemporaryLocation();
+        Vector3 originalPlayerScale = FindObjectOfType<GameSession>().GetTemporaryScale();
 
-            transform.position = new Vector3((float)temp.x, (float)temp.y, (float)temp.z);
-        }
-        else
+        if (originalPlayerLocation.x != 0)
         {
-            /*
-            print("OnLevelFinishedLoading: Null!");
-            */
+            transform.position = new Vector3(originalPlayerLocation.x, originalPlayerLocation.y, originalPlayerLocation.z);
+            transform.localScale = new Vector3(originalPlayerScale.x, originalPlayerScale.y, originalPlayerScale.z);
         }
     }
 
@@ -66,10 +56,7 @@ public class PlayerState : MonoBehaviour
         myFeet = GetComponent<BoxCollider2D>();
         temporaryPlayerPosition = GetComponent<Transform>();
 
-        GS = FindObjectOfType<GameSession>();
-
-        //SetPlayerPosition();
-        
+        GameSes = FindObjectOfType<GameSession>();
     }
 
     // Update is called once per frame
