@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class ScenePersist : MonoBehaviour
 {
     int startingSceneIndex;
-    List<GameObject> childrenList = new List<GameObject>();
+    List<string> childrenList = new List<string>();
 
     private void Awake()
     {
@@ -46,12 +46,60 @@ public class ScenePersist : MonoBehaviour
         }
         */
 
-        var temp = FindObjectOfType<GameSession>().getScenePersistChildList();
+        var originalList = FindObjectOfType<GameSession>().getScenePersistChildList();
+        int childs = transform.childCount;
+        var tempList = new List<Transform>();
 
-        if (temp != null)
+
+
+        if (originalList != null)
         {
+            for (int i = 0; i < childs; ++i)
+            {
+                print(i + ": " + transform.GetChild(i).position.x.ToString());
+                tempList.Add(transform.GetChild(i));
+                //print(i + ": " + childrenList[i].name);
+            }
+
             print("THIS SHIT AINT EMPTY");
-            print("0: " + temp[0].name);
+
+            // print("ChildrenCount:" + children);
+            for (int i = 0; i < childs; ++i)
+            {
+                /*
+                print(i + ": " + transform.GetChild(i).position.x.ToString());
+                childrenList.Add(transform.GetChild(i).position.x.ToString());
+                //print(i + ": " + childrenList[i].name);
+                */
+
+                Transform Currentchild = tempList[i];
+                
+                if(originalList.Contains(Currentchild.position.x.ToString()))
+                {
+
+                }
+                else
+                {
+                    //Currentchild.gameObject.parent = null;
+                    Destroy(Currentchild.gameObject);
+                }
+
+
+                /*
+                for(int x = 0; x < children.Count; ++x)
+                {
+                    //firstlist.Contains(4)
+                    if (tempChildrenList.get)
+                    child.parent = null;
+                    Destroy(child.gameObject);
+                }
+                */
+            }
+
+            
+
+            print("0: " + originalList[0]);
+
         }
         else
         {
@@ -81,7 +129,8 @@ public class ScenePersist : MonoBehaviour
        // print("ChildrenCount:" + children);
         for (int i = 0; i < children; ++i)
         {
-            childrenList.Add(transform.GetChild(i).gameObject);
+            print(i + ": " + transform.GetChild(i).position.x.ToString());
+            childrenList.Add(transform.GetChild(i).position.x.ToString());
             //print(i + ": " + childrenList[i].name);
         }
             

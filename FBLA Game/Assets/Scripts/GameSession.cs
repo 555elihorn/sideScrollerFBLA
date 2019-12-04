@@ -13,7 +13,7 @@ public class GameSession : MonoBehaviour
     Transform playerPosition;
     Vector3 playerPositionVector;
     Vector3 playerScaleVector;
-    List<GameObject> tempChildList;
+    List<string> tempChildList;
 
     GameObject player;
 
@@ -39,6 +39,7 @@ public class GameSession : MonoBehaviour
             DontDestroyOnLoad(gameObject);
 
             print("ELSE CHECK");
+            /*
             if(tempChildList != null)
             {
                 for (int i = 0; i < tempChildList.Count - 1; ++i)
@@ -50,6 +51,7 @@ public class GameSession : MonoBehaviour
                 }
                 
             }
+            */
         }
     }
 
@@ -143,13 +145,13 @@ public class GameSession : MonoBehaviour
     }
 
 
-    public void SetScenePersistChildList(List<GameObject> newList)
+    public void SetScenePersistChildList(List<string> newList)
     {
         tempChildList = newList;
-        print("setScenePersistChildList: " + tempChildList[0].name);
+        print("setScenePersistChildList: " + tempChildList[0]);
     }
 
-    public List<GameObject> getScenePersistChildList()
+    public List<string> getScenePersistChildList()
     {
         return tempChildList;
     }
