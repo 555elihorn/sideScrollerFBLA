@@ -5007,6 +5007,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2829490263501670137, guid: 00d4aafa56c09644799c9778cbd3d30f,
         type: 3}
+      propertyPath: postPersuasionSentences.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2829490263501670137, guid: 00d4aafa56c09644799c9778cbd3d30f,
+        type: 3}
       propertyPath: textDisplay
       value: 
       objectReference: {fileID: 662477840}
@@ -5034,6 +5039,16 @@ PrefabInstance:
         type: 3}
       propertyPath: hasMiniGame
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2829490263501670137, guid: 00d4aafa56c09644799c9778cbd3d30f,
+        type: 3}
+      propertyPath: postPersuasionSentences.Array.data[0]
+      value: Wow I really should join FBLA!
+      objectReference: {fileID: 0}
+    - target: {fileID: 2829490263501670137, guid: 00d4aafa56c09644799c9778cbd3d30f,
+        type: 3}
+      propertyPath: postPersuasionSentences.Array.data[1]
+      value: NOW GET AWAY FROM ME!
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00d4aafa56c09644799c9778cbd3d30f, type: 3}
@@ -27022,22 +27037,22 @@ PrefabInstance:
     - target: {fileID: 521888613325943039, guid: a27534a2a731ce24ebfad5a09bfb10a3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.783996
+      value: -14.253996
       objectReference: {fileID: 0}
     - target: {fileID: 521888613325943039, guid: a27534a2a731ce24ebfad5a09bfb10a3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.87274694
+      value: 8.117252
       objectReference: {fileID: 0}
     - target: {fileID: 521888613325943039, guid: a27534a2a731ce24ebfad5a09bfb10a3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.255859
+      value: -1.7441406
       objectReference: {fileID: 0}
     - target: {fileID: 521888613325943036, guid: a27534a2a731ce24ebfad5a09bfb10a3,
         type: 3}
       propertyPath: orthographic size
-      value: 10
+      value: 6.95
       objectReference: {fileID: 0}
     - target: {fileID: 570439622, guid: a27534a2a731ce24ebfad5a09bfb10a3, type: 3}
       propertyPath: m_Follow
@@ -27049,7 +27064,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 570439623, guid: a27534a2a731ce24ebfad5a09bfb10a3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.5127468
+      value: 8.117252
       objectReference: {fileID: 0}
     - target: {fileID: 570439623, guid: a27534a2a731ce24ebfad5a09bfb10a3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -27146,7 +27161,7 @@ PrefabInstance:
     - target: {fileID: 6883039690471815561, guid: b6a4935b457ede14baeb9e00e23919a8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.64
+      value: 8.99
       objectReference: {fileID: 0}
     - target: {fileID: 6883039690471815561, guid: b6a4935b457ede14baeb9e00e23919a8,
         type: 3}

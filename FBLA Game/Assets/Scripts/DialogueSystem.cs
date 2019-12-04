@@ -14,6 +14,7 @@ public class DialogueSystem : MonoBehaviour
     bool playerWithinDistance = false;
     bool conversationHasStarted = false;
     bool firstCollision = true;
+    bool hasAlreadyBeenConvinced = false;
     Vector2 Pos;
     Vector3 dialogueBoxLocalScaleOriginal;
     Vector3 dialogueTextLocalScaleOriginal;
@@ -24,7 +25,7 @@ public class DialogueSystem : MonoBehaviour
     //cache
     public TextMeshProUGUI textDisplay;
     public string[] sentences;
-    public string[] sample;
+    public string[] postPersuasionSentences;
     ObjectFader fader;
     GameSession myGameSession;
     Rigidbody2D myRigidBody;
@@ -61,19 +62,31 @@ public class DialogueSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         if(playerWithinDistance && firstCollision)
         {
             DialogueButtonListener();
 
         }
-        
     }
 
     IEnumerator Type()
     {
-        string currentString = sentences[index];
+        string currentString = null;
 
+        if (FindObjectOfType<GameSession>().GetPersuadedNPCList().Contains(transform.position.x.ToString()) == true)
+        {
+            SetPersuaded();
+        }
+
+        if (hasAlreadyBeenConvinced)
+        {
+            currentString = postPersuasionSentences[index];
+        }
+        else
+        {
+            currentString = sentences[index];
+        }
+        
         if(transform.localScale.x == 1f)
         {
             if (currentString.Contains("Player"))
@@ -305,6 +318,8 @@ public class DialogueSystem : MonoBehaviour
         dialogueBox.transform.position = Pos; 
         textDisplay.text = "";
 
+        print("Startconversation: " + hasAlreadyBeenConvinced);
+
         fader.FadeOut();
 
         StartCoroutine(Type());
@@ -327,28 +342,59 @@ public class DialogueSystem : MonoBehaviour
     {
         continueButton.SetActive(true);
 
-        if (index < sentences.Length - 1)
+        if(FindObjectOfType<GameSession>().GetPersuadedNPCList().Contains(transform.position.x.ToString()) == true) 
         {
-            index++;
-            textDisplay.text = "";
-            StartCoroutine(Type());
+            SetPersuaded();
         }
-        else if(hasMiniGame)
+
+        if (hasAlreadyBeenConvinced == false)
         {
-            //if at the end of the conversation, start the mini game
-            myGameSession.SetPreviousScene(SceneManager.GetActiveScene().buildIndex);
+            if (index < sentences.Length - 1)
+            {
+                index++;
+                textDisplay.text = "";
+                StartCoroutine(Type());
+            }
+            else if (hasMiniGame)
+            {
+                //if at the end of the conversation, start the mini game
+                myGameSession.SetPreviousScene(SceneManager.GetActiveScene().buildIndex);
 
-            FindObjectOfType<PlayerState>().RecordPlayerPosition();
-            FindObjectOfType<ScenePersist>().GetScenePersistChildren();
+                FindObjectOfType<PlayerState>().RecordPlayerPosition();
+                FindObjectOfType<ScenePersist>().GetScenePersistChildren();
+                print("hasMiniGame:" + hasAlreadyBeenConvinced);
 
-            SceneManager.LoadScene("Persuasion_Mini_Game");
-            textDisplay.text = "";
-            continueButton.SetActive(false);
+                //If the persuadedNPCList does not have this NPC, add them
+                if (FindObjectOfType<GameSession>().GetPersuadedNPCList().Contains(transform.position.x.ToString()) != true)
+                {
+                    FindObjectOfType<GameSession>().AddPersuadedNPC(transform.position.x.ToString());
+                }
+
+               
+                SceneManager.LoadScene("Persuasion_Mini_Game");
+                textDisplay.text = "";
+                continueButton.SetActive(false);
+            }
+            else
+            {
+                SetDialogueBoxActive(false);
+            }
         }
         else
         {
-            SetDialogueBoxActive(false);
+            //Use Alternative text
+            if (index < postPersuasionSentences.Length - 1)
+            {
+                index++;
+                textDisplay.text = "";
+                StartCoroutine(Type());
+            }
+            else
+            {
+                SetDialogueBoxActive(false);
+            }
         }
+        
     }
 
     private void SetDialogueBoxActive(bool value)
@@ -375,5 +421,11 @@ public class DialogueSystem : MonoBehaviour
             return;
         }
 
+    }
+
+ 
+    void SetPersuaded()
+    {
+        hasAlreadyBeenConvinced = true;
     }
 }

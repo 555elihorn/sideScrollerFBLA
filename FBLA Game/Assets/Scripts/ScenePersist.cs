@@ -102,4 +102,6 @@ public class ScenePersist : MonoBehaviour
         FindObjectOfType<GameSession>().SetScenePersistChildList(childrenList);
     }
 
+
+
 }

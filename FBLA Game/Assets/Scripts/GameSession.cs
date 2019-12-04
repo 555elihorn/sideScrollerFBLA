@@ -14,6 +14,8 @@ public class GameSession : MonoBehaviour
     Vector3 playerPositionVector;
     Vector3 playerScaleVector;
     List<string> tempChildList;
+    List<string> persuadedNPCS = new List<string>();
+
 
     GameObject player;
 
@@ -143,5 +145,15 @@ public class GameSession : MonoBehaviour
     public void ResetCoinList()
     {
         tempChildList = null;
+    }
+
+    public void AddPersuadedNPC(string npcPosititon)
+    {
+        persuadedNPCS.Add(npcPosititon);
+    }
+
+    public List<string> GetPersuadedNPCList()
+    {
+        return persuadedNPCS;
     }
 }
