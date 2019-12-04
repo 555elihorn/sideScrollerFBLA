@@ -39,7 +39,7 @@ public class ScenePersist : MonoBehaviour
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
 
-        var originalList = FindObjectOfType<GameSession>().getScenePersistChildList();
+        var originalList = FindObjectOfType<GameSession>().GetScenePersistChildList();
         int childs = transform.childCount;
         var tempList = new List<Transform>();
 
@@ -48,7 +48,6 @@ public class ScenePersist : MonoBehaviour
             for (int i = 0; i < childs; ++i)
             {
                 tempList.Add(transform.GetChild(i));
-                //print(i + ": " + childrenList[i].name);
             }
 
 
@@ -67,6 +66,8 @@ public class ScenePersist : MonoBehaviour
                 }
 
             }
+
+            FindObjectOfType<GameSession>().ResetCoinList();
         }
         else
         {
@@ -93,12 +94,9 @@ public class ScenePersist : MonoBehaviour
     {
 
         int children = transform.childCount;
-       // print("ChildrenCount:" + children);
         for (int i = 0; i < children; ++i)
         {
-            print(i + ": " + transform.GetChild(i).position.x.ToString());
             childrenList.Add(transform.GetChild(i).position.x.ToString());
-            //print(i + ": " + childrenList[i].name);
         }
             
         FindObjectOfType<GameSession>().SetScenePersistChildList(childrenList);
