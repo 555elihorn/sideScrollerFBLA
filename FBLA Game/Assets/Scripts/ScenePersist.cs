@@ -13,7 +13,7 @@ public class ScenePersist : MonoBehaviour
         int numScenePersist = FindObjectsOfType<ScenePersist>().Length;
         if (numScenePersist > 1)
         {
-            print( this.gameObject.name + ": Imma kill" + gameObject.name);
+            //print( this.gameObject.name + ": Imma kill" + gameObject.name);
             Destroy(gameObject);
         }
         else

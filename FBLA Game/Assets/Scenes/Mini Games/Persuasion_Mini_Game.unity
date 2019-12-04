@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d2e0c353341418449fe62a2a559b287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  winCondition: 3
+  winCondition: 1
   score: 0
   scoreText: {fileID: 1198454164}
   rewardPoints: 500
