@@ -38,20 +38,6 @@ public class GameSession : MonoBehaviour
             SetPreviousScene(currentSceneIndex);
             DontDestroyOnLoad(gameObject);
 
-            print("ELSE CHECK");
-            /*
-            if(tempChildList != null)
-            {
-                for (int i = 0; i < tempChildList.Count - 1; ++i)
-                {
-                    //childrenList.Add(transform.GetChild(i).gameObject);
-                    //print(i + ": " + childrenList[i].name);
-                    print("CHECK");
-                    DontDestroyOnLoad(tempChildList[i]);
-                }
-                
-            }
-            */
         }
     }
 
