@@ -9,5 +9,7 @@ This game was created with the Unity Game Engine. The assets were created with A
 
 ## Authors
 Tajvir Chahal - Game Programming
+
 Ethan Tran - Level Design & Asset Creation
+
 Elijah Horn - Game Programming
