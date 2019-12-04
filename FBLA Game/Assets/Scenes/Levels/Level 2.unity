@@ -53563,6 +53563,11 @@ PrefabInstance:
       propertyPath: scenepersist
       value: 
       objectReference: {fileID: 7407552238083598313}
+    - target: {fileID: 7113231218504352089, guid: f7f85794da261f742ae458691597f313,
+        type: 3}
+      propertyPath: scenePersist
+      value: 
+      objectReference: {fileID: 7407552238083598313}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7f85794da261f742ae458691597f313, type: 3}
 --- !u!1001 &7407552238083598312
