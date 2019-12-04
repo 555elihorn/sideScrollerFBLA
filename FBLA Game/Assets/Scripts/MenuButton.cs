@@ -36,7 +36,7 @@ public class MenuButton : MonoBehaviour
     }
     public void ExitGame()
     {
-        UnityEditor.EditorApplication.isPlaying = false; //This temporary, just to stop game in editor
+        //UnityEditor.EditorApplication.isPlaying = false; //This temporary, just to stop game in editor
         Application.Quit();
     }
 }
