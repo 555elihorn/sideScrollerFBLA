@@ -121,7 +121,6 @@ public class GameSession : MonoBehaviour
 
     public Vector3 GetTemporaryLocation()
     {
-        //print("GetTemporaryLocation: " + (playerPosition == null));
         return playerPositionVector;
     }
 
@@ -134,11 +133,15 @@ public class GameSession : MonoBehaviour
     public void SetScenePersistChildList(List<string> newList)
     {
         tempChildList = newList;
-        print("setScenePersistChildList: " + tempChildList[0]);
     }
 
-    public List<string> getScenePersistChildList()
+    public List<string> GetScenePersistChildList()
     {
         return tempChildList;
+    }
+
+    public void ResetCoinList()
+    {
+        tempChildList = null;
     }
 }
