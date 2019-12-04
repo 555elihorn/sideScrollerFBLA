@@ -1,3 +1,15 @@
-# FBLA Platformer
+# Jason's Bizzare Adventure
+This game follows FBLA member Jason as he goes on his journey to complete the BAA.
 
-To launch the game, open the project in Unity Editor version 2019.2.6f1. This can be downloaded from [this page](https://unity3d.com/get-unity/download/archive).
+## Launching the Game
+To launch the game, download the build file and double-click it.
+
+## Built With
+This game was created with the Unity Game Engine. The assets were created with Aseprite and Gimp.
+
+## Authors
+Tajvir Chahal - Game Programming, Game Design
+Ethan Tran - Game Programming, Level Design, Asset Creation
+Elijah Horn - Game Programming
+
+## Acknowlegments 
