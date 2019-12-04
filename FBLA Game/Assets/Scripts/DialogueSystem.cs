@@ -339,6 +339,7 @@ public class DialogueSystem : MonoBehaviour
             myGameSession.SetPreviousScene(SceneManager.GetActiveScene().buildIndex);
 
             FindObjectOfType<PlayerState>().RecordPlayerPosition();
+            FindObjectOfType<ScenePersist>().GetScenePersistChildren();
 
             SceneManager.LoadScene("Persuasion_Mini_Game");
             textDisplay.text = "";

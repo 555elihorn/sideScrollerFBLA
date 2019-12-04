@@ -7,12 +7,13 @@ using TMPro;
 
 public class GameSession : MonoBehaviour
 {
-    
+
     //variables
     int previousScene;
     Transform playerPosition;
     Vector3 playerPositionVector;
     Vector3 playerScaleVector;
+    List<GameObject> tempChildList;
 
     GameObject player;
 
@@ -26,7 +27,6 @@ public class GameSession : MonoBehaviour
 
     private void Awake()
     {
-        //print(gameObject.name + " : Awake Check");
         int numGameSessions = FindObjectsOfType<GameSession>().Length;
         if (numGameSessions > 1)
         {
@@ -37,12 +37,25 @@ public class GameSession : MonoBehaviour
             var currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
             SetPreviousScene(currentSceneIndex);
             DontDestroyOnLoad(gameObject);
+
+            print("ELSE CHECK");
+            if(tempChildList != null)
+            {
+                for (int i = 0; i < tempChildList.Count - 1; ++i)
+                {
+                    //childrenList.Add(transform.GetChild(i).gameObject);
+                    //print(i + ": " + childrenList[i].name);
+                    print("CHECK");
+                    DontDestroyOnLoad(tempChildList[i]);
+                }
+                
+            }
         }
     }
 
     private void Update()
     {
-        if(ScoreIsEqualToWinCondition())
+        if (ScoreIsEqualToWinCondition())
         {
             scoreText.color = Color.green;
         }
@@ -52,7 +65,7 @@ public class GameSession : MonoBehaviour
         }
     }
 
-   private void Start()
+    private void Start()
     {
         scoreText.text = score.ToString() + " / " + winCondition.ToString();
         livesText.text = playerLives.ToString();
@@ -87,7 +100,7 @@ public class GameSession : MonoBehaviour
         var currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex);
         livesText.text = playerLives.ToString();
-        
+
     }
 
     public void ResetGameSession()
@@ -129,4 +142,15 @@ public class GameSession : MonoBehaviour
         return playerScaleVector;
     }
 
+
+    public void SetScenePersistChildList(List<GameObject> newList)
+    {
+        tempChildList = newList;
+        print("setScenePersistChildList: " + tempChildList[0].name);
+    }
+
+    public List<GameObject> getScenePersistChildList()
+    {
+        return tempChildList;
+    }
 }
