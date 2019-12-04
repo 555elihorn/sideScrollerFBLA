@@ -38,7 +38,7 @@ public class movement : MonoBehaviour
             
 
             count++;
-            if (count == 5)
+            if (count == 4)
             {
                 if (!(moveSpeed < 0))
                 {
@@ -59,7 +59,7 @@ public class movement : MonoBehaviour
         if (CrossPlatformInputManager.GetButtonDown("Jump"))
         {
 
-            moveSpeed += 5;
+            moveSpeed += 4;
         }
         myRigidBody.velocity = new Vector2(moveSpeed, 0f); //moves the arrow
     }
