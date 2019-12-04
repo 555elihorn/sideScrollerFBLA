@@ -7762,6 +7762,11 @@ PrefabInstance:
       propertyPath: scenePersist
       value: 
       objectReference: {fileID: 7407552238083598313}
+    - target: {fileID: 7113231218504352089, guid: f7f85794da261f742ae458691597f313,
+        type: 3}
+      propertyPath: gameSession
+      value: 
+      objectReference: {fileID: 442238898569908130}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7f85794da261f742ae458691597f313, type: 3}
 --- !u!1001 &1443540445
@@ -59792,7 +59797,7 @@ PrefabInstance:
     - target: {fileID: 442238898899150666, guid: d0a1613287c324347bc56b93a65eea41,
         type: 3}
       propertyPath: m_Name
-      value: Game Session
+      value: Game Session 3
       objectReference: {fileID: 0}
     - target: {fileID: 442238898899150668, guid: d0a1613287c324347bc56b93a65eea41,
         type: 3}
@@ -59849,8 +59854,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 442238898899150669, guid: d0a1613287c324347bc56b93a65eea41,
+        type: 3}
+      propertyPath: winCondition
+      value: 2000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0a1613287c324347bc56b93a65eea41, type: 3}
+--- !u!1 &442238898569908130 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 442238898899150666, guid: d0a1613287c324347bc56b93a65eea41,
+    type: 3}
+  m_PrefabInstance: {fileID: 442238898569908129}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &521888613342281505
 PrefabInstance:
   m_ObjectHideFlags: 0
