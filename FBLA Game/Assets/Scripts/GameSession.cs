@@ -7,9 +7,15 @@ using TMPro;
 
 public class GameSession : MonoBehaviour
 {
-    
+
     //variables
     int previousScene;
+    Transform playerPosition;
+    Vector3 playerPositionVector;
+    Vector3 playerScaleVector;
+    List<string> tempChildList;
+
+    GameObject player;
 
 
     //config
@@ -31,12 +37,13 @@ public class GameSession : MonoBehaviour
             var currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
             SetPreviousScene(currentSceneIndex);
             DontDestroyOnLoad(gameObject);
+
         }
     }
 
     private void Update()
     {
-        if(ScoreIsEqualToWinCondition())
+        if (ScoreIsEqualToWinCondition())
         {
             scoreText.color = Color.green;
         }
@@ -46,7 +53,7 @@ public class GameSession : MonoBehaviour
         }
     }
 
-   private void Start()
+    private void Start()
     {
         scoreText.text = score.ToString() + " / " + winCondition.ToString();
         livesText.text = playerLives.ToString();
@@ -76,10 +83,12 @@ public class GameSession : MonoBehaviour
 
     private void TakeLife()
     {
+
         playerLives--;
         var currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex);
         livesText.text = playerLives.ToString();
+
     }
 
     public void ResetGameSession()
@@ -100,5 +109,36 @@ public class GameSession : MonoBehaviour
     public bool ScoreIsEqualToWinCondition()
     {
         return score >= winCondition;
+    }
+
+    public void TemporarilyHoldPlayerPosition(Transform newPosition)
+    {
+        playerPosition = newPosition;
+
+        playerPositionVector = new Vector3(newPosition.position.x, newPosition.position.y, newPosition.position.z);
+        playerScaleVector = new Vector3(newPosition.localScale.x, newPosition.localScale.y, newPosition.localScale.z);
+    }
+
+    public Vector3 GetTemporaryLocation()
+    {
+        //print("GetTemporaryLocation: " + (playerPosition == null));
+        return playerPositionVector;
+    }
+
+    public Vector3 GetTemporaryScale()
+    {
+        return playerScaleVector;
+    }
+
+
+    public void SetScenePersistChildList(List<string> newList)
+    {
+        tempChildList = newList;
+        print("setScenePersistChildList: " + tempChildList[0]);
+    }
+
+    public List<string> getScenePersistChildList()
+    {
+        return tempChildList;
     }
 }

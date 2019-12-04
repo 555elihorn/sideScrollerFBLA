@@ -9,11 +9,20 @@ EditorBuildSettings:
     path: Assets/Scenes/Mini Games/Persuasion_Mini_Game.unity
     guid: c08cc1a63c97d214fbe916260b99c97e
   - enabled: 1
-    path: Assets/Scenes/Menu.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Instructions/Controls.unity
+    guid: ce60b054c269c36418b3716cded75380
   - enabled: 1
     path: Assets/Scenes/Instructions/Instructions.unity
     guid: 22fe2e9397d951941b872cf47f7abda5
+  - enabled: 1
+    path: Assets/Scenes/Instructions/Mechanics.unity
+    guid: 658d4b304ef16a4449d3be2b6de1c689
+  - enabled: 1
+    path: Assets/Scenes/Instructions/Story.unity
+    guid: 0309e37114a8d774eb3569cf43e31a0a
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/Levels/Level 1.unity
     guid: 54bae9f865f5281448943a6bc7e404e4
@@ -23,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Level 3.unity
     guid: 483dcbbba1e77f045a587c124f7e3259
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level 4.unity
+    guid: dad988d80b0b5b5479a601c043e62983
   m_configObjects: {}
