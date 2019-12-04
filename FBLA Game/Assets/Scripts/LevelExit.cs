@@ -7,11 +7,13 @@ public class LevelExit : MonoBehaviour
 {
 
     [SerializeField] float LevelLoadDelay = 1f;
+    [SerializeField] GameObject scenePersist;
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (FindObjectOfType<GameSession>().ScoreIsEqualToWinCondition())
         {
+            Destroy(scenePersist);
             StartCoroutine(LoadNextLevel());
         }
     }

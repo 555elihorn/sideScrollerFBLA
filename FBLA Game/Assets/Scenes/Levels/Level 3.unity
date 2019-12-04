@@ -7752,6 +7752,11 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 0.20499226
       objectReference: {fileID: 0}
+    - target: {fileID: 7113231218504352089, guid: f7f85794da261f742ae458691597f313,
+        type: 3}
+      propertyPath: scenepersist
+      value: 
+      objectReference: {fileID: 7407552238083598313}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7f85794da261f742ae458691597f313, type: 3}
 --- !u!1001 &1443540445
@@ -60173,3 +60178,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36adffeed27a6bc45b200bb7c8441649, type: 3}
+--- !u!1 &7407552238083598313 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7407552236282811774, guid: 36adffeed27a6bc45b200bb7c8441649,
+    type: 3}
+  m_PrefabInstance: {fileID: 7407552238083598312}
+  m_PrefabAsset: {fileID: 0}
