@@ -8,8 +8,6 @@ To launch the game, download the build file and double-click it.
 This game was created with the Unity Game Engine. The assets were created with Aseprite and Gimp.
 
 ## Authors
-Tajvir Chahal - Game Programming, Game Design
-Ethan Tran - Game Programming, Level Design, Asset Creation
+Tajvir Chahal - Game Programming
+Ethan Tran - Level Design & Asset Creation
 Elijah Horn - Game Programming
-
-## Acknowlegments 
