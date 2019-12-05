@@ -38,8 +38,18 @@ public class ScenePersist : MonoBehaviour
 
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
+        List<string> originalList = null;
 
-        var originalList = FindObjectOfType<GameSession>().GetScenePersistChildList();
+        if(SceneManager.GetActiveScene().name.Equals("Menu"))
+        {
+           //do nothing
+        }
+        else
+        {
+            originalList = FindObjectOfType<GameSession>().GetScenePersistChildList();
+        }
+
+        
         int childs = transform.childCount;
         var tempList = new List<Transform>();
 
