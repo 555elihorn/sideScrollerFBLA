@@ -15,4 +15,4 @@ Ethan Tran - Level Design & Asset Creation
 Elijah Horn - Game Programming
 
 ## Acknowledgements
-The music is from [patrickdearteaga.com](patrickdearteaga.com).
+The music is from [patrickdearteaga.com](https://patrickdearteaga.com).
