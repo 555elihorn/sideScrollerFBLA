@@ -4718,7 +4718,22 @@ PrefabInstance:
     - target: {fileID: 8260470740102309798, guid: c4425207d845a17488d3baa204f2213e,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8260470740297984281, guid: c4425207d845a17488d3baa204f2213e,
+        type: 3}
+      propertyPath: m_text
+      value: X
+      objectReference: {fileID: 0}
+    - target: {fileID: 8260470740297984281, guid: c4425207d845a17488d3baa204f2213e,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8260470739032715174, guid: c4425207d845a17488d3baa204f2213e,
+        type: 3}
+      propertyPath: m_Name
+      value: Continue Text
       objectReference: {fileID: 0}
     - target: {fileID: 8260470740102309799, guid: c4425207d845a17488d3baa204f2213e,
         type: 3}
@@ -4824,21 +4839,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8260470739032715174, guid: c4425207d845a17488d3baa204f2213e,
-        type: 3}
-      propertyPath: m_Name
-      value: Continue Text
-      objectReference: {fileID: 0}
-    - target: {fileID: 8260470740297984281, guid: c4425207d845a17488d3baa204f2213e,
-        type: 3}
-      propertyPath: m_text
-      value: X
-      objectReference: {fileID: 0}
-    - target: {fileID: 8260470740297984281, guid: c4425207d845a17488d3baa204f2213e,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8260470739032715177, guid: c4425207d845a17488d3baa204f2213e,
         type: 3}
@@ -4984,7 +4984,7 @@ PrefabInstance:
     - target: {fileID: 2829490263501670137, guid: 00d4aafa56c09644799c9778cbd3d30f,
         type: 3}
       propertyPath: sentences.Array.data[0]
-      value: 'NPC: I really wanna join a organization but I dont know what!'
+      value: 'NPC: I really wanna join a organization but I dont know which!'
       objectReference: {fileID: 0}
     - target: {fileID: 2829490263501670137, guid: 00d4aafa56c09644799c9778cbd3d30f,
         type: 3}
