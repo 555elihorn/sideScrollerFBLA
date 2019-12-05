@@ -1,19 +1,7 @@
 fileFormatVersion: 2
-guid: b0f7bccf1a1afab46bd8adb3816dd988
+guid: c3265df879dbe3348a25d12e97754f72
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 3373568495408583166
-    second: Flower_0
-  - first:
-      213: 5540668397679465389
-    second: Flower_1
-  - first:
-      213: -4610566733436411102
-    second: Flower_2
-  - first:
-      213: 6581866111006463381
-    second: Flower_3
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -52,7 +40,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -96,91 +84,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Flower_0
-      rect:
-        serializedVersion: 2
-        x: 7
-        y: 35
-        width: 11
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c93b2115917984349be6f11ab5fc0a92
-      internalID: 3373568495408583166
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Flower_1
-      rect:
-        serializedVersion: 2
-        x: 5
-        y: 4
-        width: 15
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b7a69dd0855a86644b73bd80b5a94b33
-      internalID: 5540668397679465389
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Flower_2
-      rect:
-        serializedVersion: 2
-        x: 35
-        y: 35
-        width: 14
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 859b1d67e99a89442b5e2939e563dd7f
-      internalID: -4610566733436411102
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Flower_3
-      rect:
-        serializedVersion: 2
-        x: 34
-        y: 3
-        width: 14
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a96cca7c36fb9f945a8fc6c9ec0fb3e7
-      internalID: 6581866111006463381
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
