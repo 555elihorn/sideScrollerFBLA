@@ -16,12 +16,14 @@ public class PersuasionScoreSession : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreText = null;
     [SerializeField] int rewardPoints = 500;
 
+    // Start is called before the first frame update
     void Start()
     {
         myGameSession = FindObjectOfType<GameSession>();
         scoreText.text = score.ToString() + " / " + winCondition.ToString(); //creates the default score parameters (ex: 0 / 10)
     }
 
+    //Method that adds to player score
     public void AddToScore()
     {
         score += 1;

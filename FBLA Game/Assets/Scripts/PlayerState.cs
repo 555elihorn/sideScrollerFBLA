@@ -19,24 +19,23 @@ public class PlayerState : MonoBehaviour
     GameSession GameSes;
     Transform temporaryPlayerPosition = null;
 
-
     //Config
     [SerializeField] Vector2 deathKick = new Vector2(25f, 25f);
     [SerializeField] float respawnDelayTime = 1;
 
+    //enables the onfinishloading
     void OnEnable()
     {
-    //Tell our 'OnLevelFinishedLoading' function to start listening for a scene change as soon as this script is enabled.
         SceneManager.sceneLoaded += OnLevelFinishedLoading;
     }
 
+    //disables the onfinishloading
     void OnDisable()
     {
-        //Tell our 'OnLevelFinishedLoading' function to stop listening for a scene change as soon as this script is disabled.
-        //Remember to always have an unsubscription for every delegate you subscribe to!
         SceneManager.sceneLoaded -= OnLevelFinishedLoading;
     }
 
+    //Run whenever the level is loaded
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
         Vector3 originalPlayerLocation = FindObjectOfType<GameSession>().GetTemporaryLocation();
@@ -49,6 +48,7 @@ public class PlayerState : MonoBehaviour
         }
     }
 
+    // Start is called before the first frame update
     void Start()
     {
         myBodyCollider = GetComponent<CapsuleCollider2D>();
@@ -73,6 +73,7 @@ public class PlayerState : MonoBehaviour
        FindObjectOfType<GameSession>().ProcessPlayerDeath();
     }
 
+    //checks if the player dies 
     private void DeathCheck() {
         if(IsAlive())
         {
@@ -86,17 +87,19 @@ public class PlayerState : MonoBehaviour
         }
     }
 
-
+    //kills player
     private void Kill()
     {
         Life = false;
     }
 
+    //checks if player isalive
     public bool IsAlive()
     {
         return Life;
     }
 
+    //records player position before mini game
     public void RecordPlayerPosition()
     {
         temporaryPlayerPosition = GetComponent<Transform>();

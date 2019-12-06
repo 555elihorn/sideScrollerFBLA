@@ -8,6 +8,7 @@ public class ScenePersist : MonoBehaviour
     int startingSceneIndex;
     List<string> childrenList = new List<string>();
 
+    //Awake is called at start of gameobject initalization
     private void Awake()
     {
         int numScenePersist = FindObjectsOfType<ScenePersist>().Length;
@@ -23,19 +24,20 @@ public class ScenePersist : MonoBehaviour
 
     }
 
+    //enables the onfinishloading
     void OnEnable()
     {
         //Tell our 'OnLevelFinishedLoading' function to start listening for a scene change as soon as this script is enabled.
         SceneManager.sceneLoaded += OnLevelFinishedLoading;
     }
 
+    //disables the onfinishloading
     void OnDisable()
     {
-        //Tell our 'OnLevelFinishedLoading' function to stop listening for a scene change as soon as this script is disabled.
-        //Remember to always have an unsubscription for every delegate you subscribe to!
         SceneManager.sceneLoaded -= OnLevelFinishedLoading;
     }
 
+    //Ran whenever the level is loaded
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
         List<string> originalList = null;
@@ -85,6 +87,7 @@ public class ScenePersist : MonoBehaviour
         }
     }
 
+    // Start is called before the first frame update
     void Start()
     {
         startingSceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -100,6 +103,7 @@ public class ScenePersist : MonoBehaviour
         }
     }
 
+    //Gets the list of coins
     public void GetScenePersistChildren()
     {
 

@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-
+    //config
     [SerializeField] float moveSpeed = 1f;
-    Rigidbody2D myRigidBody;
-    
 
-    // Use this for initialization
+    //cache
+    Rigidbody2D myRigidBody;
+
+
+    //Called on the first frame
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
@@ -29,11 +31,13 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+    //checks if player is facing the right
     bool IsFacingRight()
     {
         return transform.localScale.x > 0;
     }
 
+    //Whenever the player exists the clider set the local scale
     private void OnTriggerExit2D(Collider2D collision)
     {
         transform.localScale = new Vector2(-(Mathf.Sign(myRigidBody.velocity.x)), 1f);

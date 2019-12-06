@@ -43,13 +43,13 @@ public class PointerMovement : MonoBehaviour
             else
             {
                 AudioSource.PlayClipAtPoint(failSound, Camera.main.transform.position, 0.5f);
-                //scoreSystem.Failure();
             }
         }
 
         myRigidBody.velocity = new Vector2(moveSpeed, 0f); //moves the arrow
     }
 
+    //Run whenever the player enters the collider
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //If the player is not specifically detecting the green area, change direction
@@ -64,6 +64,7 @@ public class PointerMovement : MonoBehaviour
         }
     }
 
+    //Run whenever the player exits the collider
     private void OnTriggerExit2D(Collider2D collision)
     {
         //if the pointer leaves the green area, the player is no longer in the win area and can press the button again

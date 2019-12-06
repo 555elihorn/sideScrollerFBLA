@@ -42,7 +42,7 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] GameObject dialogueBox;
     [SerializeField] GameObject player;
 
-
+    //Called on the first frame
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
@@ -57,7 +57,6 @@ public class DialogueSystem : MonoBehaviour
         continueButtonLocalScaleOriginal = continueButton.transform.localScale;
         dialogueTextRectTransformOriginal = dialogueText.GetComponent<RectTransform>().localPosition;
         continueButtonRectTransformOriginal = continueButton.GetComponent<RectTransform>().localPosition;
-
     }
 
     // Update is called once per frame
@@ -70,7 +69,8 @@ public class DialogueSystem : MonoBehaviour
         }
     }
 
-    IEnumerator Type()
+    //Corutine that handles dialogue
+    IEnumerator Dialogue()
     {
         string currentString = null;
         eButtonEnabled = false;
@@ -91,7 +91,7 @@ public class DialogueSystem : MonoBehaviour
         
         if(transform.localScale.x == 1f)
         {
-            if (currentString.Contains("Player"))
+            if (currentString.Contains("Jason"))
             {
                var dialogueBoxLocalScale = dialogueBox.transform.localScale;
                 var dialogueTextLocalScale = dialogueText.transform.localScale;
@@ -152,7 +152,7 @@ public class DialogueSystem : MonoBehaviour
         }
         else if(transform.localScale.x != 1f)
         {
-            if (currentString.Contains("Player") && index != 0) //if player start of conversation
+            if (currentString.Contains("Jason") && index != 0) //if player start of conversation
             {
                 var dialogueBoxLocalScale = dialogueBox.transform.localScale;
                 var dialogueTextLocalScale = dialogueText.transform.localScale;
@@ -182,7 +182,7 @@ public class DialogueSystem : MonoBehaviour
 
                 dialogueBox.transform.position = Pos;
             }
-            else if (currentString.Contains("Player") && index == 0)
+            else if (currentString.Contains("Jason") && index == 0)
             {
                 var dialogueBoxLocalScale = dialogueBox.transform.localScale;
                 var dialogueTextLocalScale = dialogueText.transform.localScale;
@@ -255,6 +255,7 @@ public class DialogueSystem : MonoBehaviour
 
     }
 
+    //Reset dialogue box
     private void ResetDialoguePos()
     {
         float textScale = dialogueTextLocalScaleOriginal.y;
@@ -277,6 +278,7 @@ public class DialogueSystem : MonoBehaviour
                     continueButtonRectTransform.anchoredPosition.y);
     }
 
+    //On exit of collider reset the npc position
     private void OnTriggerExit2D(Collider2D collision)
     {
         playerWithinDistance = false;
@@ -288,6 +290,7 @@ public class DialogueSystem : MonoBehaviour
         }
     }
 
+    //On enter of collider have the NPC face the player
     private void OnTriggerEnter2D(Collider2D collision)
     {
         
@@ -301,6 +304,7 @@ public class DialogueSystem : MonoBehaviour
         }
     }
 
+    //End dialogue conversation
     private void EndConversation()
     {
         ResetDialoguePos();
@@ -308,10 +312,11 @@ public class DialogueSystem : MonoBehaviour
         textDisplay.text = "";
         SetDialogueBoxActive(false);
         index = 0;
-        StopCoroutine(Type());
+        StopCoroutine(Dialogue());
         fader.FadeOut();
     }
 
+    //Start dialogue conversation
     private void StartConversation()
     {
         //sets dialogue box above NPC
@@ -327,9 +332,10 @@ public class DialogueSystem : MonoBehaviour
 
         fader.FadeOut();
 
-        StartCoroutine(Type());
+        StartCoroutine(Dialogue());
     }
 
+    //Listen for the player to press E so that they can start / continue conversation
     private void DialogueButtonListener()
     {
         if (Input.GetKeyDown(KeyCode.E) && !conversationHasStarted && eButtonEnabled)
@@ -343,6 +349,7 @@ public class DialogueSystem : MonoBehaviour
         }
     }
 
+    //Play the next sentence
     public void NextSentence()
     {
         continueButton.SetActive(true);
@@ -358,7 +365,7 @@ public class DialogueSystem : MonoBehaviour
             {
                 index++;
                 textDisplay.text = "";
-                StartCoroutine(Type());
+                StartCoroutine(Dialogue());
             }
             else if (hasMiniGame)
             {
@@ -392,7 +399,7 @@ public class DialogueSystem : MonoBehaviour
             {
                 index++;
                 textDisplay.text = "";
-                StartCoroutine(Type());
+                StartCoroutine(Dialogue());
             }
             else
             {
@@ -402,6 +409,7 @@ public class DialogueSystem : MonoBehaviour
         
     }
 
+    //Set the dialogue box active or inactive
     private void SetDialogueBoxActive(bool value)
     {
         dialogueBox.SetActive(value);
@@ -409,6 +417,7 @@ public class DialogueSystem : MonoBehaviour
         dialogueText.SetActive(value);
     }
 
+    //Flip NPC Sprite
     private void FlipSprite(bool reset)
     {
         
@@ -428,7 +437,7 @@ public class DialogueSystem : MonoBehaviour
 
     }
 
- 
+    //Set the NPC to persuaded
     void SetPersuaded()
     {
         hasAlreadyBeenConvinced = true;

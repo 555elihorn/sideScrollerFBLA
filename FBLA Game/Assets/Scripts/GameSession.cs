@@ -16,7 +16,7 @@ public class GameSession : MonoBehaviour
     List<string> tempChildList;
     List<string> persuadedNPCS = new List<string>();
 
-
+    //cache
     GameObject player;
 
 
@@ -27,6 +27,7 @@ public class GameSession : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreText = null;
     [SerializeField] int winCondition = 5000;
 
+    //Awake is called at start of gameobject initalization
     private void Awake()
     {
         int numGameSessions = FindObjectsOfType<GameSession>().Length;
@@ -43,6 +44,7 @@ public class GameSession : MonoBehaviour
         }
     }
 
+    // Update is called once per frame
     private void Update()
     {
         if (ScoreIsEqualToWinCondition())
@@ -55,18 +57,21 @@ public class GameSession : MonoBehaviour
         }
     }
 
+    //Called on the first frame
     private void Start()
     {
         scoreText.text = score.ToString() + " / " + winCondition.ToString();
         livesText.text = playerLives.ToString();
     }
 
+    //method adds to score
     public void AddToScore(int pointsToAdd)
     {
         score += pointsToAdd;
         scoreText.text = score.ToString() + " / " + winCondition.ToString();
     }
 
+    //Method checks the state of the player
     public void ProcessPlayerDeath()
     {
         if (playerLives > 1)
@@ -75,7 +80,7 @@ public class GameSession : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().buildIndex == 0)
         {
-
+            //do nothing
         }
         else
         {
@@ -83,6 +88,7 @@ public class GameSession : MonoBehaviour
         }
     }
 
+    //take a player life
     private void TakeLife()
     {
 
@@ -93,26 +99,32 @@ public class GameSession : MonoBehaviour
 
     }
 
+    //Method that resets game session
     public void ResetGameSession()
     {
         SceneManager.LoadScene("Menu");
         Destroy(gameObject);
     }
 
+    //Sets previous scnee
     public void SetPreviousScene(int sceneIndex)
     {
         previousScene = sceneIndex;
     }
 
+    //Gets previous scene
     public int GetPreviousScene()
     {
         return previousScene;
     }
+
+    //Checks if the score is equal
     public bool ScoreIsEqualToWinCondition()
     {
         return score >= winCondition;
     }
 
+    //Temporarily holds player position while in mini game
     public void TemporarilyHoldPlayerPosition(Transform newPosition)
     {
         playerPosition = newPosition;
@@ -121,37 +133,43 @@ public class GameSession : MonoBehaviour
         playerScaleVector = new Vector3(newPosition.localScale.x, newPosition.localScale.y, newPosition.localScale.z);
     }
 
+    //gets player vector position
     public Vector3 GetTemporaryLocation()
     {
         return playerPositionVector;
     }
 
+    //gets player vector scale
     public Vector3 GetTemporaryScale()
     {
         return playerScaleVector;
     }
 
-
+    //Sets list of player vectors
     public void SetScenePersistChildList(List<string> newList)
     {
         tempChildList = newList;
     }
 
+    //get list of player vectors
     public List<string> GetScenePersistChildList()
     {
         return tempChildList;
     }
 
+    //methods resets coin list
     public void ResetCoinList()
     {
         tempChildList = null;
     }
 
+    //Adds persuaded npc to persuaded npc list
     public void AddPersuadedNPC(string npcPosititon)
     {
         persuadedNPCS.Add(npcPosititon);
     }
 
+    //get persuaded npc list
     public List<string> GetPersuadedNPCList()
     {
         return persuadedNPCS;

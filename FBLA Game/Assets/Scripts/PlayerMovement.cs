@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     PlayerState myState;
     float gravityScaleAtStart;
 
+    // Start is called before the first frame update
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
@@ -45,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
         Jump();
     }
 
+    //Have the player Run
     private void Run()
     {
         float directionFinder = CrossPlatformInputManager.GetAxis("Horizontal"); //value between -1 to 1 (neg = left movement)
@@ -56,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
         myAnimator.SetBool("Running", playerHasHorizontalSpeed);
     }
 
+    //Have the player Jump
     private void Jump()
     {
         //designed to stop wall climbing
@@ -69,10 +72,10 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    //Flip the character sprite
     private void FlipSprite()
     {
         //if player is moving horizontally, reverse scaling of x axis.
-
         bool playerHasHorizontalSpeed = Mathf.Abs(myRigidBody.velocity.x) > Mathf.Epsilon;
         if (playerHasHorizontalSpeed)
         {
@@ -81,6 +84,7 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    //Have the player climb the ladder
     private void ClimbLadder()
     {
         if (!myFeet.IsTouchingLayers(LayerMask.GetMask("Climbing")))

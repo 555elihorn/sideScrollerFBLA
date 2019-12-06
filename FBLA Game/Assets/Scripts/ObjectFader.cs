@@ -13,14 +13,15 @@ public class ObjectFader : MonoBehaviour
     bool gameObjectFadeOut = false;
     Material material;
     float transparency;
-    
 
+    // Start is called before the first frame update
     private void Start()
     {
         material = GetComponent<Renderer>().material;
         GetComponent<Renderer>().material.color = new Color(material.color.r, material.color.g, material.color.b, 0); ;
     }
 
+    // Update is called once per frame
     private void Update()
     {
         var color = material.color;
@@ -51,11 +52,13 @@ public class ObjectFader : MonoBehaviour
         
     }
 
+    //fades in e suggestion button
     public void FadeIn()
     {
         gameObjectFadeIn = true;
     }
 
+    //fades out e suggestion button
     public void FadeOut()
     {
         gameObjectFadeOut = true;

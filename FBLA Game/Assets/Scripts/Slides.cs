@@ -28,6 +28,7 @@ public class Slides : MonoBehaviour
         
     }
 
+    //forwards the slides of the mechanics tab
     public void ForwardSlides()
     {
         
@@ -45,6 +46,7 @@ public class Slides : MonoBehaviour
         }
     }
 
+    //reverses the slide in the mechanics tab
     public void ReverseSlides()
     {
         if(currentSlide != 0)
@@ -66,10 +68,7 @@ public class Slides : MonoBehaviour
         if (sprite.rect.width != sprite.texture.width)
         {
             Texture2D newText = new Texture2D((int)sprite.rect.width, (int)sprite.rect.height);
-            Color[] newColors = sprite.texture.GetPixels((int)sprite.textureRect.x,
-                                                         (int)sprite.textureRect.y,
-                                                         (int)sprite.textureRect.width,
-                                                         (int)sprite.textureRect.height);
+            Color[] newColors = sprite.texture.GetPixels((int)sprite.textureRect.x, (int)sprite.textureRect.y, (int)sprite.textureRect.width, (int)sprite.textureRect.height);
             newText.SetPixels(newColors);
             newText.Apply();
             return newText;
