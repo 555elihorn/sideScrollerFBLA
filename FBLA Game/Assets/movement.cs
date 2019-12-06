@@ -38,7 +38,7 @@ public class movement : MonoBehaviour
             
 
             count++;
-            if (count == 4)
+            if (count == 5)
             {
                 if (!(moveSpeed < 0))
                 {

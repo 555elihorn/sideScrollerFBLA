@@ -14,12 +14,12 @@ public class PersuasionScoreSession : MonoBehaviour
     [SerializeField] int winCondition = 10;
     [SerializeField] int score = 0;
     [SerializeField] TextMeshProUGUI scoreText = null;
-    [SerializeField] int rewardPoints = 500;
+    [SerializeField] int rewardPoints = 2000;
 
     void Start()
     {
         myGameSession = FindObjectOfType<GameSession>();
-        scoreText.text = score.ToString() + " / " + winCondition.ToString(); //creates the default score parameters (ex: 0 / 10)
+       // scoreText.text = score.ToString() + " / " + winCondition.ToString(); //creates the default score parameters (ex: 0 / 10)
     }
 
     public void AddToScore()
