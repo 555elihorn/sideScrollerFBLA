@@ -258,6 +258,8 @@ public class DialogueSystem : MonoBehaviour
     private void ResetDialoguePos()
     {
         float textScale = dialogueTextLocalScaleOriginal.y;
+        float continueTextScale = dialogueTextLocalScaleOriginal.y;
+
         var dialogueTextRectTransform = dialogueText.GetComponent<RectTransform>();
         var continueButtonRectTransform = continueButton.GetComponent<RectTransform>();
 
@@ -269,7 +271,7 @@ public class DialogueSystem : MonoBehaviour
                     dialogueTextRectTransform.anchoredPosition.y);
 
         
-        continueButton.transform.localScale = new Vector3(textScale, textScale);
+        continueButton.transform.localScale = new Vector3(continueTextScale, continueTextScale);
         continueButton.GetComponent<RectTransform>().localPosition =
                     new Vector3(( Mathf.Abs(continueButtonRectTransform.anchoredPosition.x)),
                     continueButtonRectTransform.anchoredPosition.y);
@@ -301,13 +303,12 @@ public class DialogueSystem : MonoBehaviour
 
     private void EndConversation()
     {
-        
+        ResetDialoguePos();
         conversationHasStarted = false;
         textDisplay.text = "";
         SetDialogueBoxActive(false);
         index = 0;
         StopCoroutine(Type());
-        ResetDialoguePos();
         fader.FadeOut();
     }
 
