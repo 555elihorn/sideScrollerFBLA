@@ -2,10 +2,10 @@
 This game follows FBLA member Jason as he goes on his journey to complete the BAA.
 
 ## Launching the Game
-To launch the game, download the build file and double-click it.
+To launch the game, download the .exe file and double-click it.
 
 ## Built With
-This game was created with the Unity Game Engine. The assets were created with Aseprite, Piskel, and Gimp.
+This game was created with the Unity Game Engine and Visual Studio. The assets were created with Aseprite, Piskel, and Gimp.
 
 ## Authors
 Tajvir Chahal - Game Programming
