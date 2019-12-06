@@ -968,7 +968,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Quit
+  m_text: 'Restart
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d4ef7893824f5e94dae590ddabf3deef, type: 2}
   m_sharedMaterial: {fileID: -6457051074193057241, guid: d4ef7893824f5e94dae590ddabf3deef,
@@ -1038,9 +1040,9 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 7}
   m_textInfo:
     textComponent: {fileID: 1946990185}
-    characterCount: 4
+    characterCount: 8
     spriteCount: 0
-    spaceCount: 0
+    spaceCount: 1
     wordCount: 1
     linkCount: 0
     lineCount: 1
@@ -1160,7 +1162,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1639379726}
+  m_TargetGraphic: {fileID: 2140542430}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
