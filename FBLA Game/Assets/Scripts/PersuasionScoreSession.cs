@@ -37,12 +37,13 @@ public class PersuasionScoreSession : MonoBehaviour
         }
     }
 
+    /*
     public void Failure() //Exit play mode
     {
-        UnityEditor.EditorApplication.isPlaying = false;
+        //UnityEditor.EditorApplication.isPlaying = false;
         Destroy(gameObject);
     }
-
+    */
 
 
 }
