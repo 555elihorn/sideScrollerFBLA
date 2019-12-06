@@ -4,7 +4,7 @@ using UnityEditor;
 
 namespace UnityStandardAssets.CrossPlatformInput.Inspector
 {
-    [InitializeOnLoad]
+    //[InitializeOnLoad]
     public class CrossPlatformInitialize
     {
         // Custom compiler defines:
@@ -13,6 +13,7 @@ namespace UnityStandardAssets.CrossPlatformInput.Inspector
         // EDITOR_MOBILE_INPUT : denotes that mobile input should be used in editor, if a mobile build target is selected. (i.e. using Unity Remote app).
         // MOBILE_INPUT : denotes that mobile input should be used right now!
 
+        /*
         static CrossPlatformInitialize()
         {
             var defines = GetDefinesList(buildTargetGroups[0]);
@@ -23,7 +24,7 @@ namespace UnityStandardAssets.CrossPlatformInput.Inspector
             }
         }
 
-
+        
         [MenuItem("Mobile Input/Enable")]
         private static void Enable()
         {
@@ -133,5 +134,6 @@ namespace UnityStandardAssets.CrossPlatformInput.Inspector
         {
             return new List<string>(PlayerSettings.GetScriptingDefineSymbolsForGroup(group).Split(';'));
         }
+        */
     }
 }
