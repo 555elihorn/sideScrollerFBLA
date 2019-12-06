@@ -15,6 +15,7 @@ public class DialogueSystem : MonoBehaviour
     bool conversationHasStarted = false;
     bool firstCollision = true;
     bool hasAlreadyBeenConvinced = false;
+    bool eButtonEnabled = true;
     Vector2 Pos;
     Vector3 dialogueBoxLocalScaleOriginal;
     Vector3 dialogueTextLocalScaleOriginal;
@@ -72,6 +73,7 @@ public class DialogueSystem : MonoBehaviour
     IEnumerator Type()
     {
         string currentString = null;
+        eButtonEnabled = false;
 
         if (FindObjectOfType<GameSession>().GetPersuadedNPCList().Contains(transform.position.x.ToString()) == true)
         {
@@ -249,6 +251,8 @@ public class DialogueSystem : MonoBehaviour
 
         }
 
+        eButtonEnabled = true;
+
     }
 
     private void ResetDialoguePos()
@@ -327,12 +331,12 @@ public class DialogueSystem : MonoBehaviour
 
     private void DialogueButtonListener()
     {
-        if (Input.GetKeyDown(KeyCode.E) && !conversationHasStarted)
+        if (Input.GetKeyDown(KeyCode.E) && !conversationHasStarted && eButtonEnabled)
         {
             conversationHasStarted = true;
             StartConversation();
         }
-        else if (Input.GetKeyDown(KeyCode.E))
+        else if (Input.GetKeyDown(KeyCode.E) && eButtonEnabled)
         {
             NextSentence();
         }
