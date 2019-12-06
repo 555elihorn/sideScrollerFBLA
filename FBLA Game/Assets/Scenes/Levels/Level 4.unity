@@ -13268,12 +13268,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f3a8be29e74f4e4882a78b0d2d20ac2, type: 3}
---- !u!1 &1487534091 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8260470739032715174, guid: c4425207d845a17488d3baa204f2213e,
-    type: 3}
-  m_PrefabInstance: {fileID: 1558873225}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1499170637
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32330,6 +32324,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1558873225}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1558873227 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1068273127, guid: c4425207d845a17488d3baa204f2213e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1558873225}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1584316060
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32485,7 +32485,7 @@ PrefabInstance:
         type: 3}
       propertyPath: continueButton
       value: 
-      objectReference: {fileID: 1487534091}
+      objectReference: {fileID: 1558873227}
     - target: {fileID: 2829490263501670137, guid: 00d4aafa56c09644799c9778cbd3d30f,
         type: 3}
       propertyPath: player
@@ -93193,6 +93193,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7113231218504352089, guid: f7f85794da261f742ae458691597f313,
+        type: 3}
+      propertyPath: scenePersist
+      value: 
+      objectReference: {fileID: 1920644865}
+    - target: {fileID: 7113231218504352089, guid: f7f85794da261f742ae458691597f313,
+        type: 3}
+      propertyPath: gameSession
+      value: 
+      objectReference: {fileID: 1330979529}
     - target: {fileID: 7113231218504352088, guid: f7f85794da261f742ae458691597f313,
         type: 3}
       propertyPath: m_Offset.x
@@ -93218,16 +93228,6 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7113231218504352089, guid: f7f85794da261f742ae458691597f313,
-        type: 3}
-      propertyPath: scenePersist
-      value: 
-      objectReference: {fileID: 1920644865}
-    - target: {fileID: 7113231218504352089, guid: f7f85794da261f742ae458691597f313,
-        type: 3}
-      propertyPath: gameSession
-      value: 
-      objectReference: {fileID: 1330979529}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7f85794da261f742ae458691597f313, type: 3}
 --- !u!1001 &442238898569908129

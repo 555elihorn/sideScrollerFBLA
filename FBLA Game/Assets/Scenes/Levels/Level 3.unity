@@ -1088,12 +1088,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f3a8be29e74f4e4882a78b0d2d20ac2, type: 3}
---- !u!1 &354238018 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8260470739032715174, guid: c4425207d845a17488d3baa204f2213e,
-    type: 3}
-  m_PrefabInstance: {fileID: 807270769}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &455664919
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1323,7 +1317,7 @@ PrefabInstance:
         type: 3}
       propertyPath: continueButton
       value: 
-      objectReference: {fileID: 354238018}
+      objectReference: {fileID: 807270770}
     - target: {fileID: 2829490263501670137, guid: 00d4aafa56c09644799c9778cbd3d30f,
         type: 3}
       propertyPath: player
@@ -4554,6 +4548,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4425207d845a17488d3baa204f2213e, type: 3}
+--- !u!1 &807270770 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1068273127, guid: c4425207d845a17488d3baa204f2213e,
+    type: 3}
+  m_PrefabInstance: {fileID: 807270769}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &820323305
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7566,6 +7566,21 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 4.8673706
       objectReference: {fileID: 0}
+    - target: {fileID: 7113231218504352089, guid: f7f85794da261f742ae458691597f313,
+        type: 3}
+      propertyPath: scenepersist
+      value: 
+      objectReference: {fileID: 7407552238083598313}
+    - target: {fileID: 7113231218504352089, guid: f7f85794da261f742ae458691597f313,
+        type: 3}
+      propertyPath: scenePersist
+      value: 
+      objectReference: {fileID: 7407552238083598313}
+    - target: {fileID: 7113231218504352089, guid: f7f85794da261f742ae458691597f313,
+        type: 3}
+      propertyPath: gameSession
+      value: 
+      objectReference: {fileID: 442238898569908130}
     - target: {fileID: 7113231218504352088, guid: f7f85794da261f742ae458691597f313,
         type: 3}
       propertyPath: m_Offset.y
@@ -7586,21 +7601,6 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 0.20499226
       objectReference: {fileID: 0}
-    - target: {fileID: 7113231218504352089, guid: f7f85794da261f742ae458691597f313,
-        type: 3}
-      propertyPath: scenepersist
-      value: 
-      objectReference: {fileID: 7407552238083598313}
-    - target: {fileID: 7113231218504352089, guid: f7f85794da261f742ae458691597f313,
-        type: 3}
-      propertyPath: scenePersist
-      value: 
-      objectReference: {fileID: 7407552238083598313}
-    - target: {fileID: 7113231218504352089, guid: f7f85794da261f742ae458691597f313,
-        type: 3}
-      propertyPath: gameSession
-      value: 
-      objectReference: {fileID: 442238898569908130}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7f85794da261f742ae458691597f313, type: 3}
 --- !u!1001 &1461245880
@@ -82019,22 +82019,22 @@ PrefabInstance:
     - target: {fileID: 521888613325943039, guid: a27534a2a731ce24ebfad5a09bfb10a3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.783996
+      value: -68.523994
       objectReference: {fileID: 0}
     - target: {fileID: 521888613325943039, guid: a27534a2a731ce24ebfad5a09bfb10a3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.87274694
+      value: -12.022747
       objectReference: {fileID: 0}
     - target: {fileID: 521888613325943039, guid: a27534a2a731ce24ebfad5a09bfb10a3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.255859
+      value: -1.7441406
       objectReference: {fileID: 0}
     - target: {fileID: 521888613325943036, guid: a27534a2a731ce24ebfad5a09bfb10a3,
         type: 3}
       propertyPath: orthographic size
-      value: 10
+      value: 6.95
       objectReference: {fileID: 0}
     - target: {fileID: 570439622, guid: a27534a2a731ce24ebfad5a09bfb10a3, type: 3}
       propertyPath: m_Follow
