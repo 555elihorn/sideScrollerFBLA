@@ -13,22 +13,22 @@ public class DialogueSystem : MonoBehaviour
     private int index;
     bool playerWithinDistance = false;
     bool conversationHasStarted = false;
-    bool firstCollision = true;
+    
     bool hasAlreadyBeenConvinced = false;
     bool eButtonEnabled = true;
 
     Vector2 Pos;
     Vector3 dialogueBoxLocalScaleOriginal;
     Vector3 dialogueTextLocalScaleOriginal;
-    Vector3 continueButtonLocalScaleOriginal;
+    Vector3 continueTextLocalScaleOriginal;
     Vector3 dialogueTextRectTransformOriginal;
-    Vector3 continueButtonRectTransformOriginal;
+    Vector3 continueRectTransformOriginal;
 
     //cache
     public TextMeshProUGUI textDisplay;
     public string[] sentences;
     public string[] postPersuasionSentences;
-    ObjectFader eButton;
+    ObjectFader fader;
     GameSession myGameSession;
     Rigidbody2D myRigidBody;
 
@@ -38,7 +38,7 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] float typingSpeed = 0.02f;
     [SerializeField] bool hasMiniGame;
     [SerializeField] GameObject keyIndicator;
-    [SerializeField] GameObject continueButton;
+    [SerializeField] GameObject continueText;
     [SerializeField] GameObject dialogueText;
     [SerializeField] GameObject dialogueBox;
     [SerializeField] GameObject player;
@@ -46,32 +46,32 @@ public class DialogueSystem : MonoBehaviour
     //Called on the first frame
     void Start()
     {
+        //gets component of the NPC game object
         myRigidBody = GetComponent<Rigidbody2D>();
-        eButton = keyIndicator.GetComponent<ObjectFader>();
+        fader = keyIndicator.GetComponent<ObjectFader>();
         myGameSession = FindObjectOfType<GameSession>();
         SetDialogueBoxActive(false);
 
-        float temp = dialogueText.GetComponent<RectTransform>().anchoredPosition.x;
-
+        //Records original transform of dialogue box
         dialogueBoxLocalScaleOriginal = dialogueBox.transform.localScale;
         dialogueTextLocalScaleOriginal = dialogueText.transform.localScale;
-        continueButtonLocalScaleOriginal = continueButton.transform.localScale;
         dialogueTextRectTransformOriginal = dialogueText.GetComponent<RectTransform>().localPosition;
-        continueButtonRectTransformOriginal = continueButton.GetComponent<RectTransform>().localPosition;
+        continueTextLocalScaleOriginal = continueText.transform.localScale;
+        continueRectTransformOriginal = continueText.GetComponent<RectTransform>().localPosition;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(playerWithinDistance)
+        if(playerWithinDistance) //if the player is within the conversation collider...
         {
-            if (player.transform.position.x < myRigidBody.position.x && transform.localScale.x >= 0)
+            if (player.transform.position.x < myRigidBody.position.x && transform.localScale.x >= 0) //if the player is behind the NPC
             {
-                FlipSprite(false, true);
+                FlipSprite(false, true); //flip the sprite to face the player
             }
-            else if(player.transform.position.x > myRigidBody.position.x)
+            else if(player.transform.position.x > myRigidBody.position.x) //if the player is in front of NPC
             {
-                FlipSprite(true, false);
+                FlipSprite(true, false); //face the player
             }
             else
             {
@@ -79,7 +79,7 @@ public class DialogueSystem : MonoBehaviour
             }
         }
        
-        if(playerWithinDistance && firstCollision)
+        if(playerWithinDistance) //if the player is within conversation distance listen for them to press the E key
         {
             DialogueButtonListener();
         }
@@ -94,15 +94,18 @@ public class DialogueSystem : MonoBehaviour
 
         if (FindObjectOfType<GameSession>().GetPersuadedNPCList().Contains(transform.position.x.ToString()) == true)
         {
+            //after persausion game
             SetPersuaded();
         }
 
         if (hasAlreadyBeenConvinced)
         {
+            //Dialogue text after persuasion mini game
             currentString = postPersuasionSentences[index];
         }
         else
         {
+            //normal dialogue
             currentString = sentences[index];
         }
         
@@ -110,43 +113,53 @@ public class DialogueSystem : MonoBehaviour
         {
             if (currentString.Contains("Jason"))
             {
-               var dialogueBoxLocalScale = dialogueBox.transform.localScale;
-                var dialogueTextLocalScale = dialogueText.transform.localScale;
-                var continueButtonLocalScale = continueButton.transform.localScale;
+                /*If the next conversation string involves the player,
+                 find their position and assign the dialogue box over the player position
+                     
+                */
 
+
+                //scales of individual game objects
+                var dialogueBoxLocalScale = dialogueBox.transform.localScale;
+                var dialogueTextLocalScale = dialogueText.transform.localScale;
+                var continueTextLocalScale = continueText.transform.localScale;
+
+                //transforms of game objects
                 var dialogueTextRectTransform = dialogueText.GetComponent<RectTransform>();
-                var continueButtonRectTransform = continueButton.GetComponent<RectTransform>();
+                var continueTextRectTransform = continueText.GetComponent<RectTransform>();
 
                 //dialogue box
                 dialogueBox.transform.localScale = new Vector3((dialogueBoxLocalScale.x * -1), dialogueBoxLocalScale.y, dialogueBoxLocalScale.z);
 
-                //dialoguetext
+                //Sets dialoguetext position
                 dialogueText.transform.localScale = new Vector3((dialogueTextLocalScale.x * -1), dialogueTextLocalScale.y, dialogueTextLocalScale.z);
                 dialogueText.GetComponent<RectTransform>().localPosition =
                     new Vector3((dialogueTextRectTransform.anchoredPosition.x * -1),
                     dialogueTextRectTransform.anchoredPosition.y);
 
-                //dialogue button
-                continueButton.transform.localScale = new Vector3((continueButtonLocalScale.x * -1), continueButtonLocalScale.y, continueButtonLocalScale.z);
-                continueButton.GetComponent<RectTransform>().localPosition =
-                    new Vector3((continueButtonRectTransform.anchoredPosition.x * -1),
-                    continueButtonRectTransform.anchoredPosition.y);
+                //Sets dialogue button position
+                continueText.transform.localScale = new Vector3((continueTextLocalScale.x * -1), continueTextLocalScale.y, continueTextLocalScale.z);
+                continueText.GetComponent<RectTransform>().localPosition =
+                    new Vector3((continueTextRectTransform.anchoredPosition.x * -1),
+                    continueTextRectTransform.anchoredPosition.y);
 
+                // new position of dialogue box
                 Pos = Camera.main.WorldToScreenPoint(player.GetComponent<Rigidbody2D>().position);
                 Pos.y += dialgoueBoxOffsetY;
                 Pos.x -= 50;
 
+                //sets new dialogue position in conversation
                 dialogueBox.transform.position = Pos;
 
-            }
+            } //clean
             else if (dialogueBox.transform.localScale.x < 0)
             {
                 var dialogueBoxLocalScale = dialogueBox.transform.localScale;
                 var dialogueTextLocalScale = dialogueText.transform.localScale;
-                var continueButtonLocalScale = continueButton.transform.localScale;
+                var continueTextLocalScale = continueText.transform.localScale;
 
                 var dialogueTextRectTransform = dialogueText.GetComponent<RectTransform>();
-                var continueButtonRectTransform = continueButton.GetComponent<RectTransform>();
+                var continueTextRectTransform = continueText.GetComponent<RectTransform>();
 
                 dialogueBox.transform.localScale = new Vector3((dialogueBoxLocalScale.x * -1), dialogueBoxLocalScale.y, dialogueBoxLocalScale.z);
 
@@ -155,17 +168,17 @@ public class DialogueSystem : MonoBehaviour
                     new Vector3((dialogueTextRectTransform.anchoredPosition.x * -1),
                     dialogueTextRectTransform.anchoredPosition.y);
 
-                continueButton.transform.localScale = new Vector3((continueButtonLocalScale.x * -1), continueButtonLocalScale.y, continueButtonLocalScale.z);
-                continueButton.GetComponent<RectTransform>().localPosition =
-                    new Vector3((continueButtonRectTransform.anchoredPosition.x * -1),
-                    continueButtonRectTransform.anchoredPosition.y);
+                continueText.transform.localScale = new Vector3((continueTextLocalScale.x * -1), continueTextLocalScale.y, continueTextLocalScale.z);
+                continueText.GetComponent<RectTransform>().localPosition =
+                    new Vector3((continueTextRectTransform.anchoredPosition.x * -1),
+                    continueTextRectTransform.anchoredPosition.y);
 
                 Pos = Camera.main.WorldToScreenPoint(myRigidBody.position);
                 Pos.y += dialgoueBoxOffsetY;
                 Pos.x += dialogueBoxOffsetX;
 
                 dialogueBox.transform.position = Pos;
-            }
+            } //clean
         }
         else if(transform.localScale.x != 1f)
         {
@@ -173,10 +186,10 @@ public class DialogueSystem : MonoBehaviour
             {
                 var dialogueBoxLocalScale = dialogueBox.transform.localScale;
                 var dialogueTextLocalScale = dialogueText.transform.localScale;
-                var continueButtonLocalScale = continueButton.transform.localScale;
+                var continueTextLocalScale = continueText.transform.localScale;
 
                 var dialogueTextRectTransform = dialogueText.GetComponent<RectTransform>();
-                var continueButtonRectTransform = continueButton.GetComponent<RectTransform>();
+                var continueTextRectTransform = continueText.GetComponent<RectTransform>();
 
                 //dialogue box
                 dialogueBox.transform.localScale = new Vector3(Mathf.Abs(dialogueBoxLocalScale.x), dialogueBoxLocalScale.y, dialogueBoxLocalScale.z);
@@ -188,25 +201,25 @@ public class DialogueSystem : MonoBehaviour
                     dialogueTextRectTransform.anchoredPosition.y);
 
                 //dialogue button
-                continueButton.transform.localScale = new Vector3((continueButtonLocalScale.x * -1), continueButtonLocalScale.y, continueButtonLocalScale.z);
-                continueButton.GetComponent<RectTransform>().localPosition =
-                    new Vector3((continueButtonRectTransform.anchoredPosition.x * -1),
-                    continueButtonRectTransform.anchoredPosition.y);
+                continueText.transform.localScale = new Vector3((continueTextLocalScale.x * -1), continueTextLocalScale.y, continueTextLocalScale.z);
+                continueText.GetComponent<RectTransform>().localPosition =
+                    new Vector3((continueTextRectTransform.anchoredPosition.x * -1),
+                    continueTextRectTransform.anchoredPosition.y);
 
                 Pos = Camera.main.WorldToScreenPoint(player.GetComponent<Rigidbody2D>().position);
                 Pos.y += dialgoueBoxOffsetY;
                 Pos.x += dialogueBoxOffsetX;
 
                 dialogueBox.transform.position = Pos;
-            }
-            else if (currentString.Contains("Jason") && index == 0)
+            } //clean
+            else if (currentString.Contains("Jason") && index == 0) // clean
             {
                 var dialogueBoxLocalScale = dialogueBox.transform.localScale;
                 var dialogueTextLocalScale = dialogueText.transform.localScale;
-                var continueButtonLocalScale = continueButton.transform.localScale;
+                var continueTextLocalScale = continueText.transform.localScale;
 
                 var dialogueTextRectTransform = dialogueText.GetComponent<RectTransform>();
-                var continueButtonRectTransform = continueButton.GetComponent<RectTransform>();
+                var continueTextRectTransform = continueText.GetComponent<RectTransform>();
 
                 //dialogue box
                 dialogueBox.transform.localScale = new Vector3(Mathf.Abs(dialogueBoxLocalScale.x), dialogueBoxLocalScale.y, dialogueBoxLocalScale.z);
@@ -218,10 +231,10 @@ public class DialogueSystem : MonoBehaviour
                     dialogueTextRectTransform.anchoredPosition.y);
 
                 //dialogue button
-                continueButton.transform.localScale = new Vector3((continueButtonLocalScale.x), continueButtonLocalScale.y, continueButtonLocalScale.z);
-                continueButton.GetComponent<RectTransform>().localPosition =
-                    new Vector3((continueButtonRectTransform.anchoredPosition.x),
-                    continueButtonRectTransform.anchoredPosition.y);
+                continueText.transform.localScale = new Vector3((continueTextLocalScale.x), continueTextLocalScale.y, continueTextLocalScale.z);
+                continueText.GetComponent<RectTransform>().localPosition =
+                    new Vector3((continueTextRectTransform.anchoredPosition.x),
+                    continueTextRectTransform.anchoredPosition.y);
 
                 Pos = Camera.main.WorldToScreenPoint(player.GetComponent<Rigidbody2D>().position);
                 Pos.y += dialgoueBoxOffsetY;
@@ -233,10 +246,10 @@ public class DialogueSystem : MonoBehaviour
             {
                 var dialogueBoxLocalScale = dialogueBox.transform.localScale;
                 var dialogueTextLocalScale = dialogueText.transform.localScale;
-                var continueButtonLocalScale = continueButton.transform.localScale;
+                var continueTextLocalScale = continueText.transform.localScale;
 
                 var dialogueTextRectTransform = dialogueText.GetComponent<RectTransform>();
-                var continueButtonRectTransform = continueButton.GetComponent<RectTransform>();
+                var continueTextRectTransform = continueText.GetComponent<RectTransform>();
 
                 //dialogue box
                 dialogueBox.transform.localScale = new Vector3((dialogueBoxLocalScale.x * -1), dialogueBoxLocalScale.y, dialogueBoxLocalScale.z);
@@ -248,17 +261,17 @@ public class DialogueSystem : MonoBehaviour
                     dialogueTextRectTransform.anchoredPosition.y);
 
                 //dialogue button
-                continueButton.transform.localScale = new Vector3((continueButtonLocalScale.x * -1), continueButtonLocalScale.y, continueButtonLocalScale.z);
-                continueButton.GetComponent<RectTransform>().localPosition =
-                    new Vector3((continueButtonRectTransform.anchoredPosition.x * -1),
-                    continueButtonRectTransform.anchoredPosition.y);
+                continueText.transform.localScale = new Vector3((continueTextLocalScale.x * -1), continueTextLocalScale.y, continueTextLocalScale.z);
+                continueText.GetComponent<RectTransform>().localPosition =
+                    new Vector3((continueTextRectTransform.anchoredPosition.x * -1),
+                    continueTextRectTransform.anchoredPosition.y);
 
                 Pos = Camera.main.WorldToScreenPoint(myRigidBody.position);
                 Pos.y += dialgoueBoxOffsetY;
                 Pos.x -= 50;
 
                 dialogueBox.transform.position = Pos;
-            }
+            }//clean
         }
         
         foreach (char letter in currentString)
@@ -275,35 +288,35 @@ public class DialogueSystem : MonoBehaviour
     //Reset dialogue box
     private void ResetDialoguePos()
     {
-        float textScale = dialogueTextLocalScaleOriginal.y;
-        float continueTextScale = dialogueTextLocalScaleOriginal.y;
+        float dialogueTextScale = dialogueTextLocalScaleOriginal.y;
+        float continueTextScale = continueTextLocalScaleOriginal.y;
 
         var dialogueTextRectTransform = dialogueText.GetComponent<RectTransform>();
-        var continueButtonRectTransform = continueButton.GetComponent<RectTransform>();
+        var continueTextRectTransform = continueText.GetComponent<RectTransform>();
 
         dialogueBox.transform.localScale = dialogueBoxLocalScaleOriginal;
         
-        dialogueText.transform.localScale = new Vector3(textScale, textScale);
+        dialogueText.transform.localScale = new Vector3(dialogueTextScale, dialogueTextScale);
         dialogueText.GetComponent<RectTransform>().localPosition =
                     new Vector3( (Mathf.Abs(dialogueTextRectTransform.anchoredPosition.x) * -1 ),
                     dialogueTextRectTransform.anchoredPosition.y);
 
         
-        continueButton.transform.localScale = new Vector3(continueTextScale, continueTextScale);
-        continueButton.GetComponent<RectTransform>().localPosition =
-                    new Vector3(( Mathf.Abs(continueButtonRectTransform.anchoredPosition.x)),
-                    continueButtonRectTransform.anchoredPosition.y);
+        continueText.transform.localScale = new Vector3(continueTextScale, continueTextScale);
+        continueText.GetComponent<RectTransform>().localPosition =
+                    new Vector3(( Mathf.Abs(continueTextRectTransform.anchoredPosition.x)),
+                    continueTextRectTransform.anchoredPosition.y);
     }
 
     //On exit of collider reset the npc position
     private void OnTriggerExit2D(Collider2D collision)
     {
         playerWithinDistance = false;
-        var temp = collision.transform.position.x;
+        var playerPosX = collision.transform.position.x;
 
         if (collision.gameObject.name == "Player" && collision.ToString().Contains("Capsule"))
         {
-            if (temp < myRigidBody.position.x)
+            if (playerPosX < myRigidBody.position.x)
             {
                 FlipSprite(true, false); //flip to orginal position
             }
@@ -314,17 +327,17 @@ public class DialogueSystem : MonoBehaviour
     //On enter of collider have the NPC face the player
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        var temp = collision.transform.position.x;
+        var playerPosX = collision.transform.position.x;
 
         if (collision.gameObject.name == "Player" && collision.ToString().Contains("Capsule"))
         {
-            if (temp < myRigidBody.position.x)
+            if (playerPosX < myRigidBody.position.x)
             {
                 FlipSprite(false, false); //flip towards player
             }
             
             keyIndicator.SetActive(true);
-            eButton.FadeIn();
+            fader.FadeIn();
 
             playerWithinDistance = true;
         }
@@ -347,11 +360,11 @@ public class DialogueSystem : MonoBehaviour
 
         if(playerWithinDistance)
         {
-            eButton.FadeIn();
+            fader.FadeIn();
         }
         else
         {
-            eButton.FadeOut();
+            fader.FadeOut();
         }
         
     }
@@ -373,7 +386,7 @@ public class DialogueSystem : MonoBehaviour
         player.GetComponent<PlayerMovement>().SetMovement(false);
 
         //Fade out E button suggestion
-        eButton.FadeOut();
+        fader.FadeOut();
 
         //start dialogue corutine that generates the sentences
         StartCoroutine(Dialogue());
@@ -396,7 +409,7 @@ public class DialogueSystem : MonoBehaviour
     //Play the next sentence
     public void NextSentence()
     {
-        continueButton.SetActive(true);
+        continueText.SetActive(true);
 
         if(FindObjectOfType<GameSession>().GetPersuadedNPCList().Contains(transform.position.x.ToString()) == true) 
         {
@@ -429,7 +442,7 @@ public class DialogueSystem : MonoBehaviour
                
                 SceneManager.LoadScene("Persuasion_Mini_Game");
                 textDisplay.text = "";
-                continueButton.SetActive(false);
+                continueText.SetActive(false);
             }
             else
             {
@@ -458,7 +471,7 @@ public class DialogueSystem : MonoBehaviour
     private void SetDialogueBoxActive(bool value)
     {
         dialogueBox.SetActive(value);
-        continueButton.SetActive(value);
+        continueText.SetActive(value);
         dialogueText.SetActive(value);
     }
 
@@ -472,9 +485,6 @@ public class DialogueSystem : MonoBehaviour
             keyIndicator.transform.localScale = new Vector2(1f, 1f);
             return;
         }
-
-        print(player.transform.localScale.x);
-        print(transform.localScale.x);
 
         if (player.transform.localScale.x == transform.localScale.x || exception)
         {

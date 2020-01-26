@@ -73,11 +73,13 @@ public class ObjectFader : MonoBehaviour
     public void FadeIn()
     {
         gameObjectFadeIn = true;
+        gameObjectFadeOut = false;
     }
 
     //fades out e suggestion button
     public void FadeOut()
     {
+        gameObjectFadeIn = false;
         gameObjectFadeOut = true;
     }
 
