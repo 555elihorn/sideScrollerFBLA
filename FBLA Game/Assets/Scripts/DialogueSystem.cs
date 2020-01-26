@@ -65,24 +65,16 @@ public class DialogueSystem : MonoBehaviour
     {
         if(playerWithinDistance)
         {
-            if (player.transform.position.x == myRigidBody.position.x)
+            if (player.transform.position.x < myRigidBody.position.x && transform.localScale.x >= 0)
             {
-                print("Third Case");
-            }
-            else if (player.transform.position.x < myRigidBody.position.x && transform.localScale.x >= 0)
-            {
-                print("FIRST CASE");
                 FlipSprite(false, true);
             }
             else if(player.transform.position.x > myRigidBody.position.x)
             {
-                print("Second Case"); 
                 FlipSprite(true, false);
             }
-            
             else
             {
-                print("Fourth Case");
                 //do nothing
             }
         }
@@ -345,10 +337,16 @@ public class DialogueSystem : MonoBehaviour
         ResetDialoguePos();
         conversationHasStarted = false;
         textDisplay.text = "";
+
+        print("Conversation has ended");
+        player.GetComponent<PlayerMovement>().SetMovement(true);
+
         SetDialogueBoxActive(false);
         index = 0;
         StopCoroutine(Dialogue());
         fader.FadeOut();
+
+        
     }
 
     //Start dialogue conversation
@@ -359,14 +357,18 @@ public class DialogueSystem : MonoBehaviour
         Pos.y += dialgoueBoxOffsetY;
         Pos.x += dialogueBoxOffsetX;
 
+        //prepare dialogue box
         SetDialogueBoxActive(true);
         dialogueBox.transform.position = Pos; 
         textDisplay.text = "";
 
-        print("Startconversation: " + hasAlreadyBeenConvinced);
+        //lock playermovement
+        player.GetComponent<PlayerMovement>().SetMovement(false);
 
+        //Fade out E button suggestion
         fader.FadeOut();
 
+        //start dialogue corutine that generates the sentences
         StartCoroutine(Dialogue());
     }
 
@@ -425,6 +427,7 @@ public class DialogueSystem : MonoBehaviour
             else
             {
                 SetDialogueBoxActive(false);
+                EndConversation();
             }
         }
         else

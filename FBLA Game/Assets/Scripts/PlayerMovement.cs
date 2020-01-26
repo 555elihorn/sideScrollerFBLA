@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     BoxCollider2D myFeet;
     PlayerState myState;
     float gravityScaleAtStart;
+    bool movementEnabled;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
         myFeet = GetComponent<BoxCollider2D>();
         myState = GetComponent<PlayerState>();
         gravityScaleAtStart = myRigidBody.gravityScale;
+        movementEnabled = true;
     }
 
     // Update is called once per frame
@@ -40,10 +42,13 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        Run();
-        ClimbLadder();
-        FlipSprite();
-        Jump();
+        if(movementEnabled)
+        {
+            Run();
+            ClimbLadder();
+            FlipSprite();
+            Jump();
+        }
     }
 
     //Have the player Run
@@ -102,5 +107,10 @@ public class PlayerMovement : MonoBehaviour
         bool playerHasVerticalSpeed = Mathf.Abs(myRigidBody.velocity.y) > Mathf.Epsilon;
         myAnimator.SetBool("Climbing", playerHasVerticalSpeed);
 
+    }
+
+    public void SetMovement(bool trueOrFalse)
+    {
+        movementEnabled = trueOrFalse;
     }
 }
