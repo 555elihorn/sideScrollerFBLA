@@ -25,7 +25,24 @@ public class ObjectFader : MonoBehaviour
     private void Update()
     {
         var color = material.color;
-        if (gameObjectFadeIn)
+
+        if(gameObjectFadeIn == true && gameObjectFadeOut == true)
+        {
+            print("CHECK!");
+            gameObjectFadeOut = false;
+
+            if (color.a <= 1)
+            {
+                material.color = new Color(color.r, color.g, color.b, color.a + (fadeInPerSecond * Time.deltaTime));
+                color = material.color;
+            }
+            else
+            {
+                gameObjectFadeIn = false;
+            }
+
+        }
+        else if (gameObjectFadeIn)
         {
             if (color.a <= 1)
             {

@@ -282,10 +282,14 @@ public class DialogueSystem : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         playerWithinDistance = false;
+        var temp = collision.transform.position.x;
 
         if (collision.gameObject.name == "Player" && collision.ToString().Contains("Capsule"))
         {
-            FlipSprite(true);
+            if (temp < myRigidBody.position.x)
+            {
+                FlipSprite(true);
+            }
             EndConversation();
         }
     }
@@ -293,15 +297,21 @@ public class DialogueSystem : MonoBehaviour
     //On enter of collider have the NPC face the player
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        var temp = collision.transform.position.x;
+
         if (collision.gameObject.name == "Player" && collision.ToString().Contains("Capsule"))
         {
-            FlipSprite(false);
+            if (temp < myRigidBody.position.x)
+            {
+                FlipSprite(false);
+            }
+            
             keyIndicator.SetActive(true);
             fader.FadeIn();
 
             playerWithinDistance = true;
         }
+
     }
 
     //End dialogue conversation
