@@ -16,6 +16,7 @@ public class DialogueSystem : MonoBehaviour
     bool firstCollision = true;
     bool hasAlreadyBeenConvinced = false;
     bool eButtonEnabled = true;
+
     Vector2 Pos;
     Vector3 dialogueBoxLocalScaleOriginal;
     Vector3 dialogueTextLocalScaleOriginal;
@@ -62,11 +63,35 @@ public class DialogueSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(playerWithinDistance)
+        {
+            if (player.transform.position.x == myRigidBody.position.x)
+            {
+                print("Third Case");
+            }
+            else if (player.transform.position.x < myRigidBody.position.x && transform.localScale.x >= 0)
+            {
+                print("FIRST CASE");
+                FlipSprite(false, true);
+            }
+            else if(player.transform.position.x > myRigidBody.position.x)
+            {
+                print("Second Case"); 
+                FlipSprite(true, false);
+            }
+            
+            else
+            {
+                print("Fourth Case");
+                //do nothing
+            }
+        }
+       
         if(playerWithinDistance && firstCollision)
         {
             DialogueButtonListener();
-
         }
+
     }
 
     //Corutine that handles dialogue
@@ -288,7 +313,7 @@ public class DialogueSystem : MonoBehaviour
         {
             if (temp < myRigidBody.position.x)
             {
-                FlipSprite(true);
+                FlipSprite(true, false); //flip to orginal position
             }
             EndConversation();
         }
@@ -303,7 +328,7 @@ public class DialogueSystem : MonoBehaviour
         {
             if (temp < myRigidBody.position.x)
             {
-                FlipSprite(false);
+                FlipSprite(false, false); //flip towards player
             }
             
             keyIndicator.SetActive(true);
@@ -428,7 +453,7 @@ public class DialogueSystem : MonoBehaviour
     }
 
     //Flip NPC Sprite
-    private void FlipSprite(bool reset)
+    private void FlipSprite(bool reset, bool exception)
     {
         
         if(reset)
@@ -437,9 +462,13 @@ public class DialogueSystem : MonoBehaviour
             keyIndicator.transform.localScale = new Vector2(1f, 1f);
             return;
         }
-        
-        if (player.transform.localScale.x == transform.localScale.x)
+
+        print(player.transform.localScale.x);
+        print(transform.localScale.x);
+
+        if (player.transform.localScale.x == transform.localScale.x || exception)
         {
+            print("SHOULD BE DOING THIS");
             transform.localScale = new Vector2(transform.localScale.x * -1, 1f);
             keyIndicator.transform.localScale = new Vector2(transform.localScale.x, 1f);
             return;
