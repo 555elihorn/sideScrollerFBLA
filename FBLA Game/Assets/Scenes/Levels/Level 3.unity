@@ -1481,6 +1481,11 @@ PrefabInstance:
       propertyPath: sentences.Array.data[2]
       value: 'Confused Blob: But the lava can lead to riches...'
       objectReference: {fileID: 0}
+    - target: {fileID: 2829490263501670137, guid: 00d4aafa56c09644799c9778cbd3d30f,
+        type: 3}
+      propertyPath: continueText
+      value: 
+      objectReference: {fileID: 807270770}
     - target: {fileID: 4826508213253813527, guid: 00d4aafa56c09644799c9778cbd3d30f,
         type: 3}
       propertyPath: m_Color.r

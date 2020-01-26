@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 4826508213253813527}
   - component: {fileID: 4062011628878422304}
   - component: {fileID: 1094548464886240763}
-  - component: {fileID: 6282541753175063895}
   - component: {fileID: 2829490263501670137}
+  - component: {fileID: 6563498854552958706}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -114,7 +114,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4990894287180581463}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -123,32 +123,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0.008909702, y: 0.00901711}
   m_Size: {x: 0.6021204, y: 0.64967275}
   m_Direction: 0
---- !u!61 &6282541753175063895
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4990894287180581463}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.01594901, y: 1.0500956}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.75, y: 0.625}
-    newSize: {x: 0.75, y: 0.625}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 5.270043, y: 2.8124323}
-  m_EdgeRadius: 0
 --- !u!114 &2829490263501670137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,22 +137,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textDisplay: {fileID: 0}
   sentences:
-  - 'NPC: I love You'
-  - 'Player: SAMPLE FSDFSDFESDF SAMPLE FSDFSDFESDF'
-  - 'NPC: SDFDSFSDF'
-  - 'NPC: FSDFSDFFESDF'
-  - 'NPC: SDFSDFESDF'
-  - 'Player: SDFSDFESSDFSDFE'
-  sample: []
+  - 'Dio: Welcome to FbLA Land!'
+  - 'Jason: Why am I here'
+  - 'Dio: You''re here to complete the BAA Challenge!'
+  - 'Dio: Collect enough BAA points and you can move to the next level!'
+  - 'Jason: Alright let''s do it.'
+  postPersuasionSentences:
+  - Wow I really should join FBLA!
+  - Im gonna find my local chapter!
   dialgoueBoxOffsetY: 150
   dialogueBoxOffsetX: 50
   typingSpeed: 0.05
-  hasMiniGame: 0
+  hasMiniGame: 1
   keyIndicator: {fileID: 8968607881673115526}
-  continueButton: {fileID: 0}
+  continueText: {fileID: 0}
   dialogueText: {fileID: 0}
   dialogueBox: {fileID: 0}
   player: {fileID: 0}
+--- !u!61 &6563498854552958706
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4990894287180581463}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 1.4799151}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.75, y: 0.625}
+    newSize: {x: 0.75, y: 0.625}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 6, y: 7}
+  m_EdgeRadius: 0
 --- !u!1 &8968607881673115526
 GameObject:
   m_ObjectHideFlags: 0
