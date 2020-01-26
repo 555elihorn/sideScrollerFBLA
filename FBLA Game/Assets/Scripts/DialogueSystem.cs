@@ -28,7 +28,7 @@ public class DialogueSystem : MonoBehaviour
     public TextMeshProUGUI textDisplay;
     public string[] sentences;
     public string[] postPersuasionSentences;
-    ObjectFader fader;
+    ObjectFader eButton;
     GameSession myGameSession;
     Rigidbody2D myRigidBody;
 
@@ -47,7 +47,7 @@ public class DialogueSystem : MonoBehaviour
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
-        fader = keyIndicator.GetComponent<ObjectFader>();
+        eButton = keyIndicator.GetComponent<ObjectFader>();
         myGameSession = FindObjectOfType<GameSession>();
         SetDialogueBoxActive(false);
 
@@ -324,7 +324,7 @@ public class DialogueSystem : MonoBehaviour
             }
             
             keyIndicator.SetActive(true);
-            fader.FadeIn();
+            eButton.FadeIn();
 
             playerWithinDistance = true;
         }
@@ -344,8 +344,15 @@ public class DialogueSystem : MonoBehaviour
         SetDialogueBoxActive(false);
         index = 0;
         StopCoroutine(Dialogue());
-        fader.FadeOut();
 
+        if(playerWithinDistance)
+        {
+            eButton.FadeIn();
+        }
+        else
+        {
+            eButton.FadeOut();
+        }
         
     }
 
@@ -366,7 +373,7 @@ public class DialogueSystem : MonoBehaviour
         player.GetComponent<PlayerMovement>().SetMovement(false);
 
         //Fade out E button suggestion
-        fader.FadeOut();
+        eButton.FadeOut();
 
         //start dialogue corutine that generates the sentences
         StartCoroutine(Dialogue());
