@@ -174,4 +174,10 @@ public class GameSession : MonoBehaviour
     {
         return persuadedNPCS;
     }
+
+    public void changeWinCondition(int newCondition)
+    {
+        winCondition = newCondition;
+        scoreText.text = 0 + " / " + winCondition.ToString();
+    }
 }
