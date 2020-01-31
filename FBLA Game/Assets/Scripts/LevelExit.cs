@@ -7,7 +7,7 @@ public class LevelExit : MonoBehaviour
 {
     //config
     [SerializeField] float LevelLoadDelay = 1f;
-    [SerializeField] GameObject scenePersist;
+    [SerializeField] ScenePersist sc;
     
 
     //Whenever the player enters collide run this
@@ -15,7 +15,8 @@ public class LevelExit : MonoBehaviour
     {
         if (FindObjectOfType<GameSession>().ScoreIsEqualToWinCondition())
         {
-            Destroy(scenePersist);
+            print(sc.name);
+            //Destroy(scenePersist);
             StartCoroutine(LoadNextLevel());
         }
     }
@@ -29,10 +30,9 @@ public class LevelExit : MonoBehaviour
         int nextSceneIndex = currentSceneIndex + 1;
         string nextSceneName = NameOfSceneByBuildIndex(nextSceneIndex);
 
-        print(nextSceneName);
+        
 
-        
-        
+
         if (nextSceneName.Equals("Level 1"))
         {
             print("check");
@@ -51,7 +51,11 @@ public class LevelExit : MonoBehaviour
         {
             //FindObjectOfType<GameSession>().changeWinCondition(4000);
         }
-        
+
+
+        GameObject newGO = new GameObject();
+        sc.transform.parent = newGO.transform;
+
         SceneManager.LoadScene(currentSceneIndex + 1);
     }
 
