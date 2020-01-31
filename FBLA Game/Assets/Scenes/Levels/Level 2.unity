@@ -99503,6 +99503,11 @@ PrefabInstance:
       propertyPath: gameSession
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7113231218504352088, guid: f7f85794da261f742ae458691597f313,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7f85794da261f742ae458691597f313, type: 3}
 --- !u!1001 &7407552238083598312

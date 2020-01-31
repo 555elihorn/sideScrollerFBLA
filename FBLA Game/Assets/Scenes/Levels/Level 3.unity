@@ -8023,17 +8023,17 @@ PrefabInstance:
     - target: {fileID: 7113231218504352088, guid: f7f85794da261f742ae458691597f313,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.014981948
+      value: 0.014981955
       objectReference: {fileID: 0}
     - target: {fileID: 7113231218504352088, guid: f7f85794da261f742ae458691597f313,
         type: 3}
       propertyPath: m_Offset.x
-      value: 0.00674285
+      value: -0.20291474
       objectReference: {fileID: 0}
     - target: {fileID: 7113231218504352088, guid: f7f85794da261f742ae458691597f313,
         type: 3}
       propertyPath: m_Size.x
-      value: 0.20499226
+      value: 0.6243076
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7f85794da261f742ae458691597f313, type: 3}

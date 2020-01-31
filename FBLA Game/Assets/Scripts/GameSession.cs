@@ -178,6 +178,8 @@ public class GameSession : MonoBehaviour
     public void changeWinCondition(int newCondition)
     {
         winCondition = newCondition;
+        score = 0;
+        scoreText.color = Color.white;
         scoreText.text = 0 + " / " + winCondition.ToString();
     }
 }
