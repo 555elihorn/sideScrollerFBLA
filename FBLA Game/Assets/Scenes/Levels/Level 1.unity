@@ -5020,6 +5020,11 @@ PrefabInstance:
       propertyPath: continueText
       value: 
       objectReference: {fileID: 1068273127}
+    - target: {fileID: 2829490263501670137, guid: 00d4aafa56c09644799c9778cbd3d30f,
+        type: 3}
+      propertyPath: typingSpeed
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 4826508213253813527, guid: 00d4aafa56c09644799c9778cbd3d30f,
         type: 3}
       propertyPath: m_Color.r
@@ -27019,7 +27024,7 @@ PrefabInstance:
     - target: {fileID: 442238898899150666, guid: d0a1613287c324347bc56b93a65eea41,
         type: 3}
       propertyPath: m_Name
-      value: Game Session 1
+      value: '*Game Session 1*'
       objectReference: {fileID: 0}
     - target: {fileID: 442238898899150668, guid: d0a1613287c324347bc56b93a65eea41,
         type: 3}
@@ -27153,22 +27158,22 @@ PrefabInstance:
     - target: {fileID: 521888613325943039, guid: a27534a2a731ce24ebfad5a09bfb10a3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.783996
+      value: -14.303997
       objectReference: {fileID: 0}
     - target: {fileID: 521888613325943039, guid: a27534a2a731ce24ebfad5a09bfb10a3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.87274694
+      value: 8.087254
       objectReference: {fileID: 0}
     - target: {fileID: 521888613325943039, guid: a27534a2a731ce24ebfad5a09bfb10a3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.255859
+      value: -1.7441406
       objectReference: {fileID: 0}
     - target: {fileID: 521888613325943036, guid: a27534a2a731ce24ebfad5a09bfb10a3,
         type: 3}
       propertyPath: orthographic size
-      value: 10
+      value: 6.95
       objectReference: {fileID: 0}
     - target: {fileID: 570439622, guid: a27534a2a731ce24ebfad5a09bfb10a3, type: 3}
       propertyPath: m_Follow

@@ -1199,12 +1199,12 @@ PrefabInstance:
     - target: {fileID: 8968607882281275378, guid: 00d4aafa56c09644799c9778cbd3d30f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.67
+      value: 0.56
       objectReference: {fileID: 0}
     - target: {fileID: 8968607882281275378, guid: 00d4aafa56c09644799c9778cbd3d30f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.28
+      value: 2.27
       objectReference: {fileID: 0}
     - target: {fileID: 8968607882281275378, guid: 00d4aafa56c09644799c9778cbd3d30f,
         type: 3}
@@ -1259,7 +1259,7 @@ PrefabInstance:
     - target: {fileID: 2829490263501670137, guid: 00d4aafa56c09644799c9778cbd3d30f,
         type: 3}
       propertyPath: postPersuasionSentences.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2829490263501670137, guid: 00d4aafa56c09644799c9778cbd3d30f,
         type: 3}
@@ -1329,7 +1329,7 @@ PrefabInstance:
     - target: {fileID: 2829490263501670137, guid: 00d4aafa56c09644799c9778cbd3d30f,
         type: 3}
       propertyPath: hasMiniGame
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2829490263501670137, guid: 00d4aafa56c09644799c9778cbd3d30f,
         type: 3}
@@ -1339,7 +1339,7 @@ PrefabInstance:
     - target: {fileID: 2829490263501670137, guid: 00d4aafa56c09644799c9778cbd3d30f,
         type: 3}
       propertyPath: postPersuasionSentences.Array.data[0]
-      value: Wow you reminded me of the good old days
+      value: Wow
       objectReference: {fileID: 0}
     - target: {fileID: 2829490263501670137, guid: 00d4aafa56c09644799c9778cbd3d30f,
         type: 3}
@@ -99347,7 +99347,7 @@ PrefabInstance:
     - target: {fileID: 521888613325943039, guid: a27534a2a731ce24ebfad5a09bfb10a3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.937253
+      value: 10.294252
       objectReference: {fileID: 0}
     - target: {fileID: 521888613325943039, guid: a27534a2a731ce24ebfad5a09bfb10a3,
         type: 3}
@@ -99369,7 +99369,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 570439623, guid: a27534a2a731ce24ebfad5a09bfb10a3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.937253
+      value: 10.294252
       objectReference: {fileID: 0}
     - target: {fileID: 570439623, guid: a27534a2a731ce24ebfad5a09bfb10a3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -99496,7 +99496,7 @@ PrefabInstance:
     - target: {fileID: 6883039690471815561, guid: b6a4935b457ede14baeb9e00e23919a8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.14
+      value: 0.497
       objectReference: {fileID: 0}
     - target: {fileID: 6883039690471815561, guid: b6a4935b457ede14baeb9e00e23919a8,
         type: 3}

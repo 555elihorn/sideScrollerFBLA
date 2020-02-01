@@ -106,7 +106,7 @@ public class ScenePersist : MonoBehaviour
     }
 
     //Gets the list of coins
-    public void GetScenePersistChildren()
+    public void GetScenePersistCoinList()
     {
 
         int children = transform.childCount;

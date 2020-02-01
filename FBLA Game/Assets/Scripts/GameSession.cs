@@ -15,6 +15,8 @@ public class GameSession : MonoBehaviour
     Vector3 playerScaleVector;
     List<string> tempChildList;
     List<string> persuadedNPCS = new List<string>();
+    
+
 
     //cache
     GameObject player;
@@ -26,6 +28,11 @@ public class GameSession : MonoBehaviour
     [SerializeField] TextMeshProUGUI livesText = null;
     [SerializeField] TextMeshProUGUI scoreText = null;
     [SerializeField] int winCondition = 5000;
+    [SerializeField] bool newLevel = true;
+
+    //tests
+    [SerializeField] int index = 0;
+    [SerializeField] float playerPosX = 0;
 
     //Awake is called at start of gameobject initalization
     private void Awake()
@@ -38,7 +45,7 @@ public class GameSession : MonoBehaviour
         else
         {
             var currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-            SetPreviousScene(currentSceneIndex);
+            //SetPreviousScene(currentSceneIndex);
             DontDestroyOnLoad(gameObject);
 
         }
@@ -109,6 +116,8 @@ public class GameSession : MonoBehaviour
     //Sets previous scnee
     public void SetPreviousScene(int sceneIndex)
     {
+        print("SETTING PREVIOUS SCENE!");
+        index = previousScene;
         previousScene = sceneIndex;
     }
 
@@ -129,6 +138,8 @@ public class GameSession : MonoBehaviour
     {
         playerPosition = newPosition;
 
+        playerPosX = newPosition.position.x;
+
         playerPositionVector = new Vector3(newPosition.position.x, newPosition.position.y, newPosition.position.z);
         playerScaleVector = new Vector3(newPosition.localScale.x, newPosition.localScale.y, newPosition.localScale.z);
     }
@@ -137,6 +148,11 @@ public class GameSession : MonoBehaviour
     public Vector3 GetTemporaryLocation()
     {
         return playerPositionVector;
+    }
+
+    public float getPlayerXPos()
+    {
+        return playerPosX;
     }
 
     //gets player vector scale
@@ -163,6 +179,12 @@ public class GameSession : MonoBehaviour
         tempChildList = null;
     }
 
+    public void resetPlayerLists()
+    {
+        playerPositionVector = new Vector3(0, 0, 0);
+        playerScaleVector = new Vector3(0, 0, 0);
+    }
+
     //Adds persuaded npc to persuaded npc list
     public void AddPersuadedNPC(string npcPosititon)
     {
@@ -181,5 +203,15 @@ public class GameSession : MonoBehaviour
         score = 0;
         scoreText.color = Color.white;
         scoreText.text = 0 + " / " + winCondition.ToString();
+    }
+
+    public void SetIfNewLevel(bool LevelChange)
+    {
+        newLevel = LevelChange;
+    }
+
+    public bool GetIfNewLevel()
+    {
+        return newLevel;
     }
 }

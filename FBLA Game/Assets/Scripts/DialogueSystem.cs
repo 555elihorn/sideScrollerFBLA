@@ -483,13 +483,15 @@ public class DialogueSystem : MonoBehaviour
             }
             else if (hasMiniGame) //else if at the end of the conversation, start the mini game
             {
-                
                 //sets current level
-                myGameSession.SetPreviousScene(SceneManager.GetActiveScene().buildIndex);
+                FindObjectOfType<GameSession>().SetPreviousScene(SceneManager.GetActiveScene().buildIndex);
 
                 //Records play position and sets the NPC pos
-                FindObjectOfType<PlayerState>().RecordPlayerPosition();
-                FindObjectOfType<ScenePersist>().GetScenePersistChildren();
+                RecordPlayerPosition();
+                FindObjectOfType<GameSession>().SetIfNewLevel(false);
+
+                //get coin list
+                FindObjectOfType<ScenePersist>().GetScenePersistCoinList();
 
                 //If the persuaded NPC list does not cotain this NPC, add its position
                 if (FindObjectOfType<GameSession>().GetPersuadedNPCList().Contains(transform.position.x.ToString()) != true)
@@ -561,5 +563,11 @@ public class DialogueSystem : MonoBehaviour
     void SetPersuaded()
     {
         hasAlreadyBeenConvinced = true;
+    }
+
+    public void RecordPlayerPosition()
+    {
+        var temporaryPlayerPosition = FindObjectOfType<PlayerState>().GetComponent<Transform>();
+        FindObjectOfType<GameSession>().TemporarilyHoldPlayerPosition(temporaryPlayerPosition);
     }
 }
