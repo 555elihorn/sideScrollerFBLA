@@ -412,6 +412,9 @@ public class DialogueSystem : MonoBehaviour
         index = 0;
         StopCoroutine(Dialogue());
 
+        fader.FadeOut();
+
+        /*
         //if the player is within collider distance have e button suggestion fade in
         if(playerWithinDistance)
         {
@@ -421,7 +424,7 @@ public class DialogueSystem : MonoBehaviour
         {
             fader.FadeOut();
         }
-        
+        */
     }
 
     //Start dialogue conversation
