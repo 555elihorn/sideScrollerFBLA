@@ -41,6 +41,7 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] GameObject dialogueText;
     [SerializeField] GameObject dialogueBox;
     [SerializeField] GameObject player;
+    [SerializeField] Camera mainCamera;
 
     //Called on the first frame
     void Start()
@@ -423,10 +424,9 @@ public class DialogueSystem : MonoBehaviour
         player.GetComponent<PlayerMovement>().SetMovement(false);
         player.GetComponent<Animator>().SetBool("Running", false);
 
-        var cam = FindObjectOfType<Camera>();
-        print(cam.name);
-        var originalCamSpeed = cam.velocity.x;
-        var camSpeed = Mathf.Abs(cam.velocity.x);
+
+        var originalCamSpeed = mainCamera.velocity.x;
+        var camSpeed = Mathf.Abs(mainCamera.velocity.x);
 
         print("INTIAL: " + camSpeed);
         while (camSpeed > 0.0f)
@@ -438,7 +438,7 @@ public class DialogueSystem : MonoBehaviour
             }
             else
             {
-                camSpeed = camSpeed - 0.1f;
+                camSpeed = camSpeed - 0.09f;
             }
             
             print("NOW: " + camSpeed);
