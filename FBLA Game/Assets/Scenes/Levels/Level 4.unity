@@ -33731,6 +33731,11 @@ PrefabInstance:
       propertyPath: continueText
       value: 
       objectReference: {fileID: 1558873227}
+    - target: {fileID: 2829490263501670137, guid: 00d4aafa56c09644799c9778cbd3d30f,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 521888613342281506}
     - target: {fileID: 4826508213253813527, guid: 00d4aafa56c09644799c9778cbd3d30f,
         type: 3}
       propertyPath: m_Color.r
@@ -94247,6 +94252,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a27534a2a731ce24ebfad5a09bfb10a3, type: 3}
+--- !u!20 &521888613342281506 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 521888613325943036, guid: a27534a2a731ce24ebfad5a09bfb10a3,
+    type: 3}
+  m_PrefabInstance: {fileID: 521888613342281505}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6883039690113830120
 PrefabInstance:
   m_ObjectHideFlags: 0
