@@ -442,6 +442,7 @@ public class DialogueSystem : MonoBehaviour
 
         //lock playermovement
         player.GetComponent<PlayerMovement>().SetMovement(false);
+        player.GetComponent<Animator>().SetBool("Running", false);
 
         //Fade out E button suggestion
         fader.FadeOut();
