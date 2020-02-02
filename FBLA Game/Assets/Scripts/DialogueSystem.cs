@@ -5,6 +5,7 @@ using TMPro;
 using System.Threading;
 using UnityEngine.SceneManagement;
 using System;
+using System.Threading.Tasks;
 
 public class DialogueSystem : MonoBehaviour
 {
@@ -414,49 +415,60 @@ public class DialogueSystem : MonoBehaviour
 
         fader.FadeOut();
 
-        /*
-        //if the player is within collider distance have e button suggestion fade in
-        if(playerWithinDistance)
-        {
-            fader.FadeIn();
-        }
-        else
-        {
-            fader.FadeOut();
-        }
-        */
     }
 
     //Start dialogue conversation
     private void StartConversation()
     {
+        //lock playermovement and animation
+        player.GetComponent<PlayerMovement>().SetMovement(false);
+        player.GetComponent<Animator>().SetBool("Running", false);
+
+
+
         //sets dialogue box above NPC
         Pos = Camera.main.WorldToScreenPoint(myRigidBody.position);
         Pos.y += dialgoueBoxOffsetY;
         Pos.x += dialogueBoxOffsetX;
+
 
         //prepare dialogue box
         SetDialogueBoxActive(true);
         dialogueBox.transform.position = Pos; 
         textDisplay.text = "";
 
-        //lock playermovement
-        player.GetComponent<PlayerMovement>().SetMovement(false);
-        player.GetComponent<Animator>().SetBool("Running", false);
-
         //Fade out E button suggestion
         fader.FadeOut();
 
         //start dialogue corutine that generates the sentences
         StartCoroutine(Dialogue());
+
+
     }
 
     //Listen for the player to press E so that they can start / continue conversation
-    private void DialogueButtonListener()
+    private async void DialogueButtonListener()
     {
         if (Input.GetKeyDown(KeyCode.E) && !conversationHasStarted && eButtonEnabled) //if the conversation has not been started, start it.
         {
+            player.GetComponent<PlayerMovement>().SetMovement(false);
+            player.GetComponent<Animator>().SetBool("Running", false);
             conversationHasStarted = true;
+
+            var cam = FindObjectOfType<Camera>();
+            //var charSpeed = FindObjectOfType<PlayerMovement>().
+            var camSpeed = cam.velocity.x;
+            print("INTIAL: " + camSpeed);
+            while (camSpeed >= 0.5 && player.GetComponent<Rigidbody2D>().velocity.x >= 0.5)
+            {
+                
+                await WaitOneSecondAsync();
+                camSpeed = cam.velocity.x;
+                print("NOW: " + camSpeed);
+            }
+            print("FINAL: " + camSpeed);
+            
+
             StartConversation();
         }
         else if (Input.GetKeyDown(KeyCode.E) && eButtonEnabled) //else go to the next sentence
@@ -574,4 +586,10 @@ public class DialogueSystem : MonoBehaviour
         var temporaryPlayerPosition = FindObjectOfType<PlayerState>().GetComponent<Transform>();
         FindObjectOfType<GameSession>().TemporarilyHoldPlayerPosition(temporaryPlayerPosition);
     }
+
+    private async Task WaitOneSecondAsync()
+    {
+        await Task.Delay(TimeSpan.FromSeconds(0.01));
+    }
+
 }

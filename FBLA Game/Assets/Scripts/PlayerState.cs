@@ -46,20 +46,16 @@ public class PlayerState : MonoBehaviour
 
         if (numGameSessions.Length > 1)
         {
-            print("FIRST BRACKET CHECK");
             GameSession selectedGameSession;
             if (numGameSessions[0].getPlayerXPos() != 0.0)
             {
-                print("I SELECT 1" + numGameSessions[0].getPlayerXPos());
                 selectedGameSession = numGameSessions[0];
             }
             else
             {
-                print("I SELECT 2: " + numGameSessions[1].getPlayerXPos());
                 selectedGameSession = numGameSessions[1];
             }
             
-
             if (selectedGameSession.GetIfNewLevel())
             {
                 //do nothing

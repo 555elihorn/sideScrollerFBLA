@@ -5023,7 +5023,7 @@ PrefabInstance:
     - target: {fileID: 2829490263501670137, guid: 00d4aafa56c09644799c9778cbd3d30f,
         type: 3}
       propertyPath: typingSpeed
-      value: 0.01
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 4826508213253813527, guid: 00d4aafa56c09644799c9778cbd3d30f,
         type: 3}
@@ -27190,6 +27190,30 @@ PrefabInstance:
     - target: {fileID: 570439623, guid: a27534a2a731ce24ebfad5a09bfb10a3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14.303997
+      objectReference: {fileID: 0}
+    - target: {fileID: 570439623, guid: a27534a2a731ce24ebfad5a09bfb10a3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.7441406
+      objectReference: {fileID: 0}
+    - target: {fileID: 1242076826, guid: a27534a2a731ce24ebfad5a09bfb10a3, type: 3}
+      propertyPath: m_XDamping
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1242076826, guid: a27534a2a731ce24ebfad5a09bfb10a3, type: 3}
+      propertyPath: m_YDamping
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1242076826, guid: a27534a2a731ce24ebfad5a09bfb10a3, type: 3}
+      propertyPath: m_ZDamping
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1242076826, guid: a27534a2a731ce24ebfad5a09bfb10a3, type: 3}
+      propertyPath: m_ScreenX
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1242076826, guid: a27534a2a731ce24ebfad5a09bfb10a3, type: 3}
+      propertyPath: m_LookaheadSmoothing
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a27534a2a731ce24ebfad5a09bfb10a3, type: 3}
