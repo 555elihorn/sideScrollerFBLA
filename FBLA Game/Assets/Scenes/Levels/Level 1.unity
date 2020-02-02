@@ -27197,15 +27197,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1242076826, guid: a27534a2a731ce24ebfad5a09bfb10a3, type: 3}
       propertyPath: m_XDamping
-      value: 0.01
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1242076826, guid: a27534a2a731ce24ebfad5a09bfb10a3, type: 3}
       propertyPath: m_YDamping
-      value: 0.01
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1242076826, guid: a27534a2a731ce24ebfad5a09bfb10a3, type: 3}
       propertyPath: m_ZDamping
-      value: 0.01
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1242076826, guid: a27534a2a731ce24ebfad5a09bfb10a3, type: 3}
       propertyPath: m_ScreenX

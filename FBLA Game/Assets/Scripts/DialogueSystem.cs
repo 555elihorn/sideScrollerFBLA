@@ -366,8 +366,7 @@ public class DialogueSystem : MonoBehaviour
                 FlipSprite(true, false); //flip to orginal position
             }
 
-            //end conversation
-            EndConversation();
+            fader.FadeOut();
 
             //player is not within the collider
             playerWithinDistance = false;
@@ -413,17 +412,38 @@ public class DialogueSystem : MonoBehaviour
         index = 0;
         StopCoroutine(Dialogue());
 
-        fader.FadeOut();
+        fader.FadeIn();
 
     }
 
     //Start dialogue conversation
-    private void StartConversation()
+    private async void StartConversation()
     {
         //lock playermovement and animation
         player.GetComponent<PlayerMovement>().SetMovement(false);
         player.GetComponent<Animator>().SetBool("Running", false);
 
+        var cam = FindObjectOfType<Camera>();
+        print(cam.name);
+        var originalCamSpeed = cam.velocity.x;
+        var camSpeed = Mathf.Abs(cam.velocity.x);
+
+        print("INTIAL: " + camSpeed);
+        while (camSpeed > 0.0f)
+        {
+            await WaitOneSecondAsync();
+            if(originalCamSpeed > 0.0f)
+            {
+                camSpeed = camSpeed - 0.2f;
+            }
+            else
+            {
+                camSpeed = camSpeed - 0.1f;
+            }
+            
+            print("NOW: " + camSpeed);
+        }
+        print("FINAL: " + camSpeed);
 
 
         //sets dialogue box above NPC
@@ -447,7 +467,7 @@ public class DialogueSystem : MonoBehaviour
     }
 
     //Listen for the player to press E so that they can start / continue conversation
-    private async void DialogueButtonListener()
+    private void DialogueButtonListener()
     {
         if (Input.GetKeyDown(KeyCode.E) && !conversationHasStarted && eButtonEnabled) //if the conversation has not been started, start it.
         {
@@ -455,18 +475,7 @@ public class DialogueSystem : MonoBehaviour
             player.GetComponent<Animator>().SetBool("Running", false);
             conversationHasStarted = true;
 
-            var cam = FindObjectOfType<Camera>();
-            //var charSpeed = FindObjectOfType<PlayerMovement>().
-            var camSpeed = cam.velocity.x;
-            print("INTIAL: " + camSpeed);
-            while (camSpeed >= 0.5 && player.GetComponent<Rigidbody2D>().velocity.x >= 0.5)
-            {
-                
-                await WaitOneSecondAsync();
-                camSpeed = cam.velocity.x;
-                print("NOW: " + camSpeed);
-            }
-            print("FINAL: " + camSpeed);
+
             
 
             StartConversation();
@@ -589,7 +598,7 @@ public class DialogueSystem : MonoBehaviour
 
     private async Task WaitOneSecondAsync()
     {
-        await Task.Delay(TimeSpan.FromSeconds(0.01));
+        await Task.Delay(TimeSpan.FromSeconds(0.001));
     }
 
 }
