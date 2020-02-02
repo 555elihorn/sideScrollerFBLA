@@ -5,6 +5,7 @@ using TMPro;
 using System.Threading;
 using UnityEngine.SceneManagement;
 using System;
+using System.Threading.Tasks;
 
 public class DialogueSystem : MonoBehaviour
 {
@@ -40,6 +41,7 @@ public class DialogueSystem : MonoBehaviour
     [SerializeField] GameObject dialogueText;
     [SerializeField] GameObject dialogueBox;
     [SerializeField] GameObject player;
+    [SerializeField] Camera mainCamera;
 
     //Called on the first frame
     void Start()
@@ -365,8 +367,7 @@ public class DialogueSystem : MonoBehaviour
                 FlipSprite(true, false); //flip to orginal position
             }
 
-            //end conversation
-            EndConversation();
+            fader.FadeOut();
 
             //player is not within the collider
             playerWithinDistance = false;
@@ -412,39 +413,57 @@ public class DialogueSystem : MonoBehaviour
         index = 0;
         StopCoroutine(Dialogue());
 
-        //if the player is within collider distance have e button suggestion fade in
-        if(playerWithinDistance)
-        {
-            fader.FadeIn();
-        }
-        else
-        {
-            fader.FadeOut();
-        }
-        
+        fader.FadeIn();
+
     }
 
     //Start dialogue conversation
-    private void StartConversation()
+    private async void StartConversation()
     {
+        //lock playermovement and animation
+        player.GetComponent<PlayerMovement>().SetMovement(false);
+        player.GetComponent<Animator>().SetBool("Running", false);
+
+
+        var originalCamSpeed = mainCamera.velocity.x;
+        var camSpeed = Mathf.Abs(mainCamera.velocity.x);
+
+        print("INTIAL: " + camSpeed);
+        while (camSpeed > 0.0f)
+        {
+            await WaitOneSecondAsync();
+            if(originalCamSpeed > 0.0f)
+            {
+                camSpeed = camSpeed - 0.2f;
+            }
+            else
+            {
+                camSpeed = camSpeed - 0.09f;
+            }
+            
+            print("NOW: " + camSpeed);
+        }
+        print("FINAL: " + camSpeed);
+
+
         //sets dialogue box above NPC
         Pos = Camera.main.WorldToScreenPoint(myRigidBody.position);
         Pos.y += dialgoueBoxOffsetY;
         Pos.x += dialogueBoxOffsetX;
+
 
         //prepare dialogue box
         SetDialogueBoxActive(true);
         dialogueBox.transform.position = Pos; 
         textDisplay.text = "";
 
-        //lock playermovement
-        player.GetComponent<PlayerMovement>().SetMovement(false);
-
         //Fade out E button suggestion
         fader.FadeOut();
 
         //start dialogue corutine that generates the sentences
         StartCoroutine(Dialogue());
+
+
     }
 
     //Listen for the player to press E so that they can start / continue conversation
@@ -452,7 +471,13 @@ public class DialogueSystem : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && !conversationHasStarted && eButtonEnabled) //if the conversation has not been started, start it.
         {
+            player.GetComponent<PlayerMovement>().SetMovement(false);
+            player.GetComponent<Animator>().SetBool("Running", false);
             conversationHasStarted = true;
+
+
+            
+
             StartConversation();
         }
         else if (Input.GetKeyDown(KeyCode.E) && eButtonEnabled) //else go to the next sentence
@@ -483,13 +508,15 @@ public class DialogueSystem : MonoBehaviour
             }
             else if (hasMiniGame) //else if at the end of the conversation, start the mini game
             {
-                
                 //sets current level
-                myGameSession.SetPreviousScene(SceneManager.GetActiveScene().buildIndex);
+                FindObjectOfType<GameSession>().SetPreviousScene(SceneManager.GetActiveScene().buildIndex);
 
                 //Records play position and sets the NPC pos
-                FindObjectOfType<PlayerState>().RecordPlayerPosition();
-                FindObjectOfType<ScenePersist>().GetScenePersistChildren();
+                RecordPlayerPosition();
+                FindObjectOfType<GameSession>().SetIfNewLevel(false);
+
+                //get coin list
+                FindObjectOfType<ScenePersist>().GetScenePersistCoinList();
 
                 //If the persuaded NPC list does not cotain this NPC, add its position
                 if (FindObjectOfType<GameSession>().GetPersuadedNPCList().Contains(transform.position.x.ToString()) != true)
@@ -562,4 +589,16 @@ public class DialogueSystem : MonoBehaviour
     {
         hasAlreadyBeenConvinced = true;
     }
+
+    public void RecordPlayerPosition()
+    {
+        var temporaryPlayerPosition = FindObjectOfType<PlayerState>().GetComponent<Transform>();
+        FindObjectOfType<GameSession>().TemporarilyHoldPlayerPosition(temporaryPlayerPosition);
+    }
+
+    private async Task WaitOneSecondAsync()
+    {
+        await Task.Delay(TimeSpan.FromSeconds(0.001));
+    }
+
 }

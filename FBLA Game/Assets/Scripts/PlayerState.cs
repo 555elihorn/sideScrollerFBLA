@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityStandardAssets.CrossPlatformInput;
@@ -18,6 +19,7 @@ public class PlayerState : MonoBehaviour
     BoxCollider2D myFeet;
     GameSession GameSes;
     Transform temporaryPlayerPosition = null;
+    
 
     //Config
     [SerializeField] Vector2 deathKick = new Vector2(25f, 25f);
@@ -36,21 +38,76 @@ public class PlayerState : MonoBehaviour
     }
 
     //Run whenever the level is loaded
+
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
-        Vector3 originalPlayerLocation = FindObjectOfType<GameSession>().GetTemporaryLocation();
-        Vector3 originalPlayerScale = FindObjectOfType<GameSession>().GetTemporaryScale();
 
-        if (originalPlayerLocation.x != 0)
+        GameSession[] numGameSessions = FindObjectsOfType<GameSession>();
+
+        if (numGameSessions.Length > 1)
         {
-            transform.position = new Vector3(originalPlayerLocation.x, originalPlayerLocation.y, originalPlayerLocation.z);
-            transform.localScale = new Vector3(originalPlayerScale.x, originalPlayerScale.y, originalPlayerScale.z);
+            GameSession selectedGameSession;
+            if (numGameSessions[0].getPlayerXPos() != 0.0)
+            {
+                selectedGameSession = numGameSessions[0];
+            }
+            else
+            {
+                selectedGameSession = numGameSessions[1];
+            }
+            
+            if (selectedGameSession.GetIfNewLevel())
+            {
+                //do nothing
+            }
+            else
+            {
+                Vector3 originalPlayerLocation = selectedGameSession.GetTemporaryLocation();
+                Vector3 originalPlayerScale = selectedGameSession.GetTemporaryScale();
+
+                if (originalPlayerLocation.x != 0)
+                {
+                    transform.position = new Vector3(originalPlayerLocation.x, originalPlayerLocation.y, originalPlayerLocation.z);
+                    transform.localScale = new Vector3(originalPlayerScale.x, originalPlayerScale.y, originalPlayerScale.z);
+                }
+            }
+
         }
+        else
+        {
+            if (FindObjectOfType<GameSession>().GetIfNewLevel())
+            {
+                //do nothing
+            }
+            else
+            {
+                Vector3 originalPlayerLocation = FindObjectOfType<GameSession>().GetTemporaryLocation();
+                Vector3 originalPlayerScale = FindObjectOfType<GameSession>().GetTemporaryScale();
+
+                if (originalPlayerLocation.x != 0)
+                {
+                    transform.position = new Vector3(originalPlayerLocation.x, originalPlayerLocation.y, originalPlayerLocation.z);
+                    transform.localScale = new Vector3(originalPlayerScale.x, originalPlayerScale.y, originalPlayerScale.z);
+                }
+            }
+
+
+        }
+
     }
+
+    /*
+    private async Task WaitOneSecondAsync()
+    {
+        await Task.Delay(TimeSpan.FromSeconds(0.01));
+        Debug.Log("Finished waiting.");
+    }
+    */
 
     // Start is called before the first frame update
     void Start()
     {
+
         myBodyCollider = GetComponent<CapsuleCollider2D>();
         myAnimator = GetComponent<Animator>();
         myFeet = GetComponent<BoxCollider2D>();
@@ -99,11 +156,9 @@ public class PlayerState : MonoBehaviour
         return Life;
     }
 
+    
+
     //records player position before mini game
-    public void RecordPlayerPosition()
-    {
-        temporaryPlayerPosition = GetComponent<Transform>();
-        FindObjectOfType<GameSession>().TemporarilyHoldPlayerPosition(temporaryPlayerPosition);
-    }
+    
 
 }

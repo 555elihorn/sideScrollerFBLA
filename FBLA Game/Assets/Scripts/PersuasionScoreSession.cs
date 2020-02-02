@@ -15,6 +15,7 @@ public class PersuasionScoreSession : MonoBehaviour
     [SerializeField] int score = 0;
     [SerializeField] TextMeshProUGUI scoreText = null;
     [SerializeField] int rewardPoints = 500;
+    
 
     // Start is called before the first frame update
     void Start()

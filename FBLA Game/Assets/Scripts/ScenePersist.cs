@@ -17,10 +17,12 @@ public class ScenePersist : MonoBehaviour
             //print( this.gameObject.name + ": Imma kill" + gameObject.name);
             Destroy(gameObject);
         }
+        
         else
         {
             DontDestroyOnLoad(gameObject);
         }
+        
 
     }
 
@@ -104,7 +106,7 @@ public class ScenePersist : MonoBehaviour
     }
 
     //Gets the list of coins
-    public void GetScenePersistChildren()
+    public void GetScenePersistCoinList()
     {
 
         int children = transform.childCount;
@@ -114,6 +116,12 @@ public class ScenePersist : MonoBehaviour
         }
             
         FindObjectOfType<GameSession>().SetScenePersistChildList(childrenList);
+    }
+
+    public void destroySelf()
+    {
+        print("KILLING!");
+        Destroy(this);
     }
 
 
