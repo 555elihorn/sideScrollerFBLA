@@ -6,6 +6,8 @@ public class EnemyAI : MonoBehaviour
 {
     // Start is called before the first frame update
     private Rigidbody2D rb2d;
+
+    [SerializeField] GameObject ball;
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -15,5 +17,13 @@ public class EnemyAI : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag=="Ball")
+        {
+
+        }
     }
 }
