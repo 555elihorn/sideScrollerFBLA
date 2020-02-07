@@ -413,7 +413,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.05}
-  m_Size: {x: 8.32, y: 2.05}
+  m_Size: {x: 13.86, y: 7.11}
   m_Direction: 1
 --- !u!61 &859387162
 BoxCollider2D:
@@ -453,6 +453,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb20d9fc494f58d46bb0d31642f53eb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 10
+  boundY: 2.25
+  ball: {fileID: 0}
 --- !u!1 &1278981479
 GameObject:
   m_ObjectHideFlags: 0
