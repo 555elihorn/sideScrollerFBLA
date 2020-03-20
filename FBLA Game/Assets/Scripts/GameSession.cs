@@ -11,10 +11,13 @@ public class GameSession : MonoBehaviour
     //variables
     int previousScene;
     Transform playerPosition;
+    Vector3 playerDefaultScaleVector;
+    Vector3 playerDefaultPositionVector;
     Vector3 playerPositionVector;
     Vector3 playerScaleVector;
     List<string> tempChildList;
     List<string> persuadedNPCS = new List<string>();
+    bool isLevelReturn = false;
     
 
 
@@ -49,6 +52,27 @@ public class GameSession : MonoBehaviour
             DontDestroyOnLoad(gameObject);
 
         }
+
+        if(SceneManager.GetActiveScene().name.Equals("Level 1"))
+        {
+            setDefaultPosition(new Vector3(-10.52f, 8.96f, 0f));
+            setDefaultScale(new Vector3(1, 1, 1));
+        }
+        else if(SceneManager.GetActiveScene().name.Equals("Level 2"))
+        {
+            setDefaultPosition(new Vector3(-5.41f, 0.497f, 0f));
+            setDefaultScale(new Vector3(1, 1, 1));
+        }
+        else if (SceneManager.GetActiveScene().name.Equals("Level 3"))
+        {
+            setDefaultPosition(new Vector3(-64.68f, -10.25f, 0f));
+            setDefaultScale(new Vector3(1, 1, 1));
+        }
+        else if (SceneManager.GetActiveScene().name.Equals("Level 4"))
+        {
+            setDefaultPosition(new Vector3(-28.56f, -15.56f, 0f));
+            setDefaultScale(new Vector3(1, 1, 1));
+        }
     }
 
     // Update is called once per frame
@@ -77,6 +101,8 @@ public class GameSession : MonoBehaviour
         score += pointsToAdd;
         scoreText.text = score.ToString() + " / " + winCondition.ToString();
     }
+
+
 
     //Method checks the state of the player
     public void ProcessPlayerDeath()
@@ -143,10 +169,17 @@ public class GameSession : MonoBehaviour
         playerScaleVector = new Vector3(newPosition.localScale.x, newPosition.localScale.y, newPosition.localScale.z);
     }
 
+
+
     //gets player vector position
     public Vector3 GetTemporaryLocation()
     {
         return playerPositionVector;
+    }
+
+    public void SetTemporaryLocation(Vector3 newVector)
+    {
+        playerPositionVector = newVector;
     }
 
     public float getPlayerXPos()
@@ -158,6 +191,11 @@ public class GameSession : MonoBehaviour
     public Vector3 GetTemporaryScale()
     {
         return playerScaleVector;
+    }
+
+    public void SetTemporaryScale(Vector3 newVector)
+    {
+        playerScaleVector = newVector;
     }
 
     //Sets list of player vectors
@@ -209,8 +247,38 @@ public class GameSession : MonoBehaviour
         newLevel = LevelChange;
     }
 
+    public void SetIsLevelReturn(bool LevelReturn)
+    {
+        isLevelReturn = LevelReturn;
+    }
+
+    public bool GetIsLevelReturn()
+    {
+        return isLevelReturn;
+    }
+
     public bool GetIfNewLevel()
     {
         return newLevel;
+    }
+
+    public void setDefaultPosition(Vector3 newVector)
+    {
+        playerDefaultPositionVector = newVector;
+    }
+
+    public void setDefaultScale(Vector3 newVector)
+    {
+        playerDefaultScaleVector = newVector;
+    }
+
+    public Vector3 getDefaultPosition()
+    {
+        return playerDefaultPositionVector;
+    }
+
+    public Vector3 getDefaultScale()
+    {
+        return playerDefaultScaleVector;
     }
 }

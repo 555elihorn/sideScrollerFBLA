@@ -428,7 +428,6 @@ public class DialogueSystem : MonoBehaviour
         var originalCamSpeed = mainCamera.velocity.x;
         var camSpeed = Mathf.Abs(mainCamera.velocity.x);
 
-        print("INTIAL: " + camSpeed);
         while (camSpeed > 0.0f)
         {
             await WaitOneSecondAsync();
@@ -440,10 +439,7 @@ public class DialogueSystem : MonoBehaviour
             {
                 camSpeed = camSpeed - 0.09f;
             }
-            
-            print("NOW: " + camSpeed);
         }
-        print("FINAL: " + camSpeed);
 
 
         //sets dialogue box above NPC
@@ -474,9 +470,6 @@ public class DialogueSystem : MonoBehaviour
             player.GetComponent<PlayerMovement>().SetMovement(false);
             player.GetComponent<Animator>().SetBool("Running", false);
             conversationHasStarted = true;
-
-
-            
 
             StartConversation();
         }
@@ -514,6 +507,9 @@ public class DialogueSystem : MonoBehaviour
                 //Records play position and sets the NPC pos
                 RecordPlayerPosition();
                 FindObjectOfType<GameSession>().SetIfNewLevel(false);
+
+                //Set levelreturn to true;
+                FindObjectOfType<GameSession>().SetIsLevelReturn(true);
 
                 //get coin list
                 FindObjectOfType<ScenePersist>().GetScenePersistCoinList();

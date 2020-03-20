@@ -12,6 +12,7 @@ public class PlayerState : MonoBehaviour
 
     //State
     bool Life = true;
+    public bool isLevelReturn = true;
 
     //Cached components
     CapsuleCollider2D myBodyCollider;
@@ -38,7 +39,6 @@ public class PlayerState : MonoBehaviour
     }
 
     //Run whenever the level is loaded
-
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
 
@@ -53,44 +53,94 @@ public class PlayerState : MonoBehaviour
             }
             else
             {
+                print("CASE 1 selected");
                 selectedGameSession = numGameSessions[1];
+                
+                
+                if(numGameSessions[0].name.Equals(numGameSessions[1].name))
+                {
+                    print("names are equal");
+                    numGameSessions[1].SetIfNewLevel(false);
+                    /*
+                    numGameSessions[1].SetTemporaryLocation(numGameSessions[0].GetTemporaryLocation());
+                    numGameSessions[1].SetTemporaryScale(numGameSessions[0].GetTemporaryScale());
+                    numGameSessions[1].SetIsLevelReturn(numGameSessions[0].GetIsLevelReturn());
+                    */
+                }
+                
+                
+                
             }
             
             if (selectedGameSession.GetIfNewLevel())
             {
-                //do nothing
-            }
-            else
-            {
+                print("IS NEW LEVEL");
+                /*
+                isLevelReturn = selectedGameSession.GetIsLevelReturn();
                 Vector3 originalPlayerLocation = selectedGameSession.GetTemporaryLocation();
                 Vector3 originalPlayerScale = selectedGameSession.GetTemporaryScale();
 
-                if (originalPlayerLocation.x != 0)
+                transform.position = new Vector3(originalPlayerLocation.x, originalPlayerLocation.y, originalPlayerLocation.z);
+                transform.localScale = new Vector3(originalPlayerScale.x, originalPlayerScale.y, originalPlayerScale.z);
+                */
+            }
+            else
+            {
+                print("Returning from game!");
+                isLevelReturn = selectedGameSession.GetIsLevelReturn();
+                Vector3 originalPlayerPosition = selectedGameSession.GetTemporaryLocation();
+                Vector3 originalPlayerScale = selectedGameSession.GetTemporaryScale();
+
+                if (originalPlayerPosition.x != 0 && isLevelReturn)
                 {
-                    transform.position = new Vector3(originalPlayerLocation.x, originalPlayerLocation.y, originalPlayerLocation.z);
+                    transform.position = new Vector3(originalPlayerPosition.x, originalPlayerPosition.y, originalPlayerPosition.z);
                     transform.localScale = new Vector3(originalPlayerScale.x, originalPlayerScale.y, originalPlayerScale.z);
+                    isLevelReturn = false;
+                    selectedGameSession.SetIsLevelReturn(false);
                 }
+                else
+                {
+                    Vector3 defaultPosition = selectedGameSession.getDefaultPosition();
+                    Vector3 defaultScale = selectedGameSession.getDefaultScale();
+
+
+                    print("LOADING DEFAULT POSITIONS");
+                    transform.position = new Vector3(defaultPosition.x, defaultPosition.y, defaultPosition.z);
+                    transform.localScale = new Vector3(defaultScale.x, defaultScale.y, defaultScale.z);
+                }
+                
             }
 
         }
         else
         {
-            if (FindObjectOfType<GameSession>().GetIfNewLevel())
+            if (FindObjectOfType<GameSession>().GetIfNewLevel()) //IF completely fresh level
             {
-                //do nothing
+                print("CHECK");
+                FindObjectOfType<GameSession>().SetIfNewLevel(false);
             }
             else
             {
+                print("RUNNING ELSE CASE!");
+                isLevelReturn = FindObjectOfType<GameSession>().GetIsLevelReturn();
                 Vector3 originalPlayerLocation = FindObjectOfType<GameSession>().GetTemporaryLocation();
                 Vector3 originalPlayerScale = FindObjectOfType<GameSession>().GetTemporaryScale();
 
-                if (originalPlayerLocation.x != 0)
+                if (originalPlayerLocation.x != 0 && isLevelReturn)
                 {
                     transform.position = new Vector3(originalPlayerLocation.x, originalPlayerLocation.y, originalPlayerLocation.z);
                     transform.localScale = new Vector3(originalPlayerScale.x, originalPlayerScale.y, originalPlayerScale.z);
                 }
-            }
+                else
+                {
+                    Vector3 defaultPosition = FindObjectOfType<GameSession>().getDefaultPosition();
+                    Vector3 defaultScale = FindObjectOfType<GameSession>().getDefaultScale();
 
+                    print("LOADING DEFAULT POSITIONS");
+                    transform.position = new Vector3(defaultPosition.x, defaultPosition.y, defaultPosition.z);
+                    transform.localScale = new Vector3(defaultScale.x, defaultScale.y, defaultScale.z);
+                }
+            }
 
         }
 
@@ -155,6 +205,8 @@ public class PlayerState : MonoBehaviour
     {
         return Life;
     }
+
+
 
     
 
