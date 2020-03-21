@@ -120,5 +120,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fccb7a80a5ff71147acd1b03fbcdee12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  greenFlag: {fileID: 21300000, guid: 94d00d32b5f11974aba5b2c609fc4b9c, type: 3}
+  greenFlag: {fileID: 21300000, guid: 667652cf777f2e44999bd7f68f0b0cfb, type: 3}
   redFlag: {fileID: 21300000, guid: 0cdef0bb9676a8e4f88b017624e34c34, type: 3}

@@ -219,6 +219,75 @@ PrefabInstance:
       objectReference: {fileID: 521888613342281506}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0670840418f8ab944bbbd4df800662a0, type: 3}
+--- !u!1001 &21343622
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 141679065}
+    m_Modifications:
+    - target: {fileID: 1387798195142349846, guid: 5c6c5d8c765295b4fa16fa3aab12a37b,
+        type: 3}
+      propertyPath: m_Name
+      value: Checkpoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 1387798195142349845, guid: 5c6c5d8c765295b4fa16fa3aab12a37b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -12.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 1387798195142349845, guid: 5c6c5d8c765295b4fa16fa3aab12a37b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.887537
+      objectReference: {fileID: 0}
+    - target: {fileID: 1387798195142349845, guid: 5c6c5d8c765295b4fa16fa3aab12a37b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1387798195142349845, guid: 5c6c5d8c765295b4fa16fa3aab12a37b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1387798195142349845, guid: 5c6c5d8c765295b4fa16fa3aab12a37b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1387798195142349845, guid: 5c6c5d8c765295b4fa16fa3aab12a37b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1387798195142349845, guid: 5c6c5d8c765295b4fa16fa3aab12a37b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1387798195142349845, guid: 5c6c5d8c765295b4fa16fa3aab12a37b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 57
+      objectReference: {fileID: 0}
+    - target: {fileID: 1387798195142349845, guid: 5c6c5d8c765295b4fa16fa3aab12a37b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1387798195142349845, guid: 5c6c5d8c765295b4fa16fa3aab12a37b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1387798195142349845, guid: 5c6c5d8c765295b4fa16fa3aab12a37b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5c6c5d8c765295b4fa16fa3aab12a37b, type: 3}
 --- !u!1001 &25234466
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -99391,7 +99460,7 @@ PrefabInstance:
     - target: {fileID: 521888613325943036, guid: a27534a2a731ce24ebfad5a09bfb10a3,
         type: 3}
       propertyPath: orthographic size
-      value: 6.95
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 521888612758666589, guid: a27534a2a731ce24ebfad5a09bfb10a3,
         type: 3}
@@ -99451,17 +99520,17 @@ PrefabInstance:
     - target: {fileID: 521888613325943039, guid: a27534a2a731ce24ebfad5a09bfb10a3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.513996
+      value: -3.1039963
       objectReference: {fileID: 0}
     - target: {fileID: 521888613325943039, guid: a27534a2a731ce24ebfad5a09bfb10a3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.294252
+      value: 9.797253
       objectReference: {fileID: 0}
     - target: {fileID: 521888613325943039, guid: a27534a2a731ce24ebfad5a09bfb10a3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.7441406
+      value: 8.255859
       objectReference: {fileID: 0}
     - target: {fileID: 570439622, guid: a27534a2a731ce24ebfad5a09bfb10a3, type: 3}
       propertyPath: m_Follow
