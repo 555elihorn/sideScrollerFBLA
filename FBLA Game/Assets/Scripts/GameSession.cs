@@ -175,11 +175,6 @@ public class GameSession : MonoBehaviour
         return playerPositionVector;
     }
 
-    public void SetTemporaryLocation(Vector3 newVector)
-    {
-        playerPositionVector = newVector;
-    }
-
     public float getPlayerXPos()
     {
         return playerPosX;
@@ -212,12 +207,6 @@ public class GameSession : MonoBehaviour
     public void ResetCoinList()
     {
         tempChildList = null;
-    }
-
-    public void resetPlayerLists()
-    {
-        playerPositionVector = new Vector3(0, 0, 0);
-        playerScaleVector = new Vector3(0, 0, 0);
     }
 
     //Adds persuaded npc to persuaded npc list
