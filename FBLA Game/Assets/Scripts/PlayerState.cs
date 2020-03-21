@@ -60,6 +60,20 @@ public class PlayerState : MonoBehaviour
                 if(numGameSessions[0].name.Equals(numGameSessions[1].name))
                 {
                     print("names are equal");
+                    if(numGameSessions[0].getDefaultPosition() != numGameSessions[1].getDefaultPosition())
+                    {
+                        print("positions are not equal:");
+                        print(numGameSessions[0].getDefaultPosition().x);
+                        print(numGameSessions[1].getDefaultPosition().x);
+                        numGameSessions[1].setDefaultPosition(numGameSessions[0].getDefaultPosition());
+                    }
+                    else if(numGameSessions[0].getDefaultPosition() == numGameSessions[1].getDefaultPosition())
+                    {
+                        print("positions are equal:");
+                        print(numGameSessions[0].getDefaultPosition().x);
+                        print(numGameSessions[1].getDefaultPosition().x);
+                    }
+
                     numGameSessions[1].SetIfNewLevel(false);
                     /*
                     numGameSessions[1].SetTemporaryLocation(numGameSessions[0].GetTemporaryLocation());
@@ -86,7 +100,6 @@ public class PlayerState : MonoBehaviour
             }
             else
             {
-                print("Returning from game!");
                 isLevelReturn = selectedGameSession.GetIsLevelReturn();
                 Vector3 originalPlayerPosition = selectedGameSession.GetTemporaryLocation();
                 Vector3 originalPlayerScale = selectedGameSession.GetTemporaryScale();

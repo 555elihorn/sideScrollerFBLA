@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
+
+    [SerializeField] Sprite greenFlag;
+    [SerializeField] Sprite redFlag;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,10 +23,22 @@ public class Checkpoint : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print(collision.gameObject.tag);
+        
         if (collision.gameObject.tag.Equals("Player")) //if collision is with player
         {
-            print("TEST");
+            if(GetComponent<SpriteRenderer>().sprite != greenFlag) //if the checkpoint has not already been reached before
+            {
+                SetCheckPointPosition();
+            }
         }
+    }
+
+    private void SetCheckPointPosition() //creates checkpoint
+    {
+        GetComponent<SpriteRenderer>().sprite = greenFlag;
+
+        //Sets default position
+        FindObjectOfType<GameSession>().setDefaultPosition(new Vector3(transform.position.x, transform.position.y, transform.position.z));
+        FindObjectOfType<GameSession>().setDefaultScale(new Vector3(1, 1, 1));
     }
 }
