@@ -23,7 +23,6 @@ public class ScenePersist : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         
-
     }
 
     //enables the onfinishloading

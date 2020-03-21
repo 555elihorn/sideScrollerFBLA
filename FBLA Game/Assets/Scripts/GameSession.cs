@@ -48,11 +48,10 @@ public class GameSession : MonoBehaviour
         else
         {
             var currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-            //SetPreviousScene(currentSceneIndex);
             DontDestroyOnLoad(gameObject);
-
         }
 
+        //Determines the default respawn point of the player once they enter a level
         if(SceneManager.GetActiveScene().name.Equals("Level 1"))
         {
             setDefaultPosition(new Vector3(-10.52f, 8.96f, 0f));
@@ -101,8 +100,6 @@ public class GameSession : MonoBehaviour
         score += pointsToAdd;
         scoreText.text = score.ToString() + " / " + winCondition.ToString();
     }
-
-
 
     //Method checks the state of the player
     public void ProcessPlayerDeath()
@@ -221,6 +218,7 @@ public class GameSession : MonoBehaviour
         return persuadedNPCS;
     }
 
+    //chanege win condition on level transition
     public void changeWinCondition(int newCondition)
     {
         winCondition = newCondition;
@@ -229,46 +227,57 @@ public class GameSession : MonoBehaviour
         scoreText.text = 0 + " / " + winCondition.ToString();
     }
 
+    //Set if the player has entered a new level
     public void SetIfNewLevel(bool LevelChange)
     {
         newLevel = LevelChange;
     }
 
+    //Set if the player 
     public void SetIsLevelReturn(bool LevelReturn)
     {
         isLevelReturn = LevelReturn;
     }
 
+    //Check if the player returning from a mini game
     public bool GetIsLevelReturn()
     {
         return isLevelReturn;
     }
 
+    //Check if player has entered new new level
     public bool GetIfNewLevel()
     {
         return newLevel;
     }
 
+    //change the default position of the player
+    //used for checkpoint system
     public void setDefaultPosition(Vector3 newVector)
     {
         playerDefaultPositionVector = newVector;
     }
 
+    //change the default scale of the player
+    //used for checkpoint system
     public void setDefaultScale(Vector3 newVector)
     {
         playerDefaultScaleVector = newVector;
     }
 
+    //get default position of player
     public Vector3 getDefaultPosition()
     {
         return playerDefaultPositionVector;
     }
 
+    //get default scale of player
     public Vector3 getDefaultScale()
     {
         return playerDefaultScaleVector;
     }
 
+    //Resets Default Position to predetermined locations
     public void resetDefaultPosition()
     {
         if (SceneManager.GetActiveScene().name.Equals("Level 1"))
