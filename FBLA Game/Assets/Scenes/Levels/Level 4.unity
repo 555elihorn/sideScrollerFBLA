@@ -94159,6 +94159,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cameras
       objectReference: {fileID: 0}
+    - target: {fileID: 521888613325943036, guid: a27534a2a731ce24ebfad5a09bfb10a3,
+        type: 3}
+      propertyPath: orthographic size
+      value: 6.95
+      objectReference: {fileID: 0}
     - target: {fileID: 521888612758666589, guid: a27534a2a731ce24ebfad5a09bfb10a3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -94229,11 +94234,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -1.7441406
       objectReference: {fileID: 0}
-    - target: {fileID: 521888613325943036, guid: a27534a2a731ce24ebfad5a09bfb10a3,
-        type: 3}
-      propertyPath: orthographic size
-      value: 6.95
-      objectReference: {fileID: 0}
     - target: {fileID: 570439622, guid: a27534a2a731ce24ebfad5a09bfb10a3, type: 3}
       propertyPath: m_Follow
       value: 
@@ -94268,6 +94268,11 @@ PrefabInstance:
     - target: {fileID: 6883039690471815607, guid: b6a4935b457ede14baeb9e00e23919a8,
         type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6883039690471815607, guid: b6a4935b457ede14baeb9e00e23919a8,
+        type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6883039690471815561, guid: b6a4935b457ede14baeb9e00e23919a8,

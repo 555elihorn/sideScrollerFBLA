@@ -169,8 +169,6 @@ public class GameSession : MonoBehaviour
         playerScaleVector = new Vector3(newPosition.localScale.x, newPosition.localScale.y, newPosition.localScale.z);
     }
 
-
-
     //gets player vector position
     public Vector3 GetTemporaryLocation()
     {
@@ -280,5 +278,29 @@ public class GameSession : MonoBehaviour
     public Vector3 getDefaultScale()
     {
         return playerDefaultScaleVector;
+    }
+
+    public void resetDefaultPosition()
+    {
+        if (SceneManager.GetActiveScene().name.Equals("Level 1"))
+        {
+            setDefaultPosition(new Vector3(-10.52f, 8.96f, 0f));
+            setDefaultScale(new Vector3(1, 1, 1));
+        }
+        else if (SceneManager.GetActiveScene().name.Equals("Level 2"))
+        {
+            setDefaultPosition(new Vector3(-5.41f, 0.497f, 0f));
+            setDefaultScale(new Vector3(1, 1, 1));
+        }
+        else if (SceneManager.GetActiveScene().name.Equals("Level 3"))
+        {
+            setDefaultPosition(new Vector3(-64.68f, -10.25f, 0f));
+            setDefaultScale(new Vector3(1, 1, 1));
+        }
+        else if (SceneManager.GetActiveScene().name.Equals("Level 4"))
+        {
+            setDefaultPosition(new Vector3(-28.56f, -15.56f, 0f));
+            setDefaultScale(new Vector3(1, 1, 1));
+        }
     }
 }

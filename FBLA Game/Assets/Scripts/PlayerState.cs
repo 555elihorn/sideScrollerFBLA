@@ -75,11 +75,6 @@ public class PlayerState : MonoBehaviour
                     }
 
                     numGameSessions[1].SetIfNewLevel(false);
-                    /*
-                    numGameSessions[1].SetTemporaryLocation(numGameSessions[0].GetTemporaryLocation());
-                    numGameSessions[1].SetTemporaryScale(numGameSessions[0].GetTemporaryScale());
-                    numGameSessions[1].SetIsLevelReturn(numGameSessions[0].GetIsLevelReturn());
-                    */
                 }
                 
                 
@@ -89,14 +84,8 @@ public class PlayerState : MonoBehaviour
             if (selectedGameSession.GetIfNewLevel())
             {
                 print("IS NEW LEVEL");
-                /*
-                isLevelReturn = selectedGameSession.GetIsLevelReturn();
-                Vector3 originalPlayerLocation = selectedGameSession.GetTemporaryLocation();
-                Vector3 originalPlayerScale = selectedGameSession.GetTemporaryScale();
-
-                transform.position = new Vector3(originalPlayerLocation.x, originalPlayerLocation.y, originalPlayerLocation.z);
-                transform.localScale = new Vector3(originalPlayerScale.x, originalPlayerScale.y, originalPlayerScale.z);
-                */
+                selectedGameSession.resetDefaultPosition();
+                print(selectedGameSession.getDefaultPosition().x);
             }
             else
             {
