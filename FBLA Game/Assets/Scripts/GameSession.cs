@@ -17,8 +17,9 @@ public class GameSession : MonoBehaviour
     Vector3 playerScaleVector;
     List<string> tempChildList;
     List<string> persuadedNPCS = new List<string>();
+    Dictionary<string, bool> dict = new Dictionary<string, bool>();
     bool isLevelReturn = false;
-    
+
 
 
     //cache
@@ -40,6 +41,12 @@ public class GameSession : MonoBehaviour
     //Awake is called at start of gameobject initalization
     private void Awake()
     {
+        if (SceneManager.GetActiveScene().name.Contains("Level") && GetIsLevelReturn() == true)
+        {
+            print("RUNNING!");
+            //getAllCheckpoints();
+        }
+         
         int numGameSessions = FindObjectsOfType<GameSession>().Length;
         if (numGameSessions > 1)
         {
@@ -236,6 +243,7 @@ public class GameSession : MonoBehaviour
     //Set if the player 
     public void SetIsLevelReturn(bool LevelReturn)
     {
+        print("SETTING: " + LevelReturn);
         isLevelReturn = LevelReturn;
     }
 
@@ -300,5 +308,34 @@ public class GameSession : MonoBehaviour
             setDefaultPosition(new Vector3(-28.56f, -15.56f, 0f));
             setDefaultScale(new Vector3(1, 1, 1));
         }
+    }
+
+    //Get list of activated checkpoints
+    public void getAllCheckpoints()
+    {
+        var checkpoints = FindObjectsOfType<Checkpoint>();
+        print("CALL!");
+        for(int i = 0; i < checkpoints.Length; i++)
+        {
+            dict.Add(checkpoints[i].name, checkpoints[i].IsGreen());
+            //dict[checkpoints[i].name] = true;
+        }
+
+
+    }
+
+    public void resetCheckpoints()
+    {
+        dict.Clear();
+    }
+
+    public void setCheckpointKey(string key, bool value)
+    {
+        dict[key] = value;
+    }
+
+    public bool getCheckPointStatus(string key)
+    {
+        return dict[key];
     }
 }

@@ -1942,7 +1942,12 @@ PrefabInstance:
     - target: {fileID: 1387798195142349846, guid: 5c6c5d8c765295b4fa16fa3aab12a37b,
         type: 3}
       propertyPath: m_Name
-      value: Checkpoint (1)
+      value: Checkpoint B
+      objectReference: {fileID: 0}
+    - target: {fileID: 1387798195142349846, guid: 5c6c5d8c765295b4fa16fa3aab12a37b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1387798195142349845, guid: 5c6c5d8c765295b4fa16fa3aab12a37b,
         type: 3}
@@ -27198,7 +27203,7 @@ PrefabInstance:
     - target: {fileID: 521888613325943036, guid: a27534a2a731ce24ebfad5a09bfb10a3,
         type: 3}
       propertyPath: orthographic size
-      value: 10
+      value: 6.95
       objectReference: {fileID: 0}
     - target: {fileID: 521888612758666589, guid: a27534a2a731ce24ebfad5a09bfb10a3,
         type: 3}
@@ -27258,17 +27263,17 @@ PrefabInstance:
     - target: {fileID: 521888613325943039, guid: a27534a2a731ce24ebfad5a09bfb10a3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.783996
+      value: -14.303997
       objectReference: {fileID: 0}
     - target: {fileID: 521888613325943039, guid: a27534a2a731ce24ebfad5a09bfb10a3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.87274694
+      value: 8.087254
       objectReference: {fileID: 0}
     - target: {fileID: 521888613325943039, guid: a27534a2a731ce24ebfad5a09bfb10a3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.255859
+      value: -1.7441406
       objectReference: {fileID: 0}
     - target: {fileID: 521888613325943039, guid: a27534a2a731ce24ebfad5a09bfb10a3,
         type: 3}
@@ -27341,7 +27346,7 @@ PrefabInstance:
     - target: {fileID: 1387798195142349846, guid: 5c6c5d8c765295b4fa16fa3aab12a37b,
         type: 3}
       propertyPath: m_Name
-      value: Checkpoint
+      value: Checkpoint A
       objectReference: {fileID: 0}
     - target: {fileID: 1387798195142349845, guid: 5c6c5d8c765295b4fa16fa3aab12a37b,
         type: 3}

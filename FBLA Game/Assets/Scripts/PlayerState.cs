@@ -167,6 +167,7 @@ public class PlayerState : MonoBehaviour
                 Kill();
                 myAnimator.SetTrigger("Dying");
                 GetComponent<Rigidbody2D>().velocity = deathKick;
+                //FindObjectOfType<GameSession>().resetCheckpoints();
                 StartCoroutine(Respawn());
             }
         }
